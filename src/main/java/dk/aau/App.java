@@ -5,6 +5,7 @@ package dk.aau;
 
 public class App {
     public String getGreeting() {
+        int i = 0;
         return "Hello world.";
     }
 
