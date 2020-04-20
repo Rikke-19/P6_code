@@ -3,13 +3,27 @@
  */
 package dk.aau;
 
+import dk.aau.model.SafetyCriteria;
+import dk.aau.model.person.PatientModel;
+
 public class App {
-    public String getGreeting() {
-        int i = 0;
-        return "Hello world.";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        //Patient instantieres
+        PatientModel patientModel = new PatientModel(123456789);
+        System.out.println(patientModel.getCpr());
+
+        //Sikkerhedskriterier instantieres
+        SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
+        SafetyCriteria fiO2 = new SafetyCriteria("fiO2", 0); 
+        SafetyCriteria peep = new SafetyCriteria("PEEP", 0);
+        SafetyCriteria rass = new SafetyCriteria("RASS", 0);
+        SafetyCriteria respRate = new SafetyCriteria("Respiratory rate", 0);
+        SafetyCriteria saO2 = new SafetyCriteria("SaO2", 0);
+        SafetyCriteria ventriRate = new SafetyCriteria("Ventricular rate", 0);
+        SafetyCriteria endotrachealTube = new SafetyCriteria("Endotracheal Tube", false);
+        System.out.println("FiO2 " + fiO2.getValueNumber());
+        System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
     }
 }
