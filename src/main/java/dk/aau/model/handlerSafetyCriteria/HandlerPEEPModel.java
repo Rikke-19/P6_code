@@ -17,15 +17,15 @@ public class HandlerPEEPModel implements Queryable {
             String time = rs.getString("Timestamp");
           //  BiomarkerInfo.bilirubin = value;
           //  BiomarkerInfo.bilirubinTime = time;
-            System.out.println(navn);
-            System.out.println(value);
-            System.out.println(time);
+          System.out.println("Sikkerhedskriterie: " + navn);
+          System.out.println("værdi: " + value);
+          System.out.println("Prøvetidspunkt: " + time);
         }
     }
     
     @Override
     public String returnSqlQuery() {
-        String sqlStatement = "SELECT * FROM Result";// SafetyCriteria, Value, Timestamp FROM Result WHERE SafetyCriteria = 'PEEP' AND Timestamp = (SELECT MAX(Timestamp) FROM Result WHERE SafetyCriteria = 'PEEP' AND Timestamp BETWEEN "+"'"+App.previousDate+"' AND '"+ App.currentDate+"')";// AND CPRnumber="+Patient.getCprNummer();
+        String sqlStatement = "SELECT SafetyCriteria, Value, Timestamp FROM Result WHERE SafetyCriteria = 'PEEP' AND Timestamp = (SELECT MAX(Timestamp) FROM Result WHERE SafetyCriteria = 'PEEP' AND Timestamp BETWEEN "+"'"+App.previousDate+"' AND '"+ App.currentDate+"')";// AND CPRnumber="+Patient.getCprNummer();
         return sqlStatement;
     }
 }

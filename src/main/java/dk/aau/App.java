@@ -7,7 +7,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import dk.aau.database.DatabaseManipulator;
 import dk.aau.model.SafetyCriteria;
+import dk.aau.model.handlerSafetyCriteria.*;
 import dk.aau.model.person.PatientModel;
 
 public class App {
@@ -16,6 +18,8 @@ public class App {
     public static String currentDate;
     public static String previousDate;
     public static String dateForAge;
+
+
     public static void main(String[] args) {
 
         // sætter tiden 
@@ -29,7 +33,7 @@ public class App {
 
         //Patient instantieres
         PatientModel patientModel = new PatientModel(123456789);
-        System.out.println(patientModel.GetCpr());
+        //System.out.println(patientModel.GetCpr());
 
         //Sikkerhedskriterier instantieres
         SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
@@ -40,7 +44,22 @@ public class App {
         SafetyCriteria saO2 = new SafetyCriteria("SaO2", 0);
         SafetyCriteria ventriRate = new SafetyCriteria("Ventricular rate", 0);
         SafetyCriteria endotrachealTube = new SafetyCriteria("Endotracheal Tube", false);
-        System.out.println("FiO2 " + fiO2.getValueNumber());
-        System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
+        //System.out.println("FiO2 " + fiO2.getValueNumber());
+        //System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
+
+        HandlerChokLaktatModel laktath = new HandlerChokLaktatModel();
+        DatabaseManipulator.executeQueryWithResultSet(laktath);
+        HandlerFiO2Model fio2h = new HandlerFiO2Model();
+        DatabaseManipulator.executeQueryWithResultSet(fio2h); 
+        HandlerPEEPModel peeph = new HandlerPEEPModel();
+        DatabaseManipulator.executeQueryWithResultSet(peeph); 
+        HandlerRASSModel rassh = new HandlerRASSModel();
+        DatabaseManipulator.executeQueryWithResultSet(rassh); 
+        HandlerRespRateModel resph = new HandlerRespRateModel();
+        DatabaseManipulator.executeQueryWithResultSet(resph); 
+        HandlerSaO2Model sao2h = new HandlerSaO2Model();
+        DatabaseManipulator.executeQueryWithResultSet(sao2h); 
+        HandlerVentriRateModel ventrih = new HandlerVentriRateModel();
+        DatabaseManipulator.executeQueryWithResultSet(ventrih);     
     }
 }
