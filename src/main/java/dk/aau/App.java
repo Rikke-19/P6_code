@@ -12,7 +12,7 @@ public class App {
 
         //Patient instantieres
         PatientModel patientModel = new PatientModel(123456789);
-        System.out.println(patientModel.getCpr());
+        System.out.println(patientModel.GetCpr());
 
         //Sikkerhedskriterier instantieres
         SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);

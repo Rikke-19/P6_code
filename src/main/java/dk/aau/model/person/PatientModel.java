@@ -1,19 +1,19 @@
 package dk.aau.model.person;
 
 public class PatientModel {
-    private long Cpr;
+    private long cpr;
 
-    public PatientModel(long Cpr){
+    public PatientModel(long cpr){
         System.out.println("Oprettet");
-        this.Cpr = Cpr;
+        this.cpr = cpr;
     }
     
-    public void SetCpr(long Cpr) {
-        this.Cpr = Cpr;
+    public void SetCpr(long cpr) {
+        this.cpr = cpr;
     }
 
-    public long getCpr() {
-        return Cpr;
+    public long GetCpr() {
+        return cpr;
     }
 
 
