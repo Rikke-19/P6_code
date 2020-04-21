@@ -3,21 +3,34 @@
  */
 package dk.aau;
 
-<<<<<<< Updated upstream
-=======
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import dk.aau.database.DatabaseManipulator;
->>>>>>> Stashed changes
 import dk.aau.model.SafetyCriteria;
 import dk.aau.model.handlerSafetyCriteria.*;
 import dk.aau.model.person.PatientModel;
 
 public class App {
 
+    // tidshåndterings variabler 
+    public static long days = (long) 7; // antallet af dage der kigged bagud
+    public static String currentDate;
+    public static String previousDate;
+    public static String dateForAge;
+
+
     public static void main(String[] args) {
+
+        // sætter tiden 
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+        DateTimeFormatter formatForAge = DateTimeFormatter.ofPattern("yyMMdd");
+        currentDate = myDateObj.format(myFormatObj);
+        dateForAge = myDateObj.format(formatForAge);
+        LocalDateTime a = myDateObj.minus(days, ChronoUnit.DAYS);
+        previousDate = a.format(myFormatObj);
 
         //Patient instantieres
         PatientModel patientModel = new PatientModel(123456789);
