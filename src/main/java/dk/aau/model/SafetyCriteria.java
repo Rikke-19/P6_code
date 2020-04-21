@@ -1,22 +1,24 @@
 package dk.aau.model;
 
-import java.awt.Color;
+import java.util.List;
 
 public class SafetyCriteria {
     // Variabler
     private String name;
     private double valueNumber;
     private boolean valueBool;
-
-    // Colors for categorization
-    private Color colorIB;
-    private Color colorOB;
-
+    public static List<SafetyCriteria> scEPJ;
+    public static List<SafetyCriteria> aQualiSC;
+    public static List<SafetyCriteria> aQuantiSC;
 
     // Constructors 
     public SafetyCriteria(String name, double valueNumber){
         this.name = name;
         this.valueNumber = valueNumber;
+
+        
+
+
     }
 
     public SafetyCriteria(String name, boolean valueBool){
@@ -24,20 +26,23 @@ public class SafetyCriteria {
         this.valueBool = valueBool;
     }
 
+    // Liste håndtering af sikkerhedskriterierne
+    public static void AddToListSc(SafetyCriteria sc) {
+        scEPJ.add(sc);
+    }
+    
+    public void AddToListQuali(SafetyCriteria sc) {
+        aQualiSC.add(sc);
+    }
+
+    public static void AddToListQuanti(SafetyCriteria sc) {
+        aQuantiSC.add(sc);
+    }
+
     // Metoder
 
 
     // Setters and getters
-
-    public void SetColorIB(Color c)
-    {
-        this.colorIB = c;
-    }
-    public Color GetColorIB()
-    {
-        return colorIB;
-    }
-
     public double getValueNumber() {
         return valueNumber;
     }

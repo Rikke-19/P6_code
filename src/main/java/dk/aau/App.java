@@ -17,20 +17,49 @@ public class App {
         PatientModel patientModel = new PatientModel(123456789);
         System.out.println(patientModel.GetCpr());
 
-        // opsætning af lister fra WarningsModel
+        // Opsætning af lister fra WarningsModel
+        /*
         WarningsModel.missingResultsForSCEPJ = new ArrayList<SafetyCriteria>();
         WarningsModel.missingMAPInterval = new ArrayList<SafetyCriteria>();
-     
+        WarningsModel.missingCheckedSC = new ArrayList<SafetyCriteria>();
+        WarningsModel.unrealisticResultsForSCEPJ = new ArrayList<SafetyCriteria>();
+        WarningsModel.unrealisticMAPInterval = new ArrayList<SafetyCriteria>();
+        */
+
+        // Opsætning af lister fra SafetyCriteriaModel
+        SafetyCriteria.scEPJ = new ArrayList<SafetyCriteria>();
+        SafetyCriteria.aQualiSC = new ArrayList<SafetyCriteria>();
+        SafetyCriteria.aQuantiSC = new ArrayList<SafetyCriteria>();
+
         //Sikkerhedskriterier instantieres
         SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
         SafetyCriteria fiO2 = new SafetyCriteria("fiO2", 0); 
         SafetyCriteria peep = new SafetyCriteria("PEEP", 0);
         SafetyCriteria rass = new SafetyCriteria("RASS", 0);
         SafetyCriteria respRate = new SafetyCriteria("Respiratory rate", 0);
-        SafetyCriteria saO2 = new SafetyCriteria("SaO2", 0);
+        SafetyCriteria saO2 = new SafetyCriteria("SaO2", 1);
         SafetyCriteria ventriRate = new SafetyCriteria("Ventricular rate", 0);
         SafetyCriteria endotrachealTube = new SafetyCriteria("Endotracheal Tube", false);
+        
+        
         System.out.println("FiO2 " + fiO2.getValueNumber());
-        System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
+        //System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
+
+        SafetyCriteria.AddToListSc(saO2);
+
+        int i = 0;
+        // temp SafetyCriteria sc sammenlignes med alle instanser af SafetyCriteria i listen scEPJ
+        for (SafetyCriteria sc : SafetyCriteria.scEPJ) {
+            if (sc.getValueNumber() <= 0) {
+                WarningsModel.AddToList(sc);
+                sc.setValueNumber(i);
+                i++;
+                System.out.println("if");
+            }
+            else if (sc.getValueNumber() > 0) {
+                SafetyCriteria.AddToListQuanti(sc);
+                System.out.println("else");
+            }
+        }
     }
 }

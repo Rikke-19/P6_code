@@ -1,16 +1,17 @@
 package dk.aau.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import dk.aau.model.SafetyCriteria;
 
 public abstract class WarningsModel {
-    public static List<SafetyCriteria> missingResultsForSCEPJ;
-    public static List<SafetyCriteria> missingMAPInterval;
-    public static List<SafetyCriteria> missingCheckedSC;
-    public static List<SafetyCriteria> unrealisticResultsForSCEPJ;
-    public static List<SafetyCriteria> unrealisticMAPInterval;
+    private static List<SafetyCriteria> missingResultsForSCEPJ = new ArrayList<SafetyCriteria>();
+    private static List<SafetyCriteria> missingMAPInterval = new ArrayList<SafetyCriteria>();
+    private static List<SafetyCriteria> missingCheckedSC = new ArrayList<SafetyCriteria>();
+    private static List<SafetyCriteria> unrealisticResultsForSCEPJ = new ArrayList<SafetyCriteria>();
+    private static List<SafetyCriteria> unrealisticMAPInterval = new ArrayList<SafetyCriteria>();
 
-public void AddToList(SafetyCriteria sc) {
+// Liste håndtering af de 5 advarsler
+public static void AddToList(SafetyCriteria sc) {
     missingResultsForSCEPJ.add(sc);
 }
 
