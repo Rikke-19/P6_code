@@ -14,6 +14,10 @@ public class App {
         PatientModel patientModel = new PatientModel(123456789);
         System.out.println(patientModel.GetCpr());
 
+        // opsætning af lister fra WarningsModel
+        WarningsModel.missingResultsForSCEPJ = new ArrayList<WarningsModel>();
+        WarningsModel.missingMAPInterval = new ArrayList<WarningsModel>();
+     
         //Sikkerhedskriterier instantieres
         SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
         SafetyCriteria fiO2 = new SafetyCriteria("fiO2", 0); 
