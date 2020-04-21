@@ -3,9 +3,8 @@
  */
 package dk.aau;
 
-import java.util.ArrayList;
-
 import dk.aau.model.SafetyCriteria;
+import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.model.person.PatientModel;
 import dk.aau.model.WarningsModel;
 
@@ -17,49 +16,90 @@ public class App {
         PatientModel patientModel = new PatientModel(123456789);
         System.out.println(patientModel.GetCpr());
 
-        // Opsætning af lister fra WarningsModel
-        /*
-        WarningsModel.missingResultsForSCEPJ = new ArrayList<SafetyCriteria>();
-        WarningsModel.missingMAPInterval = new ArrayList<SafetyCriteria>();
-        WarningsModel.missingCheckedSC = new ArrayList<SafetyCriteria>();
-        WarningsModel.unrealisticResultsForSCEPJ = new ArrayList<SafetyCriteria>();
-        WarningsModel.unrealisticMAPInterval = new ArrayList<SafetyCriteria>();
-        */
-
-        // Opsætning af lister fra SafetyCriteriaModel
-        SafetyCriteria.scEPJ = new ArrayList<SafetyCriteria>();
-        SafetyCriteria.aQualiSC = new ArrayList<SafetyCriteria>();
-        SafetyCriteria.aQuantiSC = new ArrayList<SafetyCriteria>();
-
         //Sikkerhedskriterier instantieres
         SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
-        SafetyCriteria fiO2 = new SafetyCriteria("fiO2", 0); 
+        SafetyCriteria fiO2 = new SafetyCriteria("fiO2", 2); 
         SafetyCriteria peep = new SafetyCriteria("PEEP", 0);
-        SafetyCriteria rass = new SafetyCriteria("RASS", 0);
-        SafetyCriteria respRate = new SafetyCriteria("Respiratory rate", 0);
-        SafetyCriteria saO2 = new SafetyCriteria("SaO2", 1);
-        SafetyCriteria ventriRate = new SafetyCriteria("Ventricular rate", 0);
+        SafetyCriteria rass = new SafetyCriteria("RASS", 1);
+        SafetyCriteria respRate = new SafetyCriteria("Respiratory rate", -2);
+        SafetyCriteria saO2 = new SafetyCriteria("SaO2", 0);
+        SafetyCriteria ventriRate = new SafetyCriteria("Ventricular rate", -1);
         SafetyCriteria endotrachealTube = new SafetyCriteria("Endotracheal Tube", false);
         
-        
+        // Map instantieres
+        HealthcarePersonelModel map = new HealthcarePersonelModel("Map", 0);
+
         System.out.println("FiO2 " + fiO2.getValueNumber());
-        //System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
+        System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
 
+        // indsætter sikkerhedskriterne i listen scEPJ
+        SafetyCriteria.AddToListSc(laktat);
+        SafetyCriteria.AddToListSc(fiO2);
+        SafetyCriteria.AddToListSc(peep);
+        SafetyCriteria.AddToListSc(rass);
+        SafetyCriteria.AddToListSc(respRate);
         SafetyCriteria.AddToListSc(saO2);
+        SafetyCriteria.AddToListSc(ventriRate);
 
-        int i = 0;
-        // temp SafetyCriteria sc sammenlignes med alle instanser af SafetyCriteria i listen scEPJ
-        for (SafetyCriteria sc : SafetyCriteria.scEPJ) {
-            if (sc.getValueNumber() <= 0) {
-                WarningsModel.AddToList(sc);
-                sc.setValueNumber(i);
-                i++;
-                System.out.println("if");
+        HealthcarePersonelModel.AddToListMapInterval(map);
+
+        //int i = 0;
+
+        // SafetyCriteria sc sammenlignes med alle instanser af SafetyCriteria i listen scEPJ for manglende resultater
+        for (SafetyCriteria sc : SafetyCriteria.getScEPJ()) {
+            if (sc.getValueNumber() == 0) {
+                WarningsModel.AddToListMissingResultsForSCEPJ(sc);
+                // sc.setValueNumber(i);
+                // i++;
+                System.out.println(sc.getName() + " " + "tilføjet til liste med manglende sikkerhedskriterier");
             }
             else if (sc.getValueNumber() > 0) {
                 SafetyCriteria.AddToListQuanti(sc);
-                System.out.println("else");
+                System.out.println(sc.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
             }
         }
+
+        // SafetyCriteria sc sammenlignes med alle instanser af SafetyCriteria i listen scEPJ for urealistiske resultater
+        for (SafetyCriteria sc : SafetyCriteria.getScEPJ()) {
+            if (sc.getValueNumber() <= 0) {
+                WarningsModel.AddToListUnrealisticResultsForSCEPJ(sc);
+                //sc.setValueNumber(i);
+                //i++;
+                System.out.println(sc.getName() + " " + "tilføjet til liste med urealistiske sikkerhedskriterier");
+            }
+            else if (sc.getValueNumber() > 0) {
+                SafetyCriteria.AddToListQuanti(sc);
+                System.out.println(sc.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
+        // HealthCarePersonelModel hp sammenlignes med alle instanser af map i listen mapInterval for manglende resultater
+        for (HealthcarePersonelModel hp : HealthcarePersonelModel.getMapInterval()) {
+            if (hp.getValueNumber() == 0) {
+                WarningsModel.AddToListMissingMAP(hp);
+                //hp.setValueNumber(i);
+                //i++;
+                System.out.println(hp.getName() + " " + "tilføjet til liste med manglende MAP interval");
+            }
+            else if (hp.getValueNumber() > 0) {
+                //SafetyCriteria.AddToListQuanti(sc);
+                System.out.println(hp.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
+        // HealthCarePersonelModel hp sammenlignes med alle instanser af map i listen mapInterval for urealistiske resultater
+        for (HealthcarePersonelModel hp : HealthcarePersonelModel.getMapInterval()) {
+            if (hp.getValueNumber() == 0) {
+                WarningsModel.AddToListUnrealisticMAPInterval(hp);
+                //hp.setValueNumber(i);
+                //i++;
+                System.out.println(hp.getName() + " " + "tilføjet til liste med urealistiske MAP interval");
+            }
+            else if (hp.getValueNumber() > 0) {
+                //SafetyCriteria.AddToListQuanti(sc);
+                System.out.println(hp.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
     }
 }
