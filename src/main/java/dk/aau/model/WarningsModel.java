@@ -4,11 +4,11 @@ import java.util.List;
 import dk.aau.model.SafetyCriteria;
 
 public abstract class WarningsModel {
-    public static List<WarningsModel> missingResultsForSCEPJ;
-    public static List<WarningsModel> missingMAPInterval;
-    public static List<WarningsModel> missingCheckedSC;
-    public static List<WarningsModel> unrealisticResultsForSCEPJ;
-    public static List<WarningsModel> unrealisticMAPInterval;
+    public static List<SafetyCriteria> missingResultsForSCEPJ;
+    public static List<SafetyCriteria> missingMAPInterval;
+    public static List<SafetyCriteria> missingCheckedSC;
+    public static List<SafetyCriteria> unrealisticResultsForSCEPJ;
+    public static List<SafetyCriteria> unrealisticMAPInterval;
 
 public void AddToList(SafetyCriteria sc) {
     missingResultsForSCEPJ.add(sc);

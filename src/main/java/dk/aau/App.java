@@ -3,8 +3,11 @@
  */
 package dk.aau;
 
+import java.util.ArrayList;
+
 import dk.aau.model.SafetyCriteria;
 import dk.aau.model.person.PatientModel;
+import dk.aau.model.WarningsModel;
 
 public class App {
 
@@ -15,8 +18,8 @@ public class App {
         System.out.println(patientModel.GetCpr());
 
         // opsætning af lister fra WarningsModel
-        WarningsModel.missingResultsForSCEPJ = new ArrayList<WarningsModel>();
-        WarningsModel.missingMAPInterval = new ArrayList<WarningsModel>();
+        WarningsModel.missingResultsForSCEPJ = new ArrayList<SafetyCriteria>();
+        WarningsModel.missingMAPInterval = new ArrayList<SafetyCriteria>();
      
         //Sikkerhedskriterier instantieres
         SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
