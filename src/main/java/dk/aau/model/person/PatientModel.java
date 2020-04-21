@@ -4,7 +4,6 @@ public class PatientModel {
     private long cpr;
 
     public PatientModel(long cpr){
-        System.out.println("Oprettet");
         this.cpr = cpr;
     }
     

@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import dk.aau.database.DatabaseManipulator;
-import dk.aau.model.SafetyCriteria;
+import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.handlerSafetyCriteria.*;
 import dk.aau.model.person.PatientModel;
 
@@ -36,14 +36,14 @@ public class App {
         //System.out.println(patientModel.GetCpr());
 
         //Sikkerhedskriterier instantieres
-        SafetyCriteria laktat = new SafetyCriteria("Laktat", 0);
-        SafetyCriteria fiO2 = new SafetyCriteria("fiO2", 0); 
-        SafetyCriteria peep = new SafetyCriteria("PEEP", 0);
-        SafetyCriteria rass = new SafetyCriteria("RASS", 0);
-        SafetyCriteria respRate = new SafetyCriteria("Respiratory rate", 0);
-        SafetyCriteria saO2 = new SafetyCriteria("SaO2", 0);
-        SafetyCriteria ventriRate = new SafetyCriteria("Ventricular rate", 0);
-        SafetyCriteria endotrachealTube = new SafetyCriteria("Endotracheal Tube", false);
+        SafetyCriteriaModel laktat = new SafetyCriteriaModel("Laktat", 0);
+        SafetyCriteriaModel fiO2 = new SafetyCriteriaModel("fiO2", 0);
+        SafetyCriteriaModel peep = new SafetyCriteriaModel("PEEP", 0);
+        SafetyCriteriaModel rass = new SafetyCriteriaModel("RASS", 0);
+        SafetyCriteriaModel respRate = new SafetyCriteriaModel("Respiratory rate", 0);
+        SafetyCriteriaModel saO2 = new SafetyCriteriaModel("SaO2", 0);
+        SafetyCriteriaModel ventriRate = new SafetyCriteriaModel("Ventricular rate", 0);
+        SafetyCriteriaModel endotrachealTube = new SafetyCriteriaModel("Endotracheal Tube", false);
         //System.out.println("FiO2 " + fiO2.getValueNumber());
         //System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
 

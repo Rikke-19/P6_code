@@ -2,7 +2,7 @@ package dk.aau.model;
 
 import java.awt.Color;
 
-public class SafetyCriteria {
+public class SafetyCriteriaModel {
     // Variabler
     private String name;
     private double valueNumber;
@@ -14,18 +14,36 @@ public class SafetyCriteria {
 
 
     // Constructors 
-    public SafetyCriteria(String name, double valueNumber){
+    public SafetyCriteriaModel(String name, double valueNumber){
         this.name = name;
         this.valueNumber = valueNumber;
     }
 
-    public SafetyCriteria(String name, boolean valueBool){
+    public SafetyCriteriaModel(String name, boolean valueBool){
         this.name = name;
         this.valueBool = valueBool;
     }
 
     // Metoder
+    private void checkMissingResultsForSCEPJ() {
 
+    }
+
+    private Boolean checkMissingMAPInterval() {
+        return false;
+    }
+
+    private Boolean checkMissingCheckedSC() {
+        return false;
+    }
+
+    private void accessUnrealisticResultsForSCEPJ() {
+
+    }
+
+    private Boolean accessUnrealisticMAPInterval() {
+        return false;
+    }
 
     // Setters and getters
 
