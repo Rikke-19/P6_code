@@ -10,7 +10,6 @@ import java.time.temporal.ChronoUnit;
 import dk.aau.database.DatabaseManipulator;
 import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.handlerSafetyCriteria.*;
-import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.model.person.PatientModel;
 import dk.aau.model.WarningsModel;

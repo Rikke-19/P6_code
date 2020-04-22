@@ -8,8 +8,10 @@ public class HealthcarePersonelModel {
     private double valueNumber;
     private boolean valueBool;
     
-    // Oprettelse af Map interval liste samt initialisering af denne
+    // Oprettelse af lister samt initialisering af disse
+    private static List<HealthcarePersonelModel> enteredResultsForSC = new ArrayList<HealthcarePersonelModel>();
     private static List<HealthcarePersonelModel> mapInterval = new ArrayList<HealthcarePersonelModel>();
+    private static List<HealthcarePersonelModel> checkedSC = new ArrayList<HealthcarePersonelModel>();
 
     // Oprettet en constructer
     public HealthcarePersonelModel(String name, double valueNumber) {
@@ -22,9 +24,17 @@ public class HealthcarePersonelModel {
         this.valueBool = valueBool;
     }
 
-    // Liste håndtering af map interval
+    // Liste håndtering
+    public static void AddToListEnteredSC(HealthcarePersonelModel hp) {
+        enteredResultsForSC.add(hp);
+    }
+
 	public static void AddToListMapInterval(HealthcarePersonelModel hp) {
         mapInterval.add(hp);
+    }
+
+    public static void AddToListCheckedSC(HealthcarePersonelModel hp) {
+        checkedSC.add(hp);
     }
 
     // Getters og setters
@@ -72,5 +82,21 @@ public class HealthcarePersonelModel {
     }
     public static void setMapInterval(List<HealthcarePersonelModel> mapInterval) {
         HealthcarePersonelModel.mapInterval = mapInterval;
+    }
+
+    public static List<HealthcarePersonelModel> getEnteredResultsForSC() {
+        return enteredResultsForSC;
+    }
+
+    public static void setEnteredResultsForSC(List<HealthcarePersonelModel> enteredResultsForSC) {
+        HealthcarePersonelModel.enteredResultsForSC = enteredResultsForSC;
+    }
+
+    public static List<HealthcarePersonelModel> getCheckedSC() {
+        return checkedSC;
+    }
+
+    public static void setCheckedSC(List<HealthcarePersonelModel> checkedSC) {
+        HealthcarePersonelModel.checkedSC = checkedSC;
     }
 }
