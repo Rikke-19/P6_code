@@ -10,7 +10,10 @@ import java.time.temporal.ChronoUnit;
 import dk.aau.database.DatabaseManipulator;
 import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.handlerSafetyCriteria.*;
+import dk.aau.model.SafetyCriteriaModel;
+import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.model.person.PatientModel;
+import dk.aau.model.WarningsModel;
 
 public class App {
     // tidshåndterings variabler 
@@ -61,5 +64,81 @@ public class App {
         DatabaseManipulator.executeQueryWithResultSet(sao2h); 
         HandlerVentriRateModel ventrih = new HandlerVentriRateModel();
         DatabaseManipulator.executeQueryWithResultSet(ventrih);     
+        
+        // Map instantieres
+        HealthcarePersonelModel map = new HealthcarePersonelModel("Map", 0);
+
+        System.out.println("FiO2 " + fiO2.getValueNumber());
+        System.out.println("Endotracheal Tube " + endotrachealTube.getValueBool());
+
+        // indsætter sikkerhedskriterne i listen scEPJ
+        SafetyCriteriaModel.AddToListSc(laktat);
+        SafetyCriteriaModel.AddToListSc(fiO2);
+        SafetyCriteriaModel.AddToListSc(peep);
+        SafetyCriteriaModel.AddToListSc(rass);
+        SafetyCriteriaModel.AddToListSc(respRate);
+        SafetyCriteriaModel.AddToListSc(saO2);
+        SafetyCriteriaModel.AddToListSc(ventriRate);
+
+        HealthcarePersonelModel.AddToListMapInterval(map);
+
+        //int i = 0;
+
+        // SafetyCriteria sc sammenlignes med alle instanser af SafetyCriteria i listen scEPJ for manglende resultater
+        for (SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ()) {
+            if (sc.getValueNumber() == 0) {
+                WarningsModel.AddToListMissingResultsForSCEPJ(sc);
+                // sc.setValueNumber(i);
+                // i++;
+                System.out.println(sc.getName() + " " + "tilføjet til liste med manglende sikkerhedskriterier");
+            }
+            else if (sc.getValueNumber() > 0) {
+                SafetyCriteriaModel.AddToListQuanti(sc);
+                System.out.println(sc.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
+        // SafetyCriteria sc sammenlignes med alle instanser af SafetyCriteria i listen scEPJ for urealistiske resultater
+        for (SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ()) {
+            if (sc.getValueNumber() <= 0) {
+                WarningsModel.AddToListUnrealisticResultsForSCEPJ(sc);
+                //sc.setValueNumber(i);
+                //i++;
+                System.out.println(sc.getName() + " " + "tilføjet til liste med urealistiske sikkerhedskriterier");
+            }
+            else if (sc.getValueNumber() > 0) {
+                SafetyCriteriaModel.AddToListQuanti(sc);
+                System.out.println(sc.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
+        // HealthCarePersonelModel hp sammenlignes med alle instanser af map i listen mapInterval for manglende resultater
+        for (HealthcarePersonelModel hp : HealthcarePersonelModel.getMapInterval()) {
+            if (hp.getValueNumber() == 0) {
+                WarningsModel.AddToListMissingMAP(hp);
+                //hp.setValueNumber(i);
+                //i++;
+                System.out.println(hp.getName() + " " + "tilføjet til liste med manglende MAP interval");
+            }
+            else if (hp.getValueNumber() > 0) {
+                //SafetyCriteria.AddToListQuanti(sc);
+                System.out.println(hp.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
+        // HealthCarePersonelModel hp sammenlignes med alle instanser af map i listen mapInterval for urealistiske resultater
+        for (HealthcarePersonelModel hp : HealthcarePersonelModel.getMapInterval()) {
+            if (hp.getValueNumber() == 0) {
+                WarningsModel.AddToListUnrealisticMAPInterval(hp);
+                //hp.setValueNumber(i);
+                //i++;
+                System.out.println(hp.getName() + " " + "tilføjet til liste med urealistiske MAP interval");
+            }
+            else if (hp.getValueNumber() > 0) {
+                //SafetyCriteria.AddToListQuanti(sc);
+                System.out.println(hp.getName() + " " + "tilføjet til liste med godkendte kvantiative sikkerhedskriterier");
+            }
+        }
+
     }
 }
