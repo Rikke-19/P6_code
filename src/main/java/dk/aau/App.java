@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import dk.aau.model.SafetyCriteriaModel;
+import dk.aau.model.categorization.EMCategoriesModel;
 import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.model.person.PatientModel;
 
@@ -42,14 +43,14 @@ public class App {
                 sc.setValueBool(true);
             else 
                 sc.setValueBool(false);
-        }
+        }/*
 
         for (SafetyCriteriaModel sCriteriaModel : SafetyCriteriaModel.getScEPJ()) {
             System.out.println(sCriteriaModel.getValueBool());
             System.out.println(sCriteriaModel.getValueNumber());
-        }
+        }*/
         
-        
+        EMCategoriesModel.assignEMCategoIB();
         
         //Patient instantieres
         PatientModel patientModel = new PatientModel(1234567890);

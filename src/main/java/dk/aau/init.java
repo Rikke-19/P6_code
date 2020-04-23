@@ -749,7 +749,7 @@ public class init {
                 }
                 break;
 
-                case "Not requiring pharmacological treatmentand not awaiting emergency pacemaker insertion":
+                case "Not requiring pharmacological treatment and not awaiting emergency pacemaker insertion":
                 System.out.print(sc.getName());
                 savedValue = false;
                 while(savedValue == false)
@@ -1179,7 +1179,7 @@ public class init {
                 }
                 break;
 
-                case "Cardiac ischemia (defined as ongoingchest pain and/or dynamic EKG changes)":
+                case "Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)":
                 System.out.print(sc.getName());
                 savedValue = false;
                 while(savedValue == false)
@@ -2168,7 +2168,7 @@ public class init {
                 }
                 break;
                 
-                case "Unstble/unstabilized major fracture (Pelvic, spinal, lower limp long bone)":
+                case "Unstable/unstabilized major fracture (Pelvic, spinal, lower limp long bone)":
                 System.out.print(sc.getName());
                 savedValue = false;
                 while(savedValue == false)
@@ -2305,7 +2305,7 @@ public class init {
         SafetyCriteriaModel.AddToListSc(severepulmonaryHypertension);
         SafetyCriteriaModel bradycardiaReq = new SafetyCriteriaModel("Requiring pharmacological treatment (e.g. isoprenaline) or awaiting emergency pacemaker insertion", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(bradycardiaReq);
-        SafetyCriteriaModel bradycardiaNotReq = new SafetyCriteriaModel("Not requiring pharmacological treatmentand not awaiting emergency pacemaker insertion", "Cardiovascular");
+        SafetyCriteriaModel bradycardiaNotReq = new SafetyCriteriaModel("Not requiring pharmacological treatment and not awaiting emergency pacemaker insertion", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(bradycardiaNotReq);
         SafetyCriteriaModel dependentRhythm = new SafetyCriteriaModel("Dependent Rhythm", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(dependentRhythm);
@@ -2325,7 +2325,7 @@ public class init {
         SafetyCriteriaModel.AddToListSc(acuteDVT);
         SafetyCriteriaModel severeAorticStenosis = new SafetyCriteriaModel("Known or suspected severe aortic stenosis", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(severeAorticStenosis);
-        SafetyCriteriaModel cardiacischemia = new SafetyCriteriaModel("Cardiac ischemia (defined as ongoingchest pain and/or dynamic EKG changes)", "Cardiovascular");
+        SafetyCriteriaModel cardiacischemia = new SafetyCriteriaModel("Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(cardiacischemia);
         // neurological
         SafetyCriteriaModel deltool = new SafetyCriteriaModel("Delirum tool -ve", "Neuro");
@@ -2373,7 +2373,7 @@ public class init {
         SafetyCriteriaModel.AddToListSc(febrilewtemp);
         SafetyCriteriaModel acticehypomanagement = new SafetyCriteriaModel("Active hypothermia management", "Other");
         SafetyCriteriaModel.AddToListSc(acticehypomanagement);
-        SafetyCriteriaModel unstable = new SafetyCriteriaModel("Unstble/unstabilized major fracture (Pelvic, spinal, lower limp long bone)", "Other");
+        SafetyCriteriaModel unstable = new SafetyCriteriaModel("Unstable/unstabilized major fracture (Pelvic, spinal, lower limp long bone)", "Other");
         SafetyCriteriaModel.AddToListSc(unstable);
         SafetyCriteriaModel openwound = new SafetyCriteriaModel("Large open wound (Chest/Sternum, abdomen)", "Other");
         SafetyCriteriaModel.AddToListSc(openwound);     
