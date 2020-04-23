@@ -8,20 +8,31 @@ public class SafetyCriteriaModel {
     private String name;
     private double valueNumber;
     private boolean valueBool;
+
+    private String color;
+
     private static List<SafetyCriteriaModel> scEPJ = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> approvedQualiSC = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> approvedQuantiSC = new ArrayList<SafetyCriteriaModel>();
 
+    // ikke MVC attributter 
+    private String tag;
+    private Boolean takesNumber;
+
+
     // Constructors 
-    public SafetyCriteriaModel(String name, double valueNumber){
+    public SafetyCriteriaModel(String name, String tag){
+        this.takesNumber = false;
         this.name = name;
-        this.valueNumber = valueNumber;
     }
 
-    public SafetyCriteriaModel(String name, boolean valueBool){
+    public SafetyCriteriaModel(String name, String tag, boolean takesNumber){
+        this.tag = tag;
+        this.takesNumber = takesNumber;
         this.name = name;
-        this.valueBool = valueBool;
     }
+
+
 
     // Metoder
     private void checkMissingResultsForSCEPJ() {
@@ -61,6 +72,8 @@ public class SafetyCriteriaModel {
 
 
     // Setters and getters
+
+    
     public double getValueNumber() {
         return valueNumber;
     }
@@ -107,6 +120,30 @@ public class SafetyCriteriaModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Boolean getTakesNumber() {
+        return takesNumber;
+    }
+
+    public void setTakesNumber(Boolean takesNumber) {
+        this.takesNumber = takesNumber;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
 }
