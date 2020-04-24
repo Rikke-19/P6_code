@@ -6,6 +6,36 @@ import dk.aau.model.SafetyCriteriaModel;
 
 public class init {
 
+    public void InputMap()
+    {
+        Scanner input = new Scanner(System.in);
+
+        String valueMin = input.nextLine();
+
+        String valueMax = input.nextLine();
+        try {
+            if (sc.getTakesNumber()) {
+                System.out.println(" [insert number]: ");
+                String inputString = input.nextLine();
+                try {
+                    if (inputString == "exit" ||inputString == "Exit") {
+                        savedValue = true;
+                    } else
+                    {  
+                        sc.setValueNumber(Double.parseDouble(inputString));
+                        savedValue = true;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input");
+                    savedValue = false;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        input.close();
+    }
+
+
     public static void GiveValues()
     {
         Scanner input = new Scanner(System.in);
@@ -2260,6 +2290,7 @@ public class init {
                 break;
             }
         }
+        input.close();
     }
 
     
@@ -2297,6 +2328,7 @@ public class init {
         SafetyCriteriaModel.AddToListSc(prostacyclin);
         SafetyCriteriaModel pronePositioning = new SafetyCriteriaModel("Prone Positioning", "Respiratory");
         SafetyCriteriaModel.AddToListSc(pronePositioning);
+        
         //Cardiovascular
         
         SafetyCriteriaModel intravenousAntihypotensive = new SafetyCriteriaModel("Intravenous antihypotensive therapy for hypotensive emergency", "Cardiovascular");
@@ -2327,7 +2359,10 @@ public class init {
         SafetyCriteriaModel.AddToListSc(severeAorticStenosis);
         SafetyCriteriaModel cardiacischemia = new SafetyCriteriaModel("Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(cardiacischemia);
+        SafetyCriteriaModel map = new SafetyCriteriaModel("MAP", "Cardiovascular", true);
+        
         // neurological
+        
         SafetyCriteriaModel deltool = new SafetyCriteriaModel("Delirum tool -ve", "Neuro");
         SafetyCriteriaModel.AddToListSc(deltool);
         SafetyCriteriaModel deltoolcommands = new SafetyCriteriaModel("Delirium tool +ve and able to follow simple commmands", "Neuro");

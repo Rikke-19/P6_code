@@ -7,6 +7,9 @@ public class SafetyCriteriaModel {
     // Variabler
     private String name;
     private double valueNumber;
+    private double mapMin;
+    private double mapMax;
+
     private boolean valueBool;
 
     private String color;
@@ -31,8 +34,6 @@ public class SafetyCriteriaModel {
         this.takesNumber = takesNumber;
         this.name = name;
     }
-
-
 
     // Metoder
     private void checkMissingResultsForSCEPJ() {
@@ -144,6 +145,22 @@ public class SafetyCriteriaModel {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public double getMapMin() {
+        return mapMin;
+    }
+
+    public void setMapMin(double mapMin) {
+        this.mapMin = mapMin;
+    }
+
+    public double getMapMax() {
+        return mapMax;
+    }
+
+    public void setMapMax(double mapMax) {
+        this.mapMax = mapMax;
     }
 
 }
