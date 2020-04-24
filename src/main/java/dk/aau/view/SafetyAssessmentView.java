@@ -13,11 +13,11 @@ public class SafetyAssessmentView {
         SafetyAssessmentView.EMCategorizationIB = eMCategorizationIB;
     }
 
-    public String getEMCategorizationOB() {
+    public static String getEMCategorizationOB() {
         return EMCategorizationOB;
     }
 
-    public void setEMCategorizationOB(String eMCategorizationOB) {
+    public static void setEMCategorizationOB(String eMCategorizationOB) {
         SafetyAssessmentView.EMCategorizationOB = eMCategorizationOB;
     }
 
