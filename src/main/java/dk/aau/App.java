@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-
+import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.model.person.PatientModel;
 
@@ -32,8 +32,12 @@ public class App {
         LocalDateTime a = myDateObj.minus(days, ChronoUnit.DAYS);
         previousDate = a.format(myFormatObj);
         
-        init.InitSafetyCriteria();
-        init.GiveValues();
+        Init.InitSafetyCriteria();
+        Init.InputMap();
+
+        System.out.println(SafetyCriteriaModel.getMapMin());
+        System.out.println(SafetyCriteriaModel.getMapMax());
+        //Init.GiveValues();
         
         // ### FOR TESTING ### 
         /*

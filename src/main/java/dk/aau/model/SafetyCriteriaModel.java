@@ -7,8 +7,8 @@ public class SafetyCriteriaModel {
     // Variabler
     private String name;
     private double valueNumber;
-    private double mapMin;
-    private double mapMax;
+    private static double mapMin;
+    private static double mapMax;
 
     private boolean valueBool;
 
@@ -18,18 +18,17 @@ public class SafetyCriteriaModel {
     private static List<SafetyCriteriaModel> approvedQualiSC = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> approvedQuantiSC = new ArrayList<SafetyCriteriaModel>();
 
-    // ikke MVC attributter 
+    // ikke MVC attributter
     private String tag;
     private Boolean takesNumber;
 
-
-    // Constructors 
-    public SafetyCriteriaModel(String name, String tag){
+    // Constructors
+    public SafetyCriteriaModel(String name, String tag) {
         this.takesNumber = false;
         this.name = name;
     }
 
-    public SafetyCriteriaModel(String name, String tag, boolean takesNumber){
+    public SafetyCriteriaModel(String name, String tag, boolean takesNumber) {
         this.tag = tag;
         this.takesNumber = takesNumber;
         this.name = name;
@@ -55,12 +54,12 @@ public class SafetyCriteriaModel {
     private Boolean accessUnrealisticMAPInterval() {
         return false;
     }
-    
+
     // Liste håndtering af sikkerhedskriterierne
     public static void AddToListSc(SafetyCriteriaModel sc) {
         scEPJ.add(sc);
     }
-    
+
     public static void AddToListQuali(SafetyCriteriaModel sc) {
         approvedQualiSC.add(sc);
     }
@@ -71,10 +70,8 @@ public class SafetyCriteriaModel {
 
     // Metoder
 
-
     // Setters and getters
 
-    
     public double getValueNumber() {
         return valueNumber;
     }
@@ -147,20 +144,20 @@ public class SafetyCriteriaModel {
         this.color = color;
     }
 
-    public double getMapMin() {
+    public static double getMapMin() {
         return mapMin;
     }
 
     public void setMapMin(double mapMin) {
-        this.mapMin = mapMin;
+        SafetyCriteriaModel.mapMin = mapMin;
     }
 
-    public double getMapMax() {
+    public static double getMapMax() {
         return mapMax;
     }
 
     public void setMapMax(double mapMax) {
-        this.mapMax = mapMax;
+        SafetyCriteriaModel.mapMax = mapMax;
     }
 
 }

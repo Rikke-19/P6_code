@@ -1,39 +1,61 @@
 package dk.aau;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 import dk.aau.model.SafetyCriteriaModel;
 
-public class init {
+public class Init {
 
-    public void InputMap()
-    {
+    public static void InputMap() {
+
         Scanner input = new Scanner(System.in);
+        boolean savedValue = false;
 
-        String valueMin = input.nextLine();
-
-        String valueMax = input.nextLine();
-        try {
-            if (sc.getTakesNumber()) {
-                System.out.println(" [insert number]: ");
-                String inputString = input.nextLine();
+        while (savedValue == false) {
+            for(SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ()) {
+            boolean isMapMinSet = false;
+            if (sc.getName().equals("MAP") && sc.getTakesNumber() == true) {
+                System.out.println(" [Insert lower limit of the target range]: ");
+                String inputValueMin = input.nextLine();
                 try {
-                    if (inputString == "exit" ||inputString == "Exit") {
+                    if (inputValueMin.equals("exit") || inputValueMin.equals("Exit")) {
+                        isMapMinSet = true;
                         savedValue = true;
-                    } else
-                    {  
-                        sc.setValueNumber(Double.parseDouble(inputString));
+                    } else {
+                        sc.setMapMin(Double.parseDouble(inputValueMin));
+                        isMapMinSet = true;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input");
+                    savedValue = false;
+                }
+            if (sc.getName().equals("MAP") && sc.getTakesNumber() == true && isMapMinSet == true) {
+                System.out.println(" [Insert higher limit of the target range]: ");
+                String inputValueMax = input.nextLine();
+                try {
+                    if (inputValueMax.equals("exit") || inputValueMax.equals("Exit")) {
+                        savedValue = true;                       
+                    } else {
+                        sc.setMapMax(Double.parseDouble(inputValueMax));
                         savedValue = true;
                     }
                 } catch (Exception e) {
                     System.out.println("Invalid input");
                     savedValue = false;
-        } catch (Exception e) {
-            System.out.println(e);
+                }
+            }
         }
-
+        }
         input.close();
+        }
+          
     }
+        
+        
+    
+    
 
 
     public static void GiveValues()
@@ -2360,6 +2382,7 @@ public class init {
         SafetyCriteriaModel cardiacischemia = new SafetyCriteriaModel("Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)", "Cardiovascular");
         SafetyCriteriaModel.AddToListSc(cardiacischemia);
         SafetyCriteriaModel map = new SafetyCriteriaModel("MAP", "Cardiovascular", true);
+        SafetyCriteriaModel.AddToListSc(map);
         
         // neurological
         
