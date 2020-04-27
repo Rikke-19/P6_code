@@ -7,12 +7,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import dk.aau.controller.SafetyCriteriaCtrl;
+import dk.aau.controller.person.HealthcarePersonelCtrl;
 import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.person.HealthcarePersonelModel;
-import dk.aau.model.person.PatientModel;
-
-
-
+import dk.aau.view.person.HealthcarePersonelView;
 
 public class App {
     // tidshåndterings variabler 
@@ -33,21 +32,28 @@ public class App {
         previousDate = a.format(myFormatObj);
         
         Init.InitSafetyCriteria();
+        //HealthcarePersonelModel.tickQualitativeSCResults();
         
-
-        
-        // ### FOR TESTING ### 
-        /*
         int i = 0;
-        for (SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ()) {
-            sc.setValueNumber(i);
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            s.setQuantitativeSCValue(i);
             i++;
             if(i % 2 == 0)
-                sc.setValueBool(true);
+                s.setQualitativeSCValueBool(true);
             else 
-                sc.setValueBool(false);
+                s.setQualitativeSCValueBool(false);
         }
-        */
+        
+        HealthcarePersonelModel hModel = new HealthcarePersonelModel();
+        HealthcarePersonelView hView = new HealthcarePersonelView();
+
+        HealthcarePersonelCtrl hCtrl = new HealthcarePersonelCtrl(hModel, hView);
+        //hCtrl.tickQuantitativeResults();
+        SafetyCriteriaModel sModel = new SafetyCriteriaModel();
+        SafetyCriteriaCtrl sCtrl = new SafetyCriteriaCtrl(sModel, hModel);
+        sCtrl.checkValues();
+        
+
         
         /*
         ColorCategorizationsModel.performColorCategoIB();
@@ -68,7 +74,7 @@ public class App {
         */
         
         //Patient instantieres
-        PatientModel patientModel = new PatientModel(1234567890);
+        // PatientModel patientModel = new PatientModel(1234567890);
         
         /*
         HandlerChokLaktatModel laktath = new HandlerChokLaktatModel();

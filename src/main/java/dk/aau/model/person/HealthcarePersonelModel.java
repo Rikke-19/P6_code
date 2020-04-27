@@ -7,19 +7,19 @@ import java.util.Scanner;
 import dk.aau.model.SafetyCriteriaModel;
 
 public class HealthcarePersonelModel {
-
-
-	//Metoder
-    private void tickQualitativeSCResults() {
+    
+    
+    //Metoder
+    public void tickQualitativeSCResults() {
         Scanner input = new Scanner(System.in);
-    for(SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
-
-        System.out.print("Insert the value of ");
-        boolean savedValue;
-        switch (SC.getName()) {
-
-            // case name
-            case "Laktat":
+        for(SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
+            
+            System.out.print("Insert the value of ");
+            boolean savedValue;
+            switch (SC.getName()) {
+                
+                // case name
+                case "Laktat":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -31,6 +31,7 @@ public class HealthcarePersonelModel {
                                 savedValue = true;
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                SC.setRecievedValue(true);
                                 savedValue = true;
                             }
                         } catch (Exception e) {
@@ -47,6 +48,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -60,9 +62,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -73,8 +77,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "FiO2":
+                
+                case "FiO2":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -87,6 +91,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -102,6 +107,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -115,9 +121,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -127,10 +135,10 @@ public class HealthcarePersonelModel {
                         }
                     }
                 }
-
+                
                 break;
-
-            case "PEEP":
+                
+                case "PEEP":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -143,6 +151,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -158,6 +167,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -171,9 +181,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -184,8 +196,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "RASS":
+                
+                case "RASS":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -198,6 +210,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -213,6 +226,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -226,9 +240,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -239,8 +255,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Respiratory rate":
+                
+                case "Respiratory rate":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -253,6 +269,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -268,6 +285,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -281,9 +299,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -294,8 +314,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "SaO2":
+                
+                case "SaO2":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -308,6 +328,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -323,6 +344,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -336,9 +358,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -349,8 +373,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Ventricular rate":
+                
+                case "Ventricular rate":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -363,6 +387,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -378,6 +403,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -391,9 +417,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -404,8 +432,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Endotracheal Tube":
+                
+                case "Endotracheal Tube":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -418,6 +446,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -433,6 +462,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -446,9 +476,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -459,8 +491,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Any stable tachyarrhythmia":
+                
+                case "Any stable tachyarrhythmia":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -473,6 +505,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -488,61 +521,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setStableTachy(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setStableTachy(false);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                }
-                break;
-
-            case "Tracheostomy Tube":
-                System.out.print(SC.getName());
-                savedValue = false;
-                while (savedValue == false) {
-                    if (SC.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString == "exit" || inputString == "Exit") {
-                                savedValue = true;
-                            } else {
-                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -556,9 +535,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -569,8 +550,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Mode HFOV":
+                
+                case "Tracheostomy Tube":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -583,6 +564,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -598,6 +580,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -611,9 +594,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -624,8 +609,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Ventilator Dysynchrony":
+                
+                case "Mode HFOV":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -638,6 +623,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -653,6 +639,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -666,9 +653,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -679,8 +668,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Nitric Oxide":
+                
+                case "Ventilator Dysynchrony":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -693,6 +682,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -708,6 +698,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -721,9 +712,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -734,8 +727,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Prostacyclin":
+                
+                case "Nitric Oxide":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -748,6 +741,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -763,6 +757,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -776,9 +771,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -789,8 +786,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Prone Positioning":
+                
+                case "Prostacyclin":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -803,6 +800,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -818,6 +816,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -831,9 +830,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -844,8 +845,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Is MAP causing symptoms":
+                
+                case "Prone Positioning":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -858,6 +859,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -873,118 +875,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setMAPCausingSymptoms(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setMAPCausingSymptoms(false);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                }
-                break;
-
-            case "MAP level of support":
-                System.out.print(SC.getName());
-                savedValue = false;
-                while (savedValue == false) {
-                    if (SC.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString == "exit" || inputString == "Exit") {
-                                savedValue = true;
-                            } else {
-                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert low/moderate/high]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else if (inputString.equals("low") || inputString.equals("Low")) {
-                                    SC.setLevelOfMAPSupport("Low");
-                                    savedValue = true;
-                                } else if (inputString.equals("moderate") || inputString.equals("Moderate")) {
-                                    SC.setLevelOfMAPSupport("Moderate");
-                                    savedValue = true;
-                                } else if (inputString.equals("high") || inputString.equals("High")) {
-                                    SC.setLevelOfMAPSupport("High");
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                }
-                break;
-
-            case "Intravenous antihypotensive therapy for hypotensive emergency":
-                System.out.print(SC.getName());
-                savedValue = false;
-                while (savedValue == false) {
-                    if (SC.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString == "exit" || inputString == "Exit") {
-                                savedValue = true;
-                            } else {
-                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -998,9 +889,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1011,8 +904,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Known or suspected severepulmonary hypertension":
+                
+                case "Is MAP causing symptoms":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1025,6 +918,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1040,6 +934,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1053,9 +948,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1066,8 +963,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Requiring pharmacological treatment (e.g. isoprenaline) or awaiting emergency pacemaker insertion":
+                
+                case "MAP level of support":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1080,6 +977,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1095,6 +993,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1108,9 +1007,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1121,8 +1022,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Not requiring pharmacological treatment and not awaiting emergency pacemaker insertion":
+                
+                case "Intravenous antihypotensive therapy for hypotensive emergency":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1135,6 +1036,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1150,6 +1052,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1163,9 +1066,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1176,8 +1081,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Dependent Rhythm":
+                
+                case "Known or suspected severepulmonary hypertension":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1190,6 +1095,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1205,6 +1111,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1218,9 +1125,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1231,8 +1140,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Stable Underlying Rhythm":
+                
+                case "Requiring pharmacological treatment (e.g. isoprenaline) or awaiting emergency pacemaker insertion":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1245,6 +1154,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1260,6 +1170,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1273,9 +1184,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1284,10 +1197,10 @@ public class HealthcarePersonelModel {
                             }
                         }
                     }
-                }
+                }    
                 break;
-
-            case "Femoral IABP":
+                
+                case "Not requiring pharmacological treatment and not awaiting emergency pacemaker insertion":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1300,6 +1213,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1315,6 +1229,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1328,9 +1243,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1341,8 +1258,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Femoral or subclavian (not single bicaval dual lumen cannulae)":
+                
+                case "Dependent Rhythm":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1355,6 +1272,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1370,6 +1288,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1383,9 +1302,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1396,8 +1317,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Single bicaval dual lumen cannulae insertedinto a central vein":
+                
+                case "Stable Underlying Rhythm":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1410,6 +1331,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1425,6 +1347,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1438,9 +1361,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1451,8 +1376,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Ventricular Assist Device":
+                
+                case "Femoral IABP":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1465,6 +1390,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1480,6 +1406,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1493,9 +1420,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1506,8 +1435,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Pulmonary Artery Catheter or other continuous cardiac output monitoring device":
+                
+                case "Femoral or subclavian (not single bicaval dual lumen cannulae)":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1520,6 +1449,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1535,6 +1465,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1548,9 +1479,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1561,8 +1494,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Known or suspected acute DVT/PE":
+                
+                case "Single bicaval dual lumen cannulae insertedinto a central vein":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1575,6 +1508,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1590,6 +1524,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1603,9 +1538,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1616,8 +1553,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Known or suspected severe aortic stenosis":
+                
+                case "Ventricular Assist Device":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1630,6 +1567,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1645,6 +1583,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1658,9 +1597,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1671,8 +1612,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)":
+                
+                case "Pulmonary Artery Catheter or other continuous cardiac output monitoring device":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1685,6 +1626,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1700,6 +1642,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1713,9 +1656,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1726,8 +1671,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Delirum tool -ve":
+                
+                case "Known or suspected acute DVT/PE":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1740,6 +1685,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1755,6 +1701,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1768,9 +1715,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1781,8 +1730,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Delirium tool +ve and able to follow simple commmands":
+                
+                case "Known or suspected severe aortic stenosis":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1795,6 +1744,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1810,6 +1760,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1823,9 +1774,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1836,8 +1789,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Delirium tool +ve and not able to follow simple commmands":
+                
+                case "Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1850,6 +1803,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1865,6 +1819,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1878,9 +1833,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1891,8 +1848,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Active management of intracranial hypertension, with ICP not in desired range":
+                
+                case "Delirum tool -ve":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1905,6 +1862,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1920,6 +1878,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1933,9 +1892,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -1946,8 +1907,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Intracranial pressure monitoring without activemanagement of intracranial hypertension":
+                
+                case "Delirium tool +ve and able to follow simple commmands":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -1960,6 +1921,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -1975,6 +1937,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -1988,9 +1951,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2001,8 +1966,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Craniectomy":
+                
+                case "Delirium tool +ve and not able to follow simple commmands":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2015,6 +1980,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2030,6 +1996,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2043,9 +2010,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2056,8 +2025,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Open lumbar drain (not clamped)":
+                
+                case "Active management of intracranial hypertension, with ICP not in desired range":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2070,6 +2039,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2085,6 +2055,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2098,9 +2069,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2111,8 +2084,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Subgaleal drain":
+                
+                case "Intracranial pressure monitoring without activemanagement of intracranial hypertension":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2125,6 +2098,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2140,6 +2114,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2153,9 +2128,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2166,8 +2143,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Spinal precautions (pre-clearence or fixation)":
+                
+                case "Craniectomy":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2180,6 +2157,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2195,6 +2173,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2208,9 +2187,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2221,8 +2202,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Acute spinal cord injury":
+                
+                case "Open lumbar drain (not clamped)":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2235,6 +2216,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2250,6 +2232,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2263,9 +2246,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2276,8 +2261,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Subarachnoid haemorrhage with unclipped aneurysm":
+                
+                case "Subgaleal drain":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2290,6 +2275,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2305,6 +2291,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2318,9 +2305,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2331,8 +2320,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Vasospasm post-aneurysmal clipping":
+                
+                case "Spinal precautions (pre-clearence or fixation)":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2345,6 +2334,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2360,6 +2350,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2373,9 +2364,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2386,8 +2379,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Uncontrolled seizures":
+                
+                case "Acute spinal cord injury":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2400,6 +2393,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2415,6 +2409,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2428,9 +2423,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2441,8 +2438,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "ICUAW":
+                
+                case "Subarachnoid haemorrhage with unclipped aneurysm":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2455,6 +2452,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2470,6 +2468,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2483,9 +2482,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2496,8 +2497,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Renal Replacement Therapy":
+                
+                case "Vasospasm post-aneurysmal clipping":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2510,6 +2511,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2525,6 +2527,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2538,9 +2541,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2551,8 +2556,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Venous and arterial femoral catheters":
+                
+                case "Uncontrolled seizures":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2565,6 +2570,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2580,6 +2586,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2593,9 +2600,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2606,8 +2615,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Femoral Sheats":
+                
+                case "ICUAW":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2620,6 +2629,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2635,6 +2645,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2648,9 +2659,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2661,8 +2674,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Other drains and attachements":
+                
+                case "Renal Replacement Therapy":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2675,6 +2688,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2690,6 +2704,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2703,9 +2718,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2716,8 +2733,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Known uncontrolled active bleedeing":
+                
+                case "Venous and arterial femoral catheters":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2730,6 +2747,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2745,6 +2763,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2758,9 +2777,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2771,8 +2792,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Suspicion of active bleeding or increasedbleeding risk":
+                
+                case "Femoral Sheats":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2785,6 +2806,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2800,6 +2822,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2813,9 +2836,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2826,8 +2851,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Patient is febrile with a temperature exceedingacceptable maximum despite active physicalor pharmacological cooling mangagement":
+                
+                case "Other drains and attachements":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2840,6 +2865,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2855,6 +2881,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2868,9 +2895,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2881,8 +2910,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Active hypothermia management":
+                
+                case "Known uncontrolled active bleedeing":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2895,6 +2924,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2910,6 +2940,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2923,9 +2954,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2936,8 +2969,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Unstable/unstabilized major fracture (Pelvic, spinal, lower limp long bone)":
+                
+                case "Suspicion of active bleeding or increasedbleeding risk":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -2950,6 +2983,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -2965,6 +2999,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -2978,9 +3013,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -2991,8 +3028,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "Large open wound (Chest/Sternum, abdomen)":
+                
+                case "Patient is febrile with a temperature exceedingacceptable maximum despite active physicalor pharmacological cooling mangagement":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -3005,6 +3042,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -3020,6 +3058,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -3033,9 +3072,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -3046,8 +3087,8 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            case "MAP":
+                
+                case "Active hypothermia management":
                 System.out.print(SC.getName());
                 savedValue = false;
                 while (savedValue == false) {
@@ -3060,6 +3101,7 @@ public class HealthcarePersonelModel {
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
+                                SC.setRecievedValue(true);
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
@@ -3075,6 +3117,7 @@ public class HealthcarePersonelModel {
                                 } else {
                                     SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                     savedValue = true;
+                                    SC.setRecievedValue(true);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Invalid input");
@@ -3088,9 +3131,11 @@ public class HealthcarePersonelModel {
                                     savedValue = true;
                                 } else if (inputString.equals("yes") || inputString.equals("Yes")) {
                                     SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 } else if (inputString.equals("no") || inputString.equals("No")) {
                                     SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
                                     savedValue = true;
                                 }
                             } catch (Exception e) {
@@ -3101,23 +3146,200 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-
-            default:
+                
+                case "Unstable/unstabilized major fracture (Pelvic, spinal, lower limp long bone)":
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString == "exit" || inputString == "Exit") {
+                                savedValue = true;
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                SC.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                    SC.setRecievedValue(true);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        }
+                    }
+                }
+                break;
+                
+                case "Large open wound (Chest/Sternum, abdomen)":
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString == "exit" || inputString == "Exit") {
+                                savedValue = true;
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                SC.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                    SC.setRecievedValue(true);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        }
+                    }
+                }
+                break;
+                
+                case "MAP":
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString == "exit" || inputString == "Exit") {
+                                savedValue = true;
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                SC.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                    SC.setRecievedValue(true);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        }
+                    }
+                }
+                break;
+                
+                default:
                 System.out.println("Vi burde ikke have været her. Et navn er skrevet forkert");
                 break;
+            }
         }
+        input.close();
     }
-    input.close();
-}
-
+    
     private void enterMAPInterval() {
-
-    Scanner input = new Scanner(System.in);
-    boolean savedValue = false;
-    boolean isMapMinSet = false;
-
-    while (savedValue == false) {
-        for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
+        
+        Scanner input = new Scanner(System.in);
+        boolean savedValue = false;
+        boolean isMapMinSet = false;
+        
+        while (savedValue == false) {
+            for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
                 if (SC.getName().equals("MAP") && SC.getTakesNumber() == true) {
                     System.out.println(" [Insert lower limit of the target range]: ");
                     String inputValueMin = input.nextLine();
@@ -3128,6 +3350,7 @@ public class HealthcarePersonelModel {
                         } else {
                             SC.setMAPIntervalMin(Double.parseDouble(inputValueMin));
                             isMapMinSet = true;
+                            SC.setRecievedValue(true);
                             
                         }
                     } catch (Exception e) {
@@ -3143,6 +3366,7 @@ public class HealthcarePersonelModel {
                             savedValue = true;                       
                         } else {
                             SC.setMAPIntervalMax(Double.parseDouble(inputValueMax));
+                            SC.setRecievedValue(true);
                             savedValue = true;
                         }
                     } catch (Exception e) {
@@ -3154,29 +3378,27 @@ public class HealthcarePersonelModel {
         }
         input.close();
     }
-
-    private void requestQuantitativeSCfromEPJ() {
-
+    
+    // private void requestQuantitativeSCfromEPJ() {}   // not this time
+    
+    public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
+        System.out.println("Test Tick");
     }
-
-    private void tickQualitativeSCresultsIfMissing() {
-
+    
+    public void enterResultsForSCIfMissing(List<SafetyCriteriaModel> list) {
+        System.out.println("Test miss");
     }
-
-    private void enterResultsForSCIfMissing() {
-
+    
+    public void enterMAPIfMissing() {
+        System.out.println("Test map1");
     }
-
-    private void enterMAPIfMissing() {
-
+    
+    public void enterMAPIfUnrealistic() {
+        System.out.println("Test map2");
     }
-
-    private void enterMAPIfUnrealistic() {
-
+    
+    public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
+        System.out.println("Test unreal");
     }
-
-    private void enterResultsForSCIfUnrealistic() {
-
-    }
-
-    }
+    
+}

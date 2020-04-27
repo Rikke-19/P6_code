@@ -1,9 +1,5 @@
 package dk.aau;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-
 import dk.aau.model.SafetyCriteriaModel;
 
 public class Init {
