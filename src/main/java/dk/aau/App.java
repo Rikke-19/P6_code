@@ -12,6 +12,8 @@ import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.model.person.PatientModel;
 
 
+
+
 public class App {
     // tidshåndterings variabler 
     public static long days = (long) 7; // antallet af dage der kigged bagud
@@ -30,10 +32,15 @@ public class App {
         LocalDateTime a = myDateObj.minus(days, ChronoUnit.DAYS);
         previousDate = a.format(myFormatObj);
         
-        init.InitSafetyCriteria();
-        // init.GiveValues();
+        Init.InitSafetyCriteria();
+        Init.InputMap();
+
+        System.out.println(SafetyCriteriaModel.getMapMin());
+        System.out.println(SafetyCriteriaModel.getMapMax());
+        //Init.GiveValues();
         
-        // ### FOR TESTING ###
+        // ### FOR TESTING ### 
+        /*
         int i = 0;
         for (SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ()) {
             sc.setValueNumber(i);
@@ -43,13 +50,25 @@ public class App {
             else 
                 sc.setValueBool(false);
         }
+        */
+        
+        /*
+        ColorCategorizationsModel.performColorCategoIB();
+        ColorCategorizationsModel.performColorCategoOB();
 
+        EMCategoriesModel.assignEMCategoIB();
+        EMCategoriesModel.assignEMCategoOB();
+        
         for (SafetyCriteriaModel sCriteriaModel : SafetyCriteriaModel.getScEPJ()) {
+            System.out.println(sCriteriaModel.getName());
             System.out.println(sCriteriaModel.getValueBool());
             System.out.println(sCriteriaModel.getValueNumber());
+            System.out.println(sCriteriaModel.getColor());
         }
-        
-        
+
+        System.out.println("EM kategori i sengen: " + SafetyAssessmentView.getEMCategorizationIB());
+        System.out.println("EM kategori udenfor sengen: " + SafetyAssessmentView.getEMCategorizationOB());
+        */
         
         //Patient instantieres
         PatientModel patientModel = new PatientModel(1234567890);
