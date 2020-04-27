@@ -35,8 +35,6 @@ public class App {
         Init.InitSafetyCriteria();
         
 
-        System.out.println(SafetyCriteriaModel.getMapMin());
-        System.out.println(SafetyCriteriaModel.getMapMax());
         
         // ### FOR TESTING ### 
         /*
@@ -91,9 +89,7 @@ public class App {
         
 
         
-        // Map instantieres
-        HealthcarePersonelModel map = new HealthcarePersonelModel("Map", 0);
-        HealthcarePersonelModel.AddToListMapInterval(map);
+
         
         //int i = 0;
         

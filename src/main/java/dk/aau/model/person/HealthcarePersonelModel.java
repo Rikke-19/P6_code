@@ -7,3515 +7,3118 @@ import java.util.Scanner;
 import dk.aau.model.SafetyCriteriaModel;
 
 public class HealthcarePersonelModel {
-    private String name;
-    private double valueNumber;
-    private boolean valueBool;
-    
-    // Oprettelse af lister samt initialisering af disse
-    private static List<HealthcarePersonelModel> enteredResultsForSC = new ArrayList<HealthcarePersonelModel>();
-    private static List<HealthcarePersonelModel> mapInterval = new ArrayList<HealthcarePersonelModel>();
-    private static List<HealthcarePersonelModel> checkedSC = new ArrayList<HealthcarePersonelModel>();
-
-    // Oprettet en constructer
-    public HealthcarePersonelModel(String name, double valueNumber) {
-        this.name = name;
-        this.valueNumber = valueNumber;
-    }
-
-    public HealthcarePersonelModel(String name, boolean valueBool) {
-        this.name = name;
-        this.valueBool = valueBool;
-    }
-
-    // Liste håndtering
-    public static void AddToListEnteredSC(HealthcarePersonelModel hp) {
-        enteredResultsForSC.add(hp);
-    }
-
-	public static void AddToListMapInterval(HealthcarePersonelModel hp) {
-        mapInterval.add(hp);
-    }
-
-    public static void AddToListCheckedSC(HealthcarePersonelModel hp) {
-        checkedSC.add(hp);
-    }
-
-    // Getters og setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getValueNumber() {
-        return valueNumber;
-    }
-
-    public void setValueNumber(double valueNumber) {
-        this.valueNumber = valueNumber;
-    }
-
-    public boolean isValueBool() {
-        return valueBool;
-    }
-
-    public void setValueBool(boolean valueBool) {
-        this.valueBool = valueBool;
-    }
-
-    public static List<HealthcarePersonelModel> getMapInterval() {
-        return mapInterval;
-    }
 
 
-
-    //Metoder
-    private void enterResultsForSC() {
+	//Metoder
+    private void tickQualitativeSCResults() {
         Scanner input = new Scanner(System.in);
-    for(SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ())
-    {              
-        
+    for(SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
+
         System.out.print("Insert the value of ");
         boolean savedValue;
-        switch (sc.getName()) {
-            
+        switch (SC.getName()) {
+
             // case name
             case "Laktat":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") ||inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "FiO2":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") ||inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            
-            break;
-            
+
+                break;
+
             case "PEEP":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "RASS":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Respiratory rate":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "SaO2":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Ventricular rate":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Endotracheal Tube":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
+                break;
 
             case "Any stable tachyarrhythmia":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") ||inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setStableTachy(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setStableTachy(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setStableTachy(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setStableTachy(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Tracheostomy Tube":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Mode HFOV":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Ventilator Dysynchrony":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Nitric Oxide":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Prostacyclin":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Prone Positioning":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
+                break;
 
             case "Is MAP causing symptoms":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setMAPCausingSymptoms(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No")) {
-                                sc.setMAPCausingSymptoms(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setMAPCausingSymptoms(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setMAPCausingSymptoms(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
+                break;
 
             case "MAP level of support":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert low/moderate/high]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("low") || inputString.equals("Low")) {
-                                sc.setLevelOfMAPSupport("Low");
-                                savedValue = true;
-                            } else if (inputString.equals("moderate") || inputString.equals("Moderate")) {
-                                sc.setLevelOfMAPSupport("Moderate");
-                                savedValue = true;
-                            } else if (inputString.equals("high") || inputString.equals("High")){
-                                sc.setLevelOfMAPSupport("High");
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
                             }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                        } else {
+                            System.out.println(" [insert low/moderate/high]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("low") || inputString.equals("Low")) {
+                                    SC.setLevelOfMAPSupport("Low");
+                                    savedValue = true;
+                                } else if (inputString.equals("moderate") || inputString.equals("Moderate")) {
+                                    SC.setLevelOfMAPSupport("Moderate");
+                                    savedValue = true;
+                                } else if (inputString.equals("high") || inputString.equals("High")) {
+                                    SC.setLevelOfMAPSupport("High");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Intravenous antihypotensive therapy for hypotensive emergency":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Known or suspected severepulmonary hypertension":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Requiring pharmacological treatment (e.g. isoprenaline) or awaiting emergency pacemaker insertion":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Not requiring pharmacological treatment and not awaiting emergency pacemaker insertion":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Dependent Rhythm":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Stable Underlying Rhythm":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Femoral IABP":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Femoral or subclavian (not single bicaval dual lumen cannulae)":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Single bicaval dual lumen cannulae insertedinto a central vein":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Ventricular Assist Device":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Pulmonary Artery Catheter or other continuous cardiac output monitoring device":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Known or suspected acute DVT/PE":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Known or suspected severe aortic stenosis":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Delirum tool -ve":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Delirium tool +ve and able to follow simple commmands":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Delirium tool +ve and not able to follow simple commmands":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Active management of intracranial hypertension, with ICP not in desired range":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Intracranial pressure monitoring without activemanagement of intracranial hypertension":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Craniectomy":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Open lumbar drain (not clamped)":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Subgaleal drain":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Spinal precautions (pre-clearence or fixation)":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Acute spinal cord injury":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Subarachnoid haemorrhage with unclipped aneurysm":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Vasospasm post-aneurysmal clipping":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Uncontrolled seizures":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "ICUAW":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Renal Replacement Therapy":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Venous and arterial femoral catheters":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Femoral Sheats":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Other drains and attachements":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Known uncontrolled active bleedeing":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Suspicion of active bleeding or increasedbleeding risk":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Patient is febrile with a temperature exceedingacceptable maximum despite active physicalor pharmacological cooling mangagement":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Active hypothermia management":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Unstable/unstabilized major fracture (Pelvic, spinal, lower limp long bone)":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
+                break;
+
             case "Large open wound (Chest/Sternum, abdomen)":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
+                break;
 
             case "MAP":
-            System.out.print(sc.getName());
-            savedValue = false;
-            while(savedValue == false)
-            {
-                if (sc.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" ||inputString == "Exit") {
-                            savedValue = true;
-                        } else
-                        {  
-                            sc.setValueNumber(Double.parseDouble(inputString));
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else 
-                {
-                    if (sc.getTakesNumber()) {
+                System.out.print(SC.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                            if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
-                            } else
-                            {  
-                                sc.setValueNumber(Double.parseDouble(inputString));
+                            } else {
+                                SC.setQuantitativeSCValue(Double.parseDouble(inputString));
                                 savedValue = true;
                             }
                         } catch (Exception e) {
                             System.out.println("Invalid input");
                             savedValue = false;
                         }
-                    } else 
-                    {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                sc.setValueBool(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No"))
-                            {
-                                sc.setValueBool(false);
-                                savedValue = true;
-                            } 
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
+                    } else {
+                        if (SC.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    SC.setQualitativeSCValueBool(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    SC.setQualitativeSCValueBool(false);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
                         }
                     }
                 }
-            }
-            break;
-            
-            
+                break;
+
             default:
-            System.out.println("Vi burde ikke have været her. Et navn er skrevet forkert");
-            break;
+                System.out.println("Vi burde ikke have været her. Et navn er skrevet forkert");
+                break;
         }
     }
     input.close();
-    }
+}
 
     private void enterMAPInterval() {
-        Scanner input = new Scanner(System.in);
-        boolean savedValue = false;
-        boolean isMapMinSet = false;
-        
-        while (savedValue == false) {
-            for(SafetyCriteriaModel sc : SafetyCriteriaModel.getScEPJ()) {
-                if (sc.getName().equals("MAP") && sc.getTakesNumber() == true) {
+
+    Scanner input = new Scanner(System.in);
+    boolean savedValue = false;
+    boolean isMapMinSet = false;
+
+    while (savedValue == false) {
+        for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
+                if (SC.getName().equals("MAP") && SC.getTakesNumber() == true) {
                     System.out.println(" [Insert lower limit of the target range]: ");
                     String inputValueMin = input.nextLine();
                     try {
@@ -3523,7 +3126,7 @@ public class HealthcarePersonelModel {
                             isMapMinSet = true;
                             savedValue = true;
                         } else {
-                            sc.setMapMin(Double.parseDouble(inputValueMin));
+                            SC.setMAPIntervalMin(Double.parseDouble(inputValueMin));
                             isMapMinSet = true;
                             
                         }
@@ -3532,14 +3135,14 @@ public class HealthcarePersonelModel {
                         savedValue = false;
                     }
                 }
-                if (sc.getName().equals("MAP") && sc.getTakesNumber() == true && isMapMinSet == true) {
+                if (SC.getName().equals("MAP") && SC.getTakesNumber() == true && isMapMinSet == true) {
                     System.out.println(" [Insert higher limit of the target range]: ");
                     String inputValueMax = input.nextLine();
                     try {
                         if (inputValueMax.equals("exit") || inputValueMax.equals("Exit")) {
                             savedValue = true;                       
                         } else {
-                            sc.setMapMax(Double.parseDouble(inputValueMax));
+                            SC.setMAPIntervalMax(Double.parseDouble(inputValueMax));
                             savedValue = true;
                         }
                     } catch (Exception e) {
@@ -3552,26 +3155,28 @@ public class HealthcarePersonelModel {
         input.close();
     }
 
-    private void checkSC() {
+    private void requestQuantitativeSCfromEPJ() {
 
     }
-    public static void setMapInterval(List<HealthcarePersonelModel> mapInterval) {
-        HealthcarePersonelModel.mapInterval = mapInterval;
+
+    private void tickQualitativeSCresultsIfMissing() {
+
     }
 
-    public static List<HealthcarePersonelModel> getEnteredResultsForSC() {
-        return enteredResultsForSC;
+    private void enterResultsForSCIfMissing() {
+
     }
 
-    public static void setEnteredResultsForSC(List<HealthcarePersonelModel> enteredResultsForSC) {
-        HealthcarePersonelModel.enteredResultsForSC = enteredResultsForSC;
+    private void enterMAPIfMissing() {
+
     }
 
-    public static List<HealthcarePersonelModel> getCheckedSC() {
-        return checkedSC;
+    private void enterMAPIfUnrealistic() {
+
     }
 
-    public static void setCheckedSC(List<HealthcarePersonelModel> checkedSC) {
-        HealthcarePersonelModel.checkedSC = checkedSC;
+    private void enterResultsForSCIfUnrealistic() {
+
     }
-}
+
+    }

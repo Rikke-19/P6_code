@@ -2,14 +2,15 @@ package dk.aau.model.categorization;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Object;
 
 import dk.aau.model.SafetyCriteriaModel;
-import dk.aau.view.SafetyAssessmentView;
 
 public class EMCategoriesModel {
 
-    private static List<SafetyCriteriaModel> yellowCriteria = new ArrayList<SafetyCriteriaModel>();
+    private static String EMCategorizationIB;
+    private static String EMCategorizationOB;
+
+    private static List<SafetyCriteriaModel> yellowCriteria = new ArrayList<SafetyCriteriaModel>(); // MANGLER I MVC
 
     // Metoder
     public static void assignEMCategoIB() {
@@ -17,38 +18,54 @@ public class EMCategoriesModel {
         boolean isYellow = false;
         boolean alreadyGreen = false;
 
-        for (SafetyCriteriaModel colorCategoIB : SafetyCriteriaModel.getScEPJ()) {
-                if (colorCategoIB.getColor().equals("Red")) {
-                    SafetyAssessmentView.setEMCategorizationIB("Red");
-                    return;
-                } else if (colorCategoIB.getColor().equals("Yellow")) {
-                    SafetyAssessmentView.setEMCategorizationIB("Yellow");
-                    yellowCriteria.add(colorCategoIB);
-                    isYellow = true;
-                } else if (isYellow == false && alreadyGreen == false) {
-                    SafetyAssessmentView.setEMCategorizationIB("Green");
-                    alreadyGreen = true; 
-                }
+        for (SafetyCriteriaModel colorCategoIB : SafetyCriteriaModel.getSC()) {
+            if (colorCategoIB.getColor().equals("Red")) {
+                EMCategoriesModel.setEMCategorizationIB("Red");
+                return;
+            } else if (colorCategoIB.getColor().equals("Yellow")) {
+                EMCategoriesModel.setEMCategorizationIB("Yellow");
+                yellowCriteria.add(colorCategoIB);
+                isYellow = true;
+            } else if (isYellow == false && alreadyGreen == false) {
+                EMCategoriesModel.setEMCategorizationIB("Green");
+                alreadyGreen = true;
+            }
         }
     }
-    
+
     public static void assignEMCategoOB() {
 
-            boolean isYellow = false;
-            boolean alreadyGreen = false;
-            
-            for (SafetyCriteriaModel colorCategoOB : SafetyCriteriaModel.getScEPJ()) {
-                    if (colorCategoOB.getColor().equals("Red")) {
-                        SafetyAssessmentView.setEMCategorizationOB("Red");
-                        return;
-                    } else if (colorCategoOB.getColor().equals("Yellow")) {
-                        SafetyAssessmentView.setEMCategorizationOB("Yellow");
-                        yellowCriteria.add(colorCategoOB);
-                        isYellow = true;
-                    } else if (isYellow == false && alreadyGreen == false) {
-                        SafetyAssessmentView.setEMCategorizationOB("Green");
-                        alreadyGreen = true; 
-                    }
+        boolean isYellow = false;
+        boolean alreadyGreen = false;
+
+        for (SafetyCriteriaModel colorCategoOB : SafetyCriteriaModel.getSC()) {
+            if (colorCategoOB.getColor().equals("Red")) {
+                EMCategoriesModel.setEMCategorizationOB("Red");
+                return;
+            } else if (colorCategoOB.getColor().equals("Yellow")) {
+                EMCategoriesModel.setEMCategorizationOB("Yellow");
+                yellowCriteria.add(colorCategoOB);
+                isYellow = true;
+            } else if (isYellow == false && alreadyGreen == false) {
+                EMCategoriesModel.setEMCategorizationOB("Green");
+                alreadyGreen = true;
             }
+        }
+    }
+
+    public String getEMCategorizationIB() {
+        return EMCategorizationIB;
+    }
+
+    public static void setEMCategorizationIB(String eMCategorizationIB) {
+        EMCategorizationIB = eMCategorizationIB;
+    }
+
+    public String getEMCategorizationOB() {
+        return EMCategorizationOB;
+    }
+
+    public static void setEMCategorizationOB(String eMCategorizationOB) {
+        EMCategorizationOB = eMCategorizationOB;
     }
 }
