@@ -39,9 +39,14 @@ public class App {
             s.setQuantitativeSCValue(i);
             i++;
             if(i % 2 == 0)
-                s.setQualitativeSCValueBool(true);
-            else 
+        {       s.setQualitativeSCValueBool(true);
+                //s.setRecievedValue(true);
+        }
+            else {
                 s.setQualitativeSCValueBool(false);
+                s.setRecievedValue(true);
+            }
+                
         }
         
         HealthcarePersonelModel hModel = new HealthcarePersonelModel();

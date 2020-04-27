@@ -3383,22 +3383,252 @@ public class HealthcarePersonelModel {
     
     public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
         System.out.println("Test Tick");
+        Scanner input = new Scanner(System.in);
+        for (SafetyCriteriaModel s : list) {
+            boolean savedValue = false;
+            System.out.println("Insert value of " + s.getName());
+            while (savedValue == false) {
+                if (s.getTakesNumber()) {
+                    System.out.println(" [insert number]: ");
+                    String inputString = input.nextLine();
+                    try {
+                        if (inputString == "exit" || inputString == "Exit") {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                            savedValue = true;
+                            s.setRecievedValue(true);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                } else {
+                    if (s.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                savedValue = true;
+                            } else {
+                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                s.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        System.out.println(" [insert yes/no]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                savedValue = true;
+                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                s.setQualitativeSCValueBool(true);
+                                s.setRecievedValue(true);
+                                savedValue = true;
+                            } else if (inputString.equals("no") || inputString.equals("No")) {
+                                s.setQualitativeSCValueBool(false);
+                                s.setRecievedValue(true);
+                                savedValue = true;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    }
+                }
+            }
+        }
+        input.close();
     }
     
     public void enterResultsForSCIfMissing(List<SafetyCriteriaModel> list) {
         System.out.println("Test miss");
+        Scanner input = new Scanner(System.in);
+        for (SafetyCriteriaModel s : list) {
+            boolean savedValue = false;
+            System.out.println("Insert value of " + s.getName());
+            while (savedValue == false) {
+                if (s.getTakesNumber()) {
+                    System.out.println(" [insert number]: ");
+                    String inputString = input.nextLine();
+                    try {
+                        if (inputString == "exit" || inputString == "Exit") {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                            savedValue = true;
+                            s.setRecievedValue(true);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                } else {
+                    if (s.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                savedValue = true;
+                            } else {
+                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                s.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        System.out.println(" [insert yes/no]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                savedValue = true;
+                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                s.setQualitativeSCValueBool(true);
+                                s.setRecievedValue(true);
+                                savedValue = true;
+                            } else if (inputString.equals("no") || inputString.equals("No")) {
+                                s.setQualitativeSCValueBool(false);
+                                s.setRecievedValue(true);
+                                savedValue = true;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    }
+                }
+            }
+        }
+        input.close();
     }
     
     public void enterMAPIfMissing() {
         System.out.println("Test map1");
+        Scanner input = new Scanner(System.in);
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            if (s.getName().equals("MAP")) {
+                System.out.println("Insert the value of MAP");
+                boolean savedValue = false;
+                while (!savedValue) {
+                    String inputStringMap = input.nextLine();
+                    try {
+                        if(inputStringMap.equals("exit") ||inputStringMap.equals("Exit"))
+                        {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(inputStringMap));
+                            s.setRecievedValue(true);
+                            savedValue = true;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Insert a number");
+                        savedValue = false;
+                    }
+                }
+            }
+        }
+        input.close();
     }
     
     public void enterMAPIfUnrealistic() {
-        System.out.println("Test map2");
+        System.out.println("Test map1");
+        Scanner input = new Scanner(System.in);
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            if (s.getName().equals("MAP")) {
+                System.out.println("Insert the value of MAP");
+                boolean savedValue = false;
+                while (!savedValue) {
+                    String inputString = input.nextLine();
+                    try {
+                        if(inputString.equals("exit") ||inputString.equals("Exit"))
+                        {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                            s.setRecievedValue(true);
+                            savedValue = true;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Insert a number");
+                        savedValue = false;
+                    }
+                }
+            }
+        }
+        input.close();
     }
     
     public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
         System.out.println("Test unreal");
+        Scanner input = new Scanner(System.in);
+        for (SafetyCriteriaModel s : list) {
+            boolean savedValue = false;
+            System.out.println("Insert value of " + s.getName());
+            while (savedValue == false) {
+                if (s.getTakesNumber()) {
+                    System.out.println(" [insert number]: ");
+                    String inputString = input.nextLine();
+                    try {
+                        if (inputString == "exit" || inputString == "Exit") {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                            savedValue = true;
+                            s.setRecievedValue(true);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                } else {
+                    if (s.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                savedValue = true;
+                            } else {
+                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                s.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        System.out.println(" [insert yes/no]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                savedValue = true;
+                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                s.setQualitativeSCValueBool(true);
+                                s.setRecievedValue(true);
+                                savedValue = true;
+                            } else if (inputString.equals("no") || inputString.equals("No")) {
+                                s.setQualitativeSCValueBool(false);
+                                s.setRecievedValue(true);
+                                savedValue = true;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    }
+                }
+            }
+        }
+        input.close();    
     }
+    
+    
     
 }

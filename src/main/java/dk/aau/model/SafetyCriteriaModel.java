@@ -67,7 +67,7 @@ public class SafetyCriteriaModel {
     
     public void checkMissingResultsForQuantitativeSC(List<SafetyCriteriaModel> inputList) {
         for (SafetyCriteriaModel s : inputList) {
-            if (!s.isRecievedValue() && s.takesNumber) {
+            if (!s.isRecievedValue() && s.takesNumber && !s.getName().equals("MAP")) {
                 MissingQuantitativeResultsSC.add(s);
                 MissingQuantitativeResult = true;
             }
@@ -82,6 +82,7 @@ public class SafetyCriteriaModel {
             } else
             {
                 MissingMAPInterval = true;
+                
                 return false;
             } 
         }
@@ -91,7 +92,8 @@ public class SafetyCriteriaModel {
     
     public void assessUnrealisticResultsForQuantitativeSC() {
         for (SafetyCriteriaModel s : SC) {
-            if (s.takesNumber && s.getQuantitativeSCValue() <= 0 && !s.getName().equals("RASS")) {
+            if (s.takesNumber && s.getQuantitativeSCValue() 
+            <= 0 && !s.getName().equals("RASS")) {
                 UnrealisticQuantitativeResults.add(s);
             }
         }
