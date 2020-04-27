@@ -69,7 +69,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") ||inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -113,7 +113,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -156,7 +156,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -199,7 +199,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -242,7 +242,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -285,7 +285,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -328,7 +328,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -371,7 +371,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -414,7 +414,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -457,7 +457,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -500,7 +500,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -543,7 +543,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -586,7 +586,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -629,7 +629,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -672,7 +672,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -715,7 +715,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -758,7 +758,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -801,7 +801,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -844,7 +844,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -887,7 +887,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -930,7 +930,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -973,7 +973,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1016,7 +1016,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1059,7 +1059,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1102,7 +1102,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1145,7 +1145,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1188,7 +1188,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1231,7 +1231,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1274,7 +1274,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1317,7 +1317,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1360,7 +1360,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1403,7 +1403,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1446,7 +1446,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1489,7 +1489,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1532,7 +1532,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1575,7 +1575,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1618,7 +1618,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1661,7 +1661,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1704,7 +1704,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1747,7 +1747,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1790,7 +1790,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1833,7 +1833,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1876,7 +1876,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1919,7 +1919,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -1962,7 +1962,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -2005,7 +2005,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -2048,7 +2048,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -2091,7 +2091,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -2134,7 +2134,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -2177,7 +2177,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  
@@ -2220,7 +2220,7 @@ public class init {
                         System.out.println(" [insert number]: ");
                         String inputString = input.nextLine();
                         try {
-                            if (inputString == "exit" ||inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else
                             {  

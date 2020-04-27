@@ -35,7 +35,7 @@ public class ColorCategorizationsModel {
                 }
                 break;
                 
-                case "FiO2"
+                case "FiO2":
                 if () {
                 }
 
