@@ -69,13 +69,13 @@ public class ColorCategorizationsModel {
                 break;
                 
                 case "Ventricular rate":
-                if (sc.getValueNumber() > 150) {
+                if (sc.getStableTachy() == true && sc.getValueNumber() > 150) {
                     sc.setColor("Yellow");
-                } else if (sc.getValueNumber() >= 120 && sc.getValueNumber() <= 150 ){
+                } else if (sc.getStableTachy() == true && sc.getValueNumber() >= 120 && sc.getValueNumber() <= 150 ){
                     sc.setColor("Yellow");
-                } else if (sc.getValueNumber() < 120) {
+                } else if (sc.getStableTachy() == false && sc.getValueNumber() < 120) {
                     sc.setColor("Green");
-                }
+                } 
                 break;
 
                 case "Endotracheal Tube":
@@ -129,6 +129,20 @@ public class ColorCategorizationsModel {
                 case "Prone Positioning":
                 if (sc.getValueBool() == true) {
                     sc.setColor("Red");
+                } else {
+                    sc.setColor("Green");
+                }
+                break;
+
+                case "MAP":
+                if (sc.getValueNumber() < SafetyCriteriaModel.getMapMin() && sc.getMAPCausingSymptoms() == true) {
+                    sc.setColor("Yellow");
+                } else if (sc.getValueNumber() >= SafetyCriteriaModel.getMapMin() && sc.getLevelOfMAPSupport().equals("Low")) {
+                    sc.setColor("Green");
+                } else if (sc.getValueNumber() >= SafetyCriteriaModel.getMapMin() && sc.getLevelOfMAPSupport().equals("Moderate")) {
+                    sc.setColor("Yellow");
+                } else if (sc.getValueNumber() >= SafetyCriteriaModel.getMapMin() && sc.getLevelOfMAPSupport().equals("High")) {
+                    sc.setColor("Yellow");
                 } else {
                     sc.setColor("Green");
                 }
@@ -493,14 +507,15 @@ public class ColorCategorizationsModel {
                 else 
                     sc.setColor("Green");
                 break;
-                
+
                 case "Ventricular rate":
-                if(sc.getValueNumber() > 150)
+                if (sc.getStableTachy() == true && sc.getValueNumber() > 150) {
                     sc.setColor("Red");
-                else if(sc.getValueNumber() > 120 || sc.getValueNumber() <= 150)
+                } else if (sc.getStableTachy() == true && sc.getValueNumber() >= 120 && sc.getValueNumber() <= 150 ){
                     sc.setColor("Yellow");
-                else 
+                } else if (sc.getStableTachy() == false && sc.getValueNumber() < 120) {
                     sc.setColor("Green");
+                } 
                 break;
 
                 case "Endotracheal Tube":
@@ -547,6 +562,20 @@ public class ColorCategorizationsModel {
                 else
                     sc.setColor("Green");
                 
+                break;
+
+                case "MAP":
+                if (sc.getValueNumber() < SafetyCriteriaModel.getMapMin() && sc.getMAPCausingSymptoms() == true) {
+                    sc.setColor("Red");
+                } else if (sc.getValueNumber() >= SafetyCriteriaModel.getMapMin() && sc.getLevelOfMAPSupport().equals("Low")) {
+                    sc.setColor("Green");
+                } else if (sc.getValueNumber() >= SafetyCriteriaModel.getMapMin() && sc.getLevelOfMAPSupport().equals("Moderate")) {
+                    sc.setColor("Yellow");
+                } else if (sc.getValueNumber() >= SafetyCriteriaModel.getMapMin() && sc.getLevelOfMAPSupport().equals("High")) {
+                    sc.setColor("Red");
+                } else {
+                    sc.setColor("Green");
+                }
                 break;
 
                 case "Intravenous antihypotensive therapy for hypotensive emergency":

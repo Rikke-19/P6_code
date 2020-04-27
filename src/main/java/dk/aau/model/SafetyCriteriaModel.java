@@ -9,6 +9,9 @@ public class SafetyCriteriaModel {
     private double valueNumber;
     private static double mapMin;
     private static double mapMax;
+    private String levelOfMAPSupport;
+    private boolean isMAPCausingSymptoms;
+    private boolean stableTachy;
 
     private boolean valueBool;
 
@@ -160,4 +163,27 @@ public class SafetyCriteriaModel {
         SafetyCriteriaModel.mapMax = mapMax;
     }
 
+    public String getLevelOfMAPSupport() {
+        return levelOfMAPSupport;
+    }
+
+    public void setLevelOfMAPSupport(String levelOfMAPSupport) {
+        this.levelOfMAPSupport = levelOfMAPSupport;
+    }
+
+    public boolean getStableTachy() {
+        return stableTachy;
+    }
+
+    public void setStableTachy(boolean stableTachy) {
+        this.stableTachy = stableTachy;
+    }
+
+    public boolean getMAPCausingSymptoms() {
+        return isMAPCausingSymptoms;
+    }
+
+    public void setMAPCausingSymptoms(boolean isMAPCausingSymptoms) {
+        this.isMAPCausingSymptoms = isMAPCausingSymptoms;
+    }
 }

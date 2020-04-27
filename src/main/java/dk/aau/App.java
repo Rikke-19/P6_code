@@ -33,11 +33,10 @@ public class App {
         previousDate = a.format(myFormatObj);
         
         Init.InitSafetyCriteria();
-        Init.InputMap();
+        
 
         System.out.println(SafetyCriteriaModel.getMapMin());
         System.out.println(SafetyCriteriaModel.getMapMax());
-        //Init.GiveValues();
         
         // ### FOR TESTING ### 
         /*
