@@ -3,6 +3,7 @@ package dk.aau.model.categorization;
 import java.util.ArrayList;
 import java.util.List;
 
+import dk.aau.App;
 import dk.aau.model.SafetyCriteriaModel;
 
 public class EMCategoriesModel {
@@ -11,6 +12,7 @@ public class EMCategoriesModel {
     private static String EMCategorizationOB;
 
     private static List<SafetyCriteriaModel> yellowCriteria = new ArrayList<SafetyCriteriaModel>(); // MANGLER I MVC
+
 
     // Metoder
     public static void assignEMCategoIB() {
@@ -53,6 +55,19 @@ public class EMCategoriesModel {
         }
     }
 
+    public static void printYellowList()
+    {
+        for (SafetyCriteriaModel s : yellowCriteria) {
+            System.out.println(s.getName() + "\nValue: " 
+            + s.getQuantitativeSCValue() + "\nBoolean: " + s.getQualitativeSCValueBool()
+            + "\nCategori: " + App.ANSI_YELLOW + s.getColor() + App.ANSI_RESET);
+        }
+    }
+
+
+
+    // GETTERS AND SETTERS
+
     public String getEMCategorizationIB() {
         return EMCategorizationIB;
     }
@@ -67,5 +82,13 @@ public class EMCategoriesModel {
 
     public static void setEMCategorizationOB(String eMCategorizationOB) {
         EMCategorizationOB = eMCategorizationOB;
+    }
+
+    public static List<SafetyCriteriaModel> getYellowCriteria() {
+        return yellowCriteria;
+    }
+
+    public static void setYellowCriteria(List<SafetyCriteriaModel> yellowCriteria) {
+        EMCategoriesModel.yellowCriteria = yellowCriteria;
     }
 }

@@ -21,19 +21,14 @@ public class SafetyCriteriaModel {
     private boolean isMAPCausingSymptoms; // muligvis MVC attributter
     private boolean stableTachy; // muligvis MVC attributter
     
-    
-    
     private static List<SafetyCriteriaModel> SC = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> MissingQuantitativeResultsSC = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> UnrealisticQuantitativeResults = new ArrayList<SafetyCriteriaModel>();
-    
-    
-    // -------------   TILFØJET!   --------------- 
     private static List<SafetyCriteriaModel> MissingQualitativeResultsSC = new ArrayList<SafetyCriteriaModel>();
+    
     private boolean recievedValue = false;
     private static boolean MissingQuantitativeResult;
-
-    // -------------------------------------------
+    
     
     
     // ikke MVC attributter
@@ -51,11 +46,12 @@ public class SafetyCriteriaModel {
         this.takesNumber = takesNumber;
         this.NameSC = NameSC;
     }
-
+    
     public SafetyCriteriaModel() {
     }
     
     // Metoder
+    // X
     public void checkMissingTickedQualitativeSC(List<SafetyCriteriaModel> inputList) {
         for (SafetyCriteriaModel s : inputList) {
             if (!s.isRecievedValue() && !s.takesNumber) {
@@ -65,6 +61,7 @@ public class SafetyCriteriaModel {
         }
     }
     
+    // X
     public void checkMissingResultsForQuantitativeSC(List<SafetyCriteriaModel> inputList) {
         for (SafetyCriteriaModel s : inputList) {
             if (!s.isRecievedValue() && s.takesNumber && !s.getName().equals("MAP")) {
@@ -74,6 +71,7 @@ public class SafetyCriteriaModel {
         }
     }
     
+    //  NOT GOOD
     public Boolean checkMissingMAPInterval() {
         for (SafetyCriteriaModel s : SC) {
             if (s.getName().equals("MAP") && s.isRecievedValue()) {
@@ -82,31 +80,47 @@ public class SafetyCriteriaModel {
             } else
             {
                 MissingMAPInterval = true;
-                
                 return false;
             } 
         }
         System.out.println("MAP doesn't exist");
         return false;
     }
+    public boolean checkMissingMAP()
+    {
+        boolean r = false;
+        for (SafetyCriteriaModel s : SC) {
+            if (s.getName().equals("MAP") && s.isRecievedValue()) {
+                r = false;
+            } else
+            {
+                r = true;
+            } 
+        }
+        return r;
+    }
     
+    //
     public void assessUnrealisticResultsForQuantitativeSC() {
         for (SafetyCriteriaModel s : SC) {
-            if (s.takesNumber && s.getQuantitativeSCValue() 
-            <= 0 && !s.getName().equals("RASS")) {
+            if (s.takesNumber && s.getQuantitativeSCValue() <= 0 && !s.getName().equals("RASS")) {
                 UnrealisticQuantitativeResults.add(s);
             }
         }
     }
     
+    //
     public Boolean assessUnrealisticMAPInterval() {
+        boolean r = false;
         for (SafetyCriteriaModel s : SC) {
             if (s.getName().equals("MAP") && s.getQuantitativeSCValue() <= 0) {
                 UnrealisticMAPInterval = true;
                 UnrealisticQuantitativeResults.add(s);
-            }
+                r = true;
+            } else 
+                r = false;
         }
-        return false;
+        return r;
     }
     
     // Liste håndtering af sikkerhedskriterierne
@@ -245,55 +259,55 @@ public class SafetyCriteriaModel {
     public void setRecievedValue(boolean recievedValue) {
         this.recievedValue = recievedValue;
     }
-
+    
     public boolean isMissingMAPInterval() {
         return MissingMAPInterval;
     }
-
+    
     public void setMissingMAPInterval(boolean missingMAPInterval) {
         MissingMAPInterval = missingMAPInterval;
     }
-
+    
     public boolean isMissingTickedQualitativeSC() {
         return MissingTickedQualitativeSC;
     }
-
+    
     public void setMissingTickedQualitativeSC(boolean missingTickedQualitativeSC) {
         MissingTickedQualitativeSC = missingTickedQualitativeSC;
     }
-
+    
     public boolean isUnrealisticMAPInterval() {
         return UnrealisticMAPInterval;
     }
-
+    
     public void setUnrealisticMAPInterval(boolean unrealisticMAPInterval) {
         UnrealisticMAPInterval = unrealisticMAPInterval;
     }
-
+    
     public boolean isMAPCausingSymptoms() {
         return isMAPCausingSymptoms;
     }
-
+    
     public static List<SafetyCriteriaModel> getMissingQualitativeResultsSC() {
         return MissingQualitativeResultsSC;
     }
-
+    
     public static void setMissingQualitativeResultsSC(List<SafetyCriteriaModel> missingQualitativeResultsSC) {
         MissingQualitativeResultsSC = missingQualitativeResultsSC;
     }
-
+    
     public boolean isMissingQuantitativeResult() {
         return MissingQuantitativeResult;
     }
-
+    
     public void setMissingQuantitativeResult(boolean missingQuantitativeResult) {
         MissingQuantitativeResult = missingQuantitativeResult;
     }
-
+    
     public String getNameSC() {
         return NameSC;
     }
-
+    
     public void setNameSC(String nameSC) {
         NameSC = nameSC;
     }

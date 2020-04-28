@@ -2,8 +2,10 @@ package dk.aau.model.person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import dk.aau.App;
 import dk.aau.model.SafetyCriteriaModel;
 
 public class HealthcarePersonelModel {
@@ -11,7 +13,7 @@ public class HealthcarePersonelModel {
     
     //Metoder
     public void tickQualitativeSCResults() {
-        Scanner input = new Scanner(System.in);
+        
         for(SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
             
             System.out.print("Insert the value of ");
@@ -25,7 +27,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -41,7 +43,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -56,7 +58,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -84,7 +86,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -100,7 +102,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -115,7 +117,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -144,7 +146,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -160,7 +162,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -175,7 +177,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -203,7 +205,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -219,7 +221,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -234,7 +236,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -262,7 +264,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -278,7 +280,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -293,7 +295,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -321,7 +323,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -337,7 +339,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -352,7 +354,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -380,7 +382,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -396,7 +398,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -411,7 +413,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -439,7 +441,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -455,7 +457,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -470,7 +472,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -498,7 +500,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -514,7 +516,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -529,7 +531,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -557,7 +559,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -573,7 +575,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -588,7 +590,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -616,7 +618,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -632,7 +634,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -647,7 +649,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -675,7 +677,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -691,7 +693,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -706,7 +708,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -734,7 +736,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -750,7 +752,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -765,7 +767,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -793,7 +795,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -809,7 +811,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -824,7 +826,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -852,7 +854,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -868,7 +870,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -883,7 +885,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -911,7 +913,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -927,7 +929,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -942,7 +944,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -970,7 +972,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -986,7 +988,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1001,7 +1003,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1029,7 +1031,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1045,7 +1047,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1060,7 +1062,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1088,7 +1090,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1104,7 +1106,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1119,7 +1121,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1147,7 +1149,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1163,7 +1165,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1178,7 +1180,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1206,7 +1208,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1222,7 +1224,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1237,7 +1239,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1265,7 +1267,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1281,7 +1283,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1296,7 +1298,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1324,7 +1326,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1340,7 +1342,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1355,7 +1357,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1383,7 +1385,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1399,7 +1401,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1414,7 +1416,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1442,7 +1444,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1458,7 +1460,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1473,7 +1475,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1501,7 +1503,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1517,7 +1519,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1532,7 +1534,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1560,7 +1562,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1576,7 +1578,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1591,7 +1593,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1619,7 +1621,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1635,7 +1637,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1650,7 +1652,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1678,7 +1680,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1694,7 +1696,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1709,7 +1711,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1737,7 +1739,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1753,7 +1755,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1768,7 +1770,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1796,7 +1798,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1812,7 +1814,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1827,7 +1829,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1855,7 +1857,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1871,7 +1873,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1886,7 +1888,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1914,7 +1916,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1930,7 +1932,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1945,7 +1947,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -1973,7 +1975,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -1989,7 +1991,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2004,7 +2006,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2032,7 +2034,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2048,7 +2050,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2063,7 +2065,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2091,7 +2093,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2107,7 +2109,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2122,7 +2124,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2150,7 +2152,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2166,7 +2168,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2181,7 +2183,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2209,7 +2211,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2225,7 +2227,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2240,7 +2242,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2268,7 +2270,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2284,7 +2286,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2299,7 +2301,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2327,7 +2329,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2343,7 +2345,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2358,7 +2360,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2386,7 +2388,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2402,7 +2404,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2417,7 +2419,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2445,7 +2447,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2461,7 +2463,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2476,7 +2478,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2504,7 +2506,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2520,7 +2522,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2535,7 +2537,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2563,7 +2565,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2579,7 +2581,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2594,7 +2596,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2622,7 +2624,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2638,7 +2640,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2653,7 +2655,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2681,7 +2683,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2697,7 +2699,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2712,7 +2714,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2740,7 +2742,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2756,7 +2758,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2771,7 +2773,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2799,7 +2801,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2815,7 +2817,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2830,7 +2832,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2858,7 +2860,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2874,7 +2876,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2889,7 +2891,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2917,7 +2919,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2933,7 +2935,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2948,7 +2950,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -2976,7 +2978,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -2992,7 +2994,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3007,7 +3009,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3035,7 +3037,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -3051,7 +3053,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3066,7 +3068,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3094,7 +3096,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -3110,7 +3112,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3125,7 +3127,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3153,7 +3155,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -3169,7 +3171,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3184,7 +3186,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3212,7 +3214,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -3228,7 +3230,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3243,7 +3245,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3271,7 +3273,7 @@ public class HealthcarePersonelModel {
                 while (savedValue == false) {
                     if (SC.getTakesNumber()) {
                         System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
+                        String inputString = App.input.nextLine();
                         try {
                             if (inputString == "exit" || inputString == "Exit") {
                                 savedValue = true;
@@ -3287,7 +3289,7 @@ public class HealthcarePersonelModel {
                     } else {
                         if (SC.getTakesNumber()) {
                             System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3302,7 +3304,7 @@ public class HealthcarePersonelModel {
                             }
                         } else {
                             System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
+                            String inputString = App.input.nextLine();
                             try {
                                 if (inputString.equals("exit") || inputString.equals("Exit")) {
                                     savedValue = true;
@@ -3322,6 +3324,25 @@ public class HealthcarePersonelModel {
                         }
                     }
                 }
+                savedValue = false;
+                while (!savedValue) {
+                    System.out.println("Insert level of MAP support [Low, Moderate or High]");
+                    String input = App.input.nextLine();
+                    try {
+                        if (input.equals("Low") || input.equals("Moderate") || input.equals("High")
+                        || input.equals("low") || input.equals("moderate") || input.equals("high")) {
+                            SC.setLevelOfMAPSupport(input);
+                            savedValue = true;
+                        } else{
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                }
+                
                 break;
                 
                 default:
@@ -3329,20 +3350,134 @@ public class HealthcarePersonelModel {
                 break;
             }
         }
-        input.close();
     }
     
-    private void enterMAPInterval() {
-        
-        Scanner input = new Scanner(System.in);
+    
+    
+    // private void requestQuantitativeSCfromEPJ() {}   // not this time
+    
+    // X
+    public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
+        for (SafetyCriteriaModel s : list) {
+            System.out.println("tickQuantitative: " + s.getName()); // en ny tekst
+            boolean savedValue = false;
+            while (!savedValue) {
+                System.out.println("[Insert yes/no]: ");
+                String input = App.input.nextLine();
+                try {
+                    if (input.equals("Yes") || input.equals("yes")) {
+                        s.setQualitativeSCValueBool(true);
+                        s.setRecievedValue(true);
+                        savedValue = true;
+                    }  else if (input.equals("No") || input.equals("no")) {
+                        s.setQualitativeSCValueBool(false);
+                        s.setRecievedValue(true);
+                        savedValue = true;
+                    } else if (input.equals("exit") || input.equals("Exit")) {
+                        savedValue = true;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input");
+                    savedValue = false;
+                }
+            }
+        }
+    }
+    
+    // X
+    public void enterResultsForSCIfMissing(List<SafetyCriteriaModel> list) {
+        for (SafetyCriteriaModel s : list) {
+            System.out.println("Enter results for: " + s.getName()); // en ny tekst
+            boolean savedValue = false;
+            while (!savedValue) {
+                System.out.println("[Insert a number]: ");
+                String input = App.input.nextLine();
+                try {
+                    if (input.equals("exit") ||input.equals("Exit")) {
+                        savedValue = true;
+                    } else {
+                        s.setQuantitativeSCValue(Double.parseDouble(input));
+                        s.setRecievedValue(true);
+                        savedValue = true;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input");
+                    savedValue = false;
+                }
+            }
+        }
+    }
+    
+    //
+    public void enterMAPIfMissing() {
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            if (s.getName().equals("MAP")) {
+                System.out.println("Enter result for: " + s.getName()); // en ny tekst
+                boolean savedValue = false;
+                while (!savedValue) {
+                    System.out.println("[Insert a number]: ");
+                    String input = App.input.nextLine();
+                    try {
+                        if (input.equals("exit") ||input.equals("Exit")) {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(input));
+                            s.setRecievedValue(true);
+                            savedValue = true;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    //
+    public void enterMAPIfUnrealistic() {
+        System.out.println("enterMAPIfUnrealistic");
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            if (s.getName().equals("MAP")) {
+                System.out.println("Enter result for: " + s.getName()); // en ny tekst
+                boolean savedValue = false;
+                while (!savedValue) {
+                    System.out.println("[Insert a number]: ");
+                    String input = App.input.nextLine();
+                    try {
+                        if (input.equals("exit") ||input.equals("Exit")) {
+                            savedValue = true;
+                        } else {
+                            s.setQuantitativeSCValue(Double.parseDouble(input));
+                            s.setRecievedValue(true);
+                            savedValue = true;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                }
+            }
+        }
+    }
+    
+    //
+    public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
+        for (SafetyCriteriaModel s : list) {
+            System.out.println("enter results for SC if unreal" + s.getName());
+        }
+    }
+    
+    //
+    public void enterMAPInterval() {
         boolean savedValue = false;
         boolean isMapMinSet = false;
-        
         while (savedValue == false) {
             for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
                 if (SC.getName().equals("MAP") && SC.getTakesNumber() == true) {
                     System.out.println(" [Insert lower limit of the target range]: ");
-                    String inputValueMin = input.nextLine();
+                    String inputValueMin = App.input.nextLine();
                     try {
                         if (inputValueMin.equals("exit") || inputValueMin.equals("Exit")) {
                             isMapMinSet = true;
@@ -3360,7 +3495,7 @@ public class HealthcarePersonelModel {
                 }
                 if (SC.getName().equals("MAP") && SC.getTakesNumber() == true && isMapMinSet == true) {
                     System.out.println(" [Insert higher limit of the target range]: ");
-                    String inputValueMax = input.nextLine();
+                    String inputValueMax = App.input.nextLine();
                     try {
                         if (inputValueMax.equals("exit") || inputValueMax.equals("Exit")) {
                             savedValue = true;                       
@@ -3376,259 +3511,7 @@ public class HealthcarePersonelModel {
                 }
             }
         }
-        input.close();
     }
-    
-    // private void requestQuantitativeSCfromEPJ() {}   // not this time
-    
-    public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
-        System.out.println("Test Tick");
-        Scanner input = new Scanner(System.in);
-        for (SafetyCriteriaModel s : list) {
-            boolean savedValue = false;
-            System.out.println("Insert value of " + s.getName());
-            while (savedValue == false) {
-                if (s.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" || inputString == "Exit") {
-                            savedValue = true;
-                        } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                            savedValue = true;
-                            s.setRecievedValue(true);
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else {
-                    if (s.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else {
-                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                                s.setRecievedValue(true);
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                s.setQualitativeSCValueBool(true);
-                                s.setRecievedValue(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No")) {
-                                s.setQualitativeSCValueBool(false);
-                                s.setRecievedValue(true);
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    }
-                }
-            }
-        }
-        input.close();
-    }
-    
-    public void enterResultsForSCIfMissing(List<SafetyCriteriaModel> list) {
-        System.out.println("Test miss");
-        Scanner input = new Scanner(System.in);
-        for (SafetyCriteriaModel s : list) {
-            boolean savedValue = false;
-            System.out.println("Insert value of " + s.getName());
-            while (savedValue == false) {
-                if (s.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" || inputString == "Exit") {
-                            savedValue = true;
-                        } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                            savedValue = true;
-                            s.setRecievedValue(true);
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else {
-                    if (s.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else {
-                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                                s.setRecievedValue(true);
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                s.setQualitativeSCValueBool(true);
-                                s.setRecievedValue(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No")) {
-                                s.setQualitativeSCValueBool(false);
-                                s.setRecievedValue(true);
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    }
-                }
-            }
-        }
-        input.close();
-    }
-    
-    public void enterMAPIfMissing() {
-        System.out.println("Test map1");
-        Scanner input = new Scanner(System.in);
-        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
-            if (s.getName().equals("MAP")) {
-                System.out.println("Insert the value of MAP");
-                boolean savedValue = false;
-                while (!savedValue) {
-                    String inputStringMap = input.nextLine();
-                    try {
-                        if(inputStringMap.equals("exit") ||inputStringMap.equals("Exit"))
-                        {
-                            savedValue = true;
-                        } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(inputStringMap));
-                            s.setRecievedValue(true);
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input. Insert a number");
-                        savedValue = false;
-                    }
-                }
-            }
-        }
-        input.close();
-    }
-    
-    public void enterMAPIfUnrealistic() {
-        System.out.println("Test map1");
-        Scanner input = new Scanner(System.in);
-        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
-            if (s.getName().equals("MAP")) {
-                System.out.println("Insert the value of MAP");
-                boolean savedValue = false;
-                while (!savedValue) {
-                    String inputString = input.nextLine();
-                    try {
-                        if(inputString.equals("exit") ||inputString.equals("Exit"))
-                        {
-                            savedValue = true;
-                        } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                            s.setRecievedValue(true);
-                            savedValue = true;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input. Insert a number");
-                        savedValue = false;
-                    }
-                }
-            }
-        }
-        input.close();
-    }
-    
-    public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
-        System.out.println("Test unreal");
-        Scanner input = new Scanner(System.in);
-        for (SafetyCriteriaModel s : list) {
-            boolean savedValue = false;
-            System.out.println("Insert value of " + s.getName());
-            while (savedValue == false) {
-                if (s.getTakesNumber()) {
-                    System.out.println(" [insert number]: ");
-                    String inputString = input.nextLine();
-                    try {
-                        if (inputString == "exit" || inputString == "Exit") {
-                            savedValue = true;
-                        } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                            savedValue = true;
-                            s.setRecievedValue(true);
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                } else {
-                    if (s.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else {
-                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                                s.setRecievedValue(true);
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        System.out.println(" [insert yes/no]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                savedValue = true;
-                            } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                s.setQualitativeSCValueBool(true);
-                                s.setRecievedValue(true);
-                                savedValue = true;
-                            } else if (inputString.equals("no") || inputString.equals("No")) {
-                                s.setQualitativeSCValueBool(false);
-                                s.setRecievedValue(true);
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    }
-                }
-            }
-        }
-        input.close();    
-    }
-    
     
     
 }
