@@ -3,9 +3,10 @@
 */
 package dk.aau;
 
-import java.time.LocalDateTime;
+/*import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+*/
 import java.util.Scanner;
 
 import dk.aau.controller.WarningsCtrl;
@@ -25,12 +26,12 @@ import dk.aau.view.person.HealthcarePersonelView;
 import dk.aau.view.person.PatientView;
 
 public class App {
-    // tidshåndterings variabler 
+    /*// tidshåndterings variabler
     public static long days = (long) 7; // antallet af dage der kigged bagud
     public static String currentDate;
     public static String previousDate;
     public static String dateForAge;
-
+    */
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -38,18 +39,20 @@ public class App {
     public static final String ANSI_BLUE = "\u001B[34m";
 
     public static final Scanner input = new Scanner(System.in);
-    //public static List<SafetyCriteriaModel> allCriteriasList = new ArrayList<SafetyCriteriaModel>();
+
+    // public static List<SafetyCriteriaModel> allCriteriasList = new
+    // ArrayList<SafetyCriteriaModel>();
     public static void main(String[] args) {
-       
-        // sætter tiden 
+
+        /*// sætter tiden
         LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         DateTimeFormatter formatForAge = DateTimeFormatter.ofPattern("yyMMdd");
         currentDate = myDateObj.format(myFormatObj);
         dateForAge = myDateObj.format(formatForAge);
         LocalDateTime a = myDateObj.minus(days, ChronoUnit.DAYS);
         previousDate = a.format(myFormatObj);
-
+        */
         // initialization
         Init.InitSafetyCriteria();
 
@@ -77,157 +80,99 @@ public class App {
         // indsæt værdier
         // Indsæt kvalitative OG kvantitative grundet proof of concept
         hModel.tickQualitativeSCResults();
-        
+
         // - - - - - FOR TESTING - - - - - - - - - - - - - - - - - - - -
         /*
-        int i = 0;
-        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
-            s.setQuantitativeSCValue(i);
-            i++;
-            s.setLevelOfMAPSupport("Low");
-            if (s.getName().equals("MAP")) {
-                boolean savedValue;
-                System.out.print(s.getName());
-                savedValue = false;
-                while (savedValue == false) {
-                    if (s.getTakesNumber()) {
-                        System.out.println(" [insert number]: ");
-                        String inputString = input.nextLine();
-                        try {
-                            if (inputString == "exit" || inputString == "Exit") {
-                                savedValue = true;
-                            } else {
-                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                savedValue = true;
-                                s.setRecievedValue(true);
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } else {
-                        if (s.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else {
-                                    s.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    s.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    s.setQualitativeSCValueBool(true);
-                                    s.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    s.setQualitativeSCValueBool(false);
-                                    s.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
+         * int i = 0; for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+         * s.setQuantitativeSCValue(i); i++; s.setLevelOfMAPSupport("Low"); if
+         * (s.getName().equals("MAP")) { boolean savedValue;
+         * System.out.print(s.getName()); savedValue = false; while (savedValue ==
+         * false) { if (s.getTakesNumber()) { System.out.println(" [insert number]: ");
+         * String inputString = input.nextLine(); try { if (inputString == "exit" ||
+         * inputString == "Exit") { savedValue = true; } else {
+         * s.setQuantitativeSCValue(Double.parseDouble(inputString)); savedValue = true;
+         * s.setRecievedValue(true); } } catch (Exception e) {
+         * System.out.println("Invalid input"); savedValue = false; } } else { if
+         * (s.getTakesNumber()) { System.out.println(" [insert number]: "); String
+         * inputString = input.nextLine(); try { if (inputString.equals("exit") ||
+         * inputString.equals("Exit")) { savedValue = true; } else {
+         * s.setQuantitativeSCValue(Double.parseDouble(inputString)); savedValue = true;
+         * s.setRecievedValue(true); } } catch (Exception e) {
+         * System.out.println("Invalid input"); savedValue = false; } } else {
+         * System.out.println(" [insert yes/no]: "); String inputString =
+         * input.nextLine(); try { if (inputString.equals("exit") ||
+         * inputString.equals("Exit")) { savedValue = true; } else if
+         * (inputString.equals("yes") || inputString.equals("Yes")) {
+         * s.setQualitativeSCValueBool(true); s.setRecievedValue(true); savedValue =
+         * true; } else if (inputString.equals("no") || inputString.equals("No")) {
+         * s.setQualitativeSCValueBool(false); s.setRecievedValue(true); savedValue =
+         * true; } } catch (Exception e) { System.out.println("Invalid input");
+         * savedValue = false; } } } } savedValue = false; while (!savedValue) {
+         * System.out.println("Insert level of MAP support [Low, Moderate or High]");
+         * String input = App.input.nextLine(); try { if (input.equals("Low") ||
+         * input.equals("Moderate") || input.equals("High") || input.equals("low") ||
+         * input.equals("moderate") || input.equals("high")) {
+         * s.setLevelOfMAPSupport(input); savedValue = true; } else{
+         * System.out.println("Invalid input"); savedValue = false; } } catch (Exception
+         * e) { System.out.println("Invalid input"); savedValue = false; } }
+         * 
+         * } else if(i % 2 == 0) { s.setQualitativeSCValueBool(true);
+         * 
+         * s.setRecievedValue(true); } else { s.setQualitativeSCValueBool(false);
+         * s.setRecievedValue(true); //s.setQuantitativeSCValue(0); } }
+         */
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        while (HealthcarePersonelModel.exit == false) {
+            // risikokontrol
+            wCtrl.CheckValues();
+
+            // kategorisering
+            ColorCategorizationsModel.performColorCategoIB();
+            ColorCategorizationsModel.performColorCategoOB();
+
+            EMCategoriesModel.assignEMCategoIB();
+            EMCategoriesModel.assignEMCategoOB();
+
+            EMCategoriesModel.printYellowList();
+
+            // vis kategorisering
+            eCtrl.getEMCategorizationIB();
+            eCtrl.getEMCategorizationOB();
+
+            // vis alle kriterier
+            System.out.println("Do you want to see all safety criteria? \n [yes/no]");
+
+            boolean savedValue = false;
+            while (!savedValue) {
+                try {
+                    String iString = input.nextLine();
+                    if (iString.equals("yes") || iString.equals("yes")) {
+                        ShowAllCriteria();
+                        savedValue = true;
+                    } else if (iString.equals("no") || iString.equals("No")) {
+
+                        savedValue = true;
+
+                    } else if (iString.equals("exit") || iString.equals("Exit")) {
+                        savedValue = true;
                     }
+                } catch (Exception e) {
+                    System.out.println("Invalid input");
+                    savedValue = false;
                 }
-                savedValue = false;
-                while (!savedValue) {
-                    System.out.println("Insert level of MAP support [Low, Moderate or High]");
-                    String input = App.input.nextLine();
-                    try {
-                        if (input.equals("Low") || input.equals("Moderate") || input.equals("High")
-                                || input.equals("low") || input.equals("moderate") || input.equals("high")) {
-                            s.setLevelOfMAPSupport(input);
-                            savedValue = true;
-                        } else{
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid input");
-                        savedValue = false;
-                    }
-                }
-                
             }
-             else if(i % 2 == 0) {       
-                s.setQualitativeSCValueBool(true);
-                
-                s.setRecievedValue(true);
-            }
-            else {
-                s.setQualitativeSCValueBool(false);
-                s.setRecievedValue(true);
-                //s.setQuantitativeSCValue(0);
-            }
-        }*/
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        
-        // risikokontrol
-        wCtrl.CheckValues();
 
-        // kategorisering
-        ColorCategorizationsModel.performColorCategoIB();
-        ColorCategorizationsModel.performColorCategoOB();
-
-        EMCategoriesModel.assignEMCategoIB();
-        EMCategoriesModel.assignEMCategoOB();
-
-        EMCategoriesModel.printYellowList();
-
-
-        // vis kategorisering
-        eCtrl.getEMCategorizationIB();
-        eCtrl.getEMCategorizationOB();
-        
-
-        // vis alle kriterier
-        System.out.println("Do you want to see all safety criteria? \n [yes/no]");
-        
-        boolean savedValue = false;
-        while (!savedValue) {
-            try {
-                String iString = input.nextLine();
-                if (iString.equals("yes") || iString.equals("yes"))
-                {
-                    ShowAllCriteria();
-                    savedValue = true;
-                } else if (iString.equals("no") || iString.equals("No")) {
-
-                    savedValue = true;
-                    
-                } else if (iString.equals("exit") || iString.equals("Exit")) {
-                    savedValue = true;
-                }
-            } catch (Exception e) {
-                System.out.println("Invalid input");
-                savedValue = false;
-            }
-        }
-        
-        
-        // close scanner
-        input.close();
-    }
-
-    private static void ShowAllCriteria()
-    {
-        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
-            System.out.println("Name: " + ANSI_BLUE + s.getName() + ANSI_RESET + " Value: " + ANSI_BLUE + s.getQuantitativeSCValue()+ ANSI_RESET + " Boolean: " + ANSI_BLUE + s.getQualitativeSCValueBool()+ ANSI_RESET + " Color: " +  ANSI_BLUE +s.getColor()+ ANSI_RESET);
+            // close scanner
+            input.close();
         }
     }
-    
+
+    private static void ShowAllCriteria() {
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            System.out.println("Name: " + ANSI_BLUE + s.getName() + ANSI_RESET + " Value: " + ANSI_BLUE
+                    + s.getQuantitativeSCValue() + ANSI_RESET + " Boolean: " + ANSI_BLUE + s.getQualitativeSCValueBool()
+                    + ANSI_RESET + " Color: " + ANSI_BLUE + s.getColor() + ANSI_RESET);
+        }
+    }
+
 }

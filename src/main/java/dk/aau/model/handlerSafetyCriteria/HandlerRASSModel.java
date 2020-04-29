@@ -1,5 +1,5 @@
 package dk.aau.model.handlerSafetyCriteria;
-
+/*
 import dk.aau.database.*;
 //import dk.aau.model.person.*;
 
@@ -28,4 +28,4 @@ public class HandlerRASSModel implements Queryable {
         String sqlStatement = "SELECT SafetyCriteria, Value, Timestamp FROM Result WHERE SafetyCriteria = 'RASS' AND Timestamp = (SELECT MAX(Timestamp) FROM Result WHERE SafetyCriteria = 'RASS' AND Timestamp BETWEEN "+"'"+App.previousDate+"' AND '"+ App.currentDate+"')";// AND CPRnumber="+Patient.getCprNummer();
         return sqlStatement;
     }
-}
+}*/
