@@ -186,8 +186,9 @@ public class App {
         EMCategoriesModel.assignEMCategoIB();
         EMCategoriesModel.assignEMCategoOB();
 
-        EMCategoriesModel.printYellowList();
-
+        if (eModel.getEMCategorizationIB().equals("Yellow") || eModel.getEMCategorizationOB().equals("Yellow")) {
+            EMCategoriesModel.printYellowList();
+        }
 
         // vis kategorisering
         eCtrl.getEMCategorizationIB();
@@ -226,7 +227,10 @@ public class App {
     private static void ShowAllCriteria()
     {
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
-            System.out.println("Name: " + ANSI_BLUE + s.getName() + ANSI_RESET + " Value: " + ANSI_BLUE + s.getQuantitativeSCValue()+ ANSI_RESET + " Boolean: " + ANSI_BLUE + s.getQualitativeSCValueBool()+ ANSI_RESET + " Color: " +  ANSI_BLUE +s.getColor()+ ANSI_RESET);
+            System.out.println("Name: " + ANSI_BLUE + s.getName() + ANSI_RESET + " Value: " + 
+            ANSI_BLUE + s.getQuantitativeSCValue()+ ANSI_RESET + " Boolean: " + ANSI_BLUE + 
+            s.getQualitativeSCValueBool()+ ANSI_RESET + " Color in bed: " +  ANSI_BLUE +
+            s.getColorIB()+ ANSI_RESET + " Color out of bed " + ANSI_BLUE + s.getColorOB() + ANSI_RESET);
         }
     }
     

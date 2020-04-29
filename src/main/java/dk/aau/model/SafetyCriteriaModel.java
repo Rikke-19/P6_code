@@ -9,7 +9,8 @@ public class SafetyCriteriaModel {
     private double QuantitativeSCValue;
     private static double MAPIntervalMin;
     private static double MAPIntervalMax;
-    private String Color;
+    private String ColorIB;
+    private String ColorOB;
     
     private static boolean MissingMAPInterval;
     private static boolean MissingTickedQualitativeSC;
@@ -178,14 +179,6 @@ public class SafetyCriteriaModel {
         this.takesNumber = takesNumber;
     }
     
-    public String getColor() {
-        return Color;
-    }
-    
-    public void setColor(String Color) {
-        this.Color = Color;
-    }
-    
     public static double getMAPIntervalMin() {
         return MAPIntervalMin;
     }
@@ -310,5 +303,21 @@ public class SafetyCriteriaModel {
     
     public void setNameSC(String nameSC) {
         NameSC = nameSC;
+    }
+
+    public String getColorIB() {
+        return ColorIB;
+    }
+
+    public void setColorIB(String colorIB) {
+        ColorIB = colorIB;
+    }
+
+    public String getColorOB() {
+        return ColorOB;
+    }
+
+    public void setColorOB(String colorOB) {
+        ColorOB = colorOB;
     }
 }

@@ -21,10 +21,10 @@ public class EMCategoriesModel {
         boolean alreadyGreen = false;
 
         for (SafetyCriteriaModel colorCategoIB : SafetyCriteriaModel.getSC()) {
-            if (colorCategoIB.getColor().equals("Red")) {
+            if (colorCategoIB.getColorIB().equals("Red")) {
                 EMCategoriesModel.setEMCategorizationIB("Red");
                 return;
-            } else if (colorCategoIB.getColor().equals("Yellow")) {
+            } else if (colorCategoIB.getColorIB().equals("Yellow")) {
                 EMCategoriesModel.setEMCategorizationIB("Yellow");
                 yellowCriteria.add(colorCategoIB);
                 isYellow = true;
@@ -41,10 +41,10 @@ public class EMCategoriesModel {
         boolean alreadyGreen = false;
 
         for (SafetyCriteriaModel colorCategoOB : SafetyCriteriaModel.getSC()) {
-            if (colorCategoOB.getColor().equals("Red")) {
+            if (colorCategoOB.getColorOB().equals("Red")) {
                 EMCategoriesModel.setEMCategorizationOB("Red");
                 return;
-            } else if (colorCategoOB.getColor().equals("Yellow")) {
+            } else if (colorCategoOB.getColorOB().equals("Yellow")) {
                 EMCategoriesModel.setEMCategorizationOB("Yellow");
                 yellowCriteria.add(colorCategoOB);
                 isYellow = true;
@@ -60,7 +60,7 @@ public class EMCategoriesModel {
         for (SafetyCriteriaModel s : yellowCriteria) {
             System.out.println(s.getName() + " Value: " 
             + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
-            + " Categori: " + App.ANSI_YELLOW + s.getColor() + App.ANSI_RESET);
+            + " Categori: In Bed " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET + " Our of bed: " + App.ANSI_BLUE + s.getColorOB() + App.ANSI_RESET);
         }
     }
 
