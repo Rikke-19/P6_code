@@ -75,6 +75,8 @@ public class ColorCategorizationsModel {
                         SC.setColor("Yellow");
                     } else if (SC.getStableTachy() == false && SC.getQuantitativeSCValue() < 120) {
                         SC.setColor("Green");
+                    } else {
+                        SC.setColor("Yellow");
                     }
                     break;
 
@@ -137,6 +139,8 @@ public class ColorCategorizationsModel {
                 case "MAP":
                     if (SC.getQuantitativeSCValue() < SafetyCriteriaModel.getMAPIntervalMin() && SC.getMAPCausingSymptoms() == true) {
                         SC.setColor("Yellow");
+                    } else if (SC.getQuantitativeSCValue() < SafetyCriteriaModel.getMAPIntervalMin() && SC.getLevelOfMAPSupport().equals("Low") || SC.getLevelOfMAPSupport().equals("Moderate") || SC.getLevelOfMAPSupport().equals("High")) {
+                        SC.setColor("Yellow");
                     } else if (SC.getQuantitativeSCValue() >= SafetyCriteriaModel.getMAPIntervalMin()
                             && SC.getLevelOfMAPSupport().equals("Low")) {
                         SC.setColor("Green");
@@ -147,7 +151,7 @@ public class ColorCategorizationsModel {
                             && SC.getLevelOfMAPSupport().equals("High")) {
                         SC.setColor("Yellow");
                     } else {
-                        SC.setColor("Green");
+                        SC.setColor("Yellow");
                     }
                     break;
 
@@ -211,7 +215,7 @@ public class ColorCategorizationsModel {
                     if (SC.getQualitativeSCValueBool() == true) {
                         SC.setColor("Green");
                     } else {
-                        SC.setColor("green");
+                        SC.setColor("Green");
                     }
                     break;
 
@@ -571,6 +575,8 @@ public class ColorCategorizationsModel {
             case "MAP":
                 if (SC.getQuantitativeSCValue() < SafetyCriteriaModel.getMAPIntervalMin() && SC.getMAPCausingSymptoms() == true) {
                     SC.setColor("Red");
+                } else if (SC.getQuantitativeSCValue() < SafetyCriteriaModel.getMAPIntervalMin() && SC.getLevelOfMAPSupport().equals("Low") || SC.getLevelOfMAPSupport().equals("Moderate") || SC.getLevelOfMAPSupport().equals("High")) {
+                    SC.setColor("Red");
                 } else if (SC.getQuantitativeSCValue() >= SafetyCriteriaModel.getMAPIntervalMin()
                         && SC.getLevelOfMAPSupport().equals("Low")) {
                     SC.setColor("Green");
@@ -581,7 +587,7 @@ public class ColorCategorizationsModel {
                         && SC.getLevelOfMAPSupport().equals("High")) {
                     SC.setColor("Red");
                 } else {
-                    SC.setColor("Green");
+                    SC.setColor("Yellow");
                 }
                 break;
 

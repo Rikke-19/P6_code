@@ -5,17 +5,30 @@ import dk.aau.view.SafetyAssessmentView;
 
 public class EMCategoriesCtrl {
 
+    EMCategoriesModel eModel;
+    SafetyAssessmentView aView;
+
     public EMCategoriesCtrl(EMCategoriesModel eModel, SafetyAssessmentView aView)
     {
-        
+        this.eModel = eModel;
+        this.aView = aView;
     }
 
     //Metoder
-    private void getColorCategoIB() {
+    private void getEMCategorizationIB()
+    {
 
     }
+    private void getEMCategorizationOB()
+    {
+        
+    }
+    private void getYellowSCListIB()
+    {
 
-    private void getColorCategOB() {
+    }
+    private void getYellowSCListOB()
+    {
 
     }
 }

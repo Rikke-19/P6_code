@@ -10,12 +10,28 @@ import dk.aau.model.SafetyCriteriaModel;
 
 public class HealthcarePersonelModel {
     
-    
+    /*
+
+    boolean fullstop = false;
+
+    // skal gentages
+    else if(inputString.equals("FullStop"))
+    {
+        fullstop = true;
+    }
+
+    if(fullstop)
+        break;
+    */
+
+
     //Metoder
     public void tickQualitativeSCResults() {
         
         for(SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
-            
+            // her
+
+            // til her
             System.out.print("Insert the value of ");
             boolean savedValue;
             switch (SC.getName()) {
@@ -29,7 +45,7 @@ public class HealthcarePersonelModel {
                         System.out.println(" [insert number]: ");
                         String inputString = App.input.nextLine();
                         try {
-                            if (inputString == "exit" || inputString == "Exit") {
+                            if (inputString.equals("exit") || inputString.equals("Exit")) {
                                 savedValue = true;
                             } else {
                                 SC.setQuantitativeSCValue(Double.parseDouble(inputString));
@@ -965,7 +981,7 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-                
+                /*
                 case "MAP level of support":
                 System.out.print(SC.getName());
                 savedValue = false;
@@ -1024,7 +1040,7 @@ public class HealthcarePersonelModel {
                     }
                 }
                 break;
-                
+                */
                 case "Intravenous antihypotensive therapy for hypotensive emergency":
                 System.out.print(SC.getName());
                 savedValue = false;
@@ -3410,6 +3426,7 @@ public class HealthcarePersonelModel {
     
     //
     public void enterMAPIfMissing() {
+        System.out.println("2");
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
             if (s.getName().equals("MAP")) {
                 System.out.println("Enter result for: " + s.getName()); // en ny tekst
@@ -3437,7 +3454,7 @@ public class HealthcarePersonelModel {
     
     //
     public void enterMAPIfUnrealistic() {
-        System.out.println("enterMAPIfUnrealistic");
+        System.out.println("1");
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
             if (s.getName().equals("MAP")) {
                 System.out.println("Enter result for: " + s.getName()); // en ny tekst

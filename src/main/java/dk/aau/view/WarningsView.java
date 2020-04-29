@@ -1,9 +1,20 @@
 package dk.aau.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import dk.aau.model.SafetyCriteriaModel;
+
 public class WarningsView {
 
+    private List<SafetyCriteriaModel> MissingQuantitativeResultsSC = new ArrayList<SafetyCriteriaModel>();
+    private List<SafetyCriteriaModel> UnrealisticQuantitativeResults = new ArrayList<SafetyCriteriaModel>();
+    private boolean MissingMAPInterval;
+    private boolean MissingTickedQuantitativeSC;
+    private boolean UnrealisticMAPInterval;
+
     //Metoder
-    public void showMissingResultsForSCEPJ() {
+    public void showMissingQuantitativeResultsSC() {
 
     }
 
@@ -11,11 +22,11 @@ public class WarningsView {
         
     }
 
-    public void showMissingCheckedSC() {
+    public void showMissingQualitativeSC() {
         
     }
 
-    public void showUnrealisticResultsForSCEPJ() {
+    public void showUnrealisticQuantitativeResults() {
         
     }
 

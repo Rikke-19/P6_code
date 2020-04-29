@@ -20,7 +20,6 @@ public class HealthcarePersonelCtrl {
     }
 
 
-
     //Metoder
-//    private void sendEnteredResultsForSCEPJ() {}
+    private void sendEnteredResultsForQuantitativeSC() {}
 }

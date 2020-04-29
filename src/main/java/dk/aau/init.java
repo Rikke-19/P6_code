@@ -42,10 +42,9 @@ public class Init {
 
     SafetyCriteriaModel stableTachyarrhythmia = new SafetyCriteriaModel("Any stable tachyarrhythmia", "Cardiovascular");
     SafetyCriteriaModel.AddToListSC(stableTachyarrhythmia);
-    SafetyCriteriaModel mapCausingSymptoms = new SafetyCriteriaModel("Is MAP causing symptoms", "Cardiovascular");
-    SafetyCriteriaModel.AddToListSC(mapCausingSymptoms);
-    SafetyCriteriaModel mapLevelOfSupport = new SafetyCriteriaModel("MAP level of support", "Cardiovascular");
-    SafetyCriteriaModel.AddToListSC(mapLevelOfSupport);
+
+
+
     SafetyCriteriaModel intravenousAntihypotensive = new SafetyCriteriaModel(
             "Intravenous antihypotensive therapy for hypotensive emergency", "Cardiovascular");
     SafetyCriteriaModel.AddToListSC(intravenousAntihypotensive);
@@ -86,7 +85,10 @@ public class Init {
     SafetyCriteriaModel.AddToListSC(cardiacischemia);
     SafetyCriteriaModel map = new SafetyCriteriaModel("MAP", "Cardiovascular", true);
     SafetyCriteriaModel.AddToListSC(map);
-
+    SafetyCriteriaModel mapCausingSymptoms = new SafetyCriteriaModel("Is MAP causing symptoms", "Cardiovascular");
+    SafetyCriteriaModel.AddToListSC(mapCausingSymptoms);
+    SafetyCriteriaModel mapLevelOfSupport = new SafetyCriteriaModel("MAP level of support", "Cardiovascular");
+    SafetyCriteriaModel.AddToListSC(mapLevelOfSupport);
     // neurological
 
     SafetyCriteriaModel deltool = new SafetyCriteriaModel("Delirum tool -ve", "Neuro");

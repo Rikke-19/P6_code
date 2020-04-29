@@ -92,8 +92,7 @@ public class SafetyCriteriaModel {
         for (SafetyCriteriaModel s : SC) {
             if (s.getName().equals("MAP") && s.isRecievedValue()) {
                 r = false;
-            } else
-            {
+            } else if (s.getName().equals("MAP") && !s.isRecievedValue()) {
                 r = true;
             } 
         }

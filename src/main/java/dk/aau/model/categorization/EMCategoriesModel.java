@@ -58,9 +58,9 @@ public class EMCategoriesModel {
     public static void printYellowList()
     {
         for (SafetyCriteriaModel s : yellowCriteria) {
-            System.out.println(s.getName() + "\nValue: " 
-            + s.getQuantitativeSCValue() + "\nBoolean: " + s.getQualitativeSCValueBool()
-            + "\nCategori: " + App.ANSI_YELLOW + s.getColor() + App.ANSI_RESET);
+            System.out.println(s.getName() + " Value: " 
+            + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
+            + " Categori: " + App.ANSI_YELLOW + s.getColor() + App.ANSI_RESET);
         }
     }
 

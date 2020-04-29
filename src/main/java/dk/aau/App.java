@@ -84,7 +84,85 @@ public class App {
             s.setQuantitativeSCValue(i);
             i++;
             s.setLevelOfMAPSupport("Low");
-            if(i % 2 == 0) {       
+            if (s.getName().equals("MAP")) {
+                boolean savedValue;
+                System.out.print(s.getName());
+                savedValue = false;
+                while (savedValue == false) {
+                    if (s.getTakesNumber()) {
+                        System.out.println(" [insert number]: ");
+                        String inputString = input.nextLine();
+                        try {
+                            if (inputString == "exit" || inputString == "Exit") {
+                                savedValue = true;
+                            } else {
+                                s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                savedValue = true;
+                                s.setRecievedValue(true);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } else {
+                        if (s.getTakesNumber()) {
+                            System.out.println(" [insert number]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    s.setQuantitativeSCValue(Double.parseDouble(inputString));
+                                    savedValue = true;
+                                    s.setRecievedValue(true);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        } else {
+                            System.out.println(" [insert yes/no]: ");
+                            String inputString = input.nextLine();
+                            try {
+                                if (inputString.equals("exit") || inputString.equals("Exit")) {
+                                    savedValue = true;
+                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
+                                    s.setQualitativeSCValueBool(true);
+                                    s.setRecievedValue(true);
+                                    savedValue = true;
+                                } else if (inputString.equals("no") || inputString.equals("No")) {
+                                    s.setQualitativeSCValueBool(false);
+                                    s.setRecievedValue(true);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        }
+                    }
+                }
+                savedValue = false;
+                while (!savedValue) {
+                    System.out.println("Insert level of MAP support [Low, Moderate or High]");
+                    String input = App.input.nextLine();
+                    try {
+                        if (input.equals("Low") || input.equals("Moderate") || input.equals("High")
+                                || input.equals("low") || input.equals("moderate") || input.equals("high")) {
+                            s.setLevelOfMAPSupport(input);
+                            savedValue = true;
+                        } else{
+                            System.out.println("Invalid input");
+                            savedValue = false;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Invalid input");
+                        savedValue = false;
+                    }
+                }
+                
+            }
+             else if(i % 2 == 0) {       
                 s.setQualitativeSCValueBool(true);
                 
                 s.setRecievedValue(true);
