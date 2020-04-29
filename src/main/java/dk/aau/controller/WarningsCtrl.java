@@ -44,6 +44,8 @@ public class WarningsCtrl {
         if (sModel.isMissingTickedQualitativeSC()) {
             hModel.tickQualitativeSCresultsIfMissing(SafetyCriteriaModel.getMissingQualitativeResultsSC());
         }
+        sModel.assessUnrealisticResultsForQuantitativeSC();
+        hModel.enterResultsForSCIfUnrealistic(SafetyCriteriaModel.getUnrealisticQuantitativeResults());
     }
     
         

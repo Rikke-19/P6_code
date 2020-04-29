@@ -11,26 +11,26 @@ import dk.aau.model.SafetyCriteriaModel;
 public class HealthcarePersonelModel {
     
     /*
-
+    
     boolean fullstop = false;
-
+    
     // skal gentages
     else if(inputString.equals("FullStop"))
     {
         fullstop = true;
     }
-
+    
     if(fullstop)
-        break;
+    break;
     */
-
-
+    
+    
     //Metoder
     public void tickQualitativeSCResults() {
         
         for(SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
             // her
-
+            
             // til her
             System.out.print("Insert the value of ");
             boolean savedValue;
@@ -3482,7 +3482,24 @@ public class HealthcarePersonelModel {
     //
     public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
         for (SafetyCriteriaModel s : list) {
-            System.out.println("enter results for SC if unreal" + s.getName());
+            System.out.println("Enter results for: " + s.getName()); // en ny tekst
+            boolean savedValue = false;
+            while (!savedValue) {
+                System.out.println("[Insert a number]: ");
+                String input = App.input.nextLine();
+                try {
+                    if (input.equals("exit") ||input.equals("Exit")) {
+                        savedValue = true;
+                    } else {
+                        s.setQuantitativeSCValue(Double.parseDouble(input));
+                        s.setRecievedValue(true);
+                        savedValue = true;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid input");
+                    savedValue = false;
+                }
+            }
         }
     }
     

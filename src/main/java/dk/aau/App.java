@@ -40,9 +40,8 @@ public class App {
     public static final Scanner input = new Scanner(System.in);
     //public static List<SafetyCriteriaModel> allCriteriasList = new ArrayList<SafetyCriteriaModel>();
     public static void main(String[] args) {
-        // sætter tiden 
        
-
+        // sætter tiden 
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
         DateTimeFormatter formatForAge = DateTimeFormatter.ofPattern("yyMMdd");
@@ -51,6 +50,7 @@ public class App {
         LocalDateTime a = myDateObj.minus(days, ChronoUnit.DAYS);
         previousDate = a.format(myFormatObj);
 
+        // initialization
         Init.InitSafetyCriteria();
 
         HealthcarePersonelModel hModel = new HealthcarePersonelModel();
@@ -67,14 +67,15 @@ public class App {
 
         EMCategoriesModel eModel = new EMCategoriesModel();
         SafetyAssessmentView aView = new SafetyAssessmentView();
-        
+
         ColorCategorizationsCtrl cCtrl = new ColorCategorizationsCtrl(cModel, cView);
         EMCategoriesCtrl eCtrl = new EMCategoriesCtrl(eModel, aView);
         PatientCtrl pCtrl = new PatientCtrl(pModel, pView);
         HealthcarePersonelCtrl hCtrl = new HealthcarePersonelCtrl(hModel, hView);
         WarningsCtrl wCtrl = new WarningsCtrl(hModel, wView, sModel);
 
-        
+        // indsæt værdier
+        // Indsæt kvalitative OG kvantitative grundet proof of concept
         hModel.tickQualitativeSCResults();
         
         // - - - - - FOR TESTING - - - - - - - - - - - - - - - - - - - -
@@ -175,9 +176,10 @@ public class App {
         }*/
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         
-        
+        // risikokontrol
         wCtrl.CheckValues();
 
+        // kategorisering
         ColorCategorizationsModel.performColorCategoIB();
         ColorCategorizationsModel.performColorCategoOB();
 
@@ -186,21 +188,13 @@ public class App {
 
         EMCategoriesModel.printYellowList();
 
-        if (eModel.getEMCategorizationIB().equals("Green")) {
-            System.out.println("Color in bed: " + ANSI_GREEN + eModel.getEMCategorizationIB() + ANSI_RESET);
-        } else if (eModel.getEMCategorizationIB().equals("Yellow")) {
-            System.out.println("Color in bed: " + ANSI_YELLOW + eModel.getEMCategorizationIB() + ANSI_RESET);
-        } else if (eModel.getEMCategorizationIB().equals("Red")) {
-            System.out.println("Color in bed: " + ANSI_RED + eModel.getEMCategorizationIB() + ANSI_RESET);
-        }
-        if (eModel.getEMCategorizationOB().equals("Green")) {
-            System.out.println("Color in bed: " + ANSI_GREEN + eModel.getEMCategorizationOB() + ANSI_RESET);
-        } else if (eModel.getEMCategorizationOB().equals("Yellow")) {
-            System.out.println("Color in bed: " + ANSI_YELLOW + eModel.getEMCategorizationOB() + ANSI_RESET);
-        } else if (eModel.getEMCategorizationOB().equals("Red")) {
-            System.out.println("Color in bed: " + ANSI_RED + eModel.getEMCategorizationOB() + ANSI_RESET);
-        }
 
+        // vis kategorisering
+        eCtrl.getEMCategorizationIB();
+        eCtrl.getEMCategorizationOB();
+        
+
+        // vis alle kriterier
         System.out.println("Do you want to see all safety criteria? \n [yes/no]");
         
         boolean savedValue = false;

@@ -86,6 +86,7 @@ public class SafetyCriteriaModel {
         System.out.println("MAP doesn't exist");
         return false;
     }
+    
     public boolean checkMissingMAP()
     {
         boolean r = false;

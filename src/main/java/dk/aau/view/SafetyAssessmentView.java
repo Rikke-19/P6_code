@@ -14,7 +14,7 @@ public class SafetyAssessmentView {
     }
     public void showEMCategorizationOB()
     {
-
+        
     }
 
     public void showYellowSCListIB()
