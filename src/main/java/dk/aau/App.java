@@ -76,10 +76,10 @@ public class App {
 
         // indsæt værdier
         // Indsæt kvalitative OG kvantitative grundet proof of concept
-        hModel.tickQualitativeSCResults();
+        //hModel.tickQualitativeSCResults();
         
         // - - - - - FOR TESTING - - - - - - - - - - - - - - - - - - - -
-        /*
+        
         int i = 0;
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
             s.setQuantitativeSCValue(i);
@@ -173,7 +173,7 @@ public class App {
                 s.setRecievedValue(true);
                 //s.setQuantitativeSCValue(0);
             }
-        }*/
+        }
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
         
         // risikokontrol

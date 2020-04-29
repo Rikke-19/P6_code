@@ -11,10 +11,13 @@ public class PatientCtrl {
     {
         this.pModel = pModel;
         this.pView = pView;
+        pView.showCPR(pModel.GetCpr()); //relation mellem pview og pmodel
     }
 
     //Metoder
     private long getCPRNumber() {
-        return 0;
+        return pModel.GetCpr();
     }
+
+
 }
