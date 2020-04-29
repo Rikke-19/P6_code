@@ -11,7 +11,8 @@ public class EMCategoriesModel {
     private static String EMCategorizationIB;
     private static String EMCategorizationOB;
 
-    private static List<SafetyCriteriaModel> yellowCriteria = new ArrayList<SafetyCriteriaModel>(); // MANGLER I MVC
+    private static List<SafetyCriteriaModel> yellowCriteriaIB = new ArrayList<SafetyCriteriaModel>(); 
+    private static List<SafetyCriteriaModel> yellowCriteriaOB = new ArrayList<SafetyCriteriaModel>();
 
 
     // Metoder
@@ -26,7 +27,7 @@ public class EMCategoriesModel {
                 return;
             } else if (colorCategoIB.getColorIB().equals("Yellow")) {
                 EMCategoriesModel.setEMCategorizationIB("Yellow");
-                yellowCriteria.add(colorCategoIB);
+                yellowCriteriaIB.add(colorCategoIB);
                 isYellow = true;
             } else if (isYellow == false && alreadyGreen == false) {
                 EMCategoriesModel.setEMCategorizationIB("Green");
@@ -46,7 +47,7 @@ public class EMCategoriesModel {
                 return;
             } else if (colorCategoOB.getColorOB().equals("Yellow")) {
                 EMCategoriesModel.setEMCategorizationOB("Yellow");
-                yellowCriteria.add(colorCategoOB);
+                yellowCriteriaOB.add(colorCategoOB);
                 isYellow = true;
             } else if (isYellow == false && alreadyGreen == false) {
                 EMCategoriesModel.setEMCategorizationOB("Green");
@@ -57,10 +58,17 @@ public class EMCategoriesModel {
 
     public static void printYellowList()
     {
-        for (SafetyCriteriaModel s : yellowCriteria) {
+
+        for (SafetyCriteriaModel s : yellowCriteriaIB) {
             System.out.println(s.getName() + " Value: " 
             + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
-            + " Categori: In Bed " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET + " Our of bed: " + App.ANSI_BLUE + s.getColorOB() + App.ANSI_RESET);
+            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET);
+        }
+
+        for (SafetyCriteriaModel s : yellowCriteriaOB) {
+            System.out.println(s.getName() + " Value: " 
+            + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
+            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorOB() + App.ANSI_RESET);
         }
     }
 
@@ -84,11 +92,5 @@ public class EMCategoriesModel {
         EMCategorizationOB = eMCategorizationOB;
     }
 
-    public static List<SafetyCriteriaModel> getYellowCriteria() {
-        return yellowCriteria;
-    }
 
-    public static void setYellowCriteria(List<SafetyCriteriaModel> yellowCriteria) {
-        EMCategoriesModel.yellowCriteria = yellowCriteria;
-    }
 }
