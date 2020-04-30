@@ -6,7 +6,9 @@ public class Init {
     
     public static void InitSafetyCriteria() {
     //Sikkerhedskriterier instantieres
-    //Kvantitative
+    
+    // ------Kvantitative----------
+
     SafetyCriteriaModel laktat = new SafetyCriteriaModel("Laktat", "Cardiovascular", true);
     SafetyCriteriaModel.AddToListSC(laktat);
     SafetyCriteriaModel fiO2 = new SafetyCriteriaModel("FiO2", "Respiratory", true);
@@ -21,8 +23,11 @@ public class Init {
     SafetyCriteriaModel.AddToListSC(saO2);
     SafetyCriteriaModel ventriRate = new SafetyCriteriaModel("Ventricular rate", "Cardiovascular", true);
     SafetyCriteriaModel.AddToListSC(ventriRate);
-    // Kvalitative
+    
+    // -------Kvalitative--------------
+    
     // Respiratory
+
     SafetyCriteriaModel endotrachealTube = new SafetyCriteriaModel("Endotracheal Tube", "Respiratory");
     SafetyCriteriaModel.AddToListSC(endotrachealTube);
     SafetyCriteriaModel tracheostomytube = new SafetyCriteriaModel("Tracheostomy Tube", "Respiratory");
@@ -40,11 +45,8 @@ public class Init {
 
     // Cardiovascular
 
-    SafetyCriteriaModel stableTachyarrhythmia = new SafetyCriteriaModel("Any stable tachyarrhythmia", "Cardiovascular");
-    SafetyCriteriaModel.AddToListSC(stableTachyarrhythmia);
-
-
-
+    SafetyCriteriaModel map = new SafetyCriteriaModel("MAP", "Cardiovascular", true);
+    SafetyCriteriaModel.AddToListSC(map);
     SafetyCriteriaModel intravenousAntihypotensive = new SafetyCriteriaModel(
             "Intravenous antihypotensive therapy for hypotensive emergency", "Cardiovascular");
     SafetyCriteriaModel.AddToListSC(intravenousAntihypotensive);
@@ -83,13 +85,8 @@ public class Init {
     SafetyCriteriaModel cardiacischemia = new SafetyCriteriaModel(
             "Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)", "Cardiovascular");
     SafetyCriteriaModel.AddToListSC(cardiacischemia);
-    SafetyCriteriaModel map = new SafetyCriteriaModel("MAP", "Cardiovascular", true);
-    SafetyCriteriaModel.AddToListSC(map);
-    SafetyCriteriaModel mapCausingSymptoms = new SafetyCriteriaModel("Is MAP causing symptoms", "Cardiovascular");
-    SafetyCriteriaModel.AddToListSC(mapCausingSymptoms);
-    SafetyCriteriaModel mapLevelOfSupport = new SafetyCriteriaModel("MAP level of support", "Cardiovascular");
-    SafetyCriteriaModel.AddToListSC(mapLevelOfSupport);
-    // neurological
+    
+    // Neurological
 
     SafetyCriteriaModel deltool = new SafetyCriteriaModel("Delirum tool -ve", "Neuro");
     SafetyCriteriaModel.AddToListSC(deltool);
