@@ -31,7 +31,7 @@ public class App {
     public static final Scanner input = new Scanner(System.in);
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
 
 
         // initialization
@@ -103,9 +103,12 @@ public class App {
          * s.setRecievedValue(true); //s.setQuantitativeSCValue(0); } }
          */
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        while (HealthcarePersonelModel.exit == false) {
+        
         // risikokontrol
-        wCtrl.CheckValues();
+        while (wCtrl.CheckValues()) {
+            
+        }
+        
 
         // kategorisering
         ColorCategorizationsModel.performColorCategoIB();
@@ -147,9 +150,9 @@ public class App {
             }
 
             // close scanner
-            input.close();
+            // input.close();
         }
-    }
+    
     }
     private static void ShowAllCriteria() {
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {

@@ -17,6 +17,7 @@ public class SafetyCriteriaModel {
     private static boolean UnrealisticMAPInterval;
 
     private boolean QualitativeSCValueBool; // MVC??
+    private boolean isUnrealistivQuantitativeValue;
 
     private String levelOfMAPSupport; // muligvis MVC attributter
     private boolean isMAPCausingSymptoms; // muligvis MVC attributter
@@ -66,6 +67,7 @@ public class SafetyCriteriaModel {
             if (!s.isRecievedValue() && s.takesNumber && !s.getName().equals("MAP")) {
                 MissingQuantitativeResultsSC.add(s);
                 MissingQuantitativeResult = true;
+                System.out.println("x");
             }
         }
     }
@@ -102,6 +104,7 @@ public class SafetyCriteriaModel {
         for (SafetyCriteriaModel s : SC) {
             if (s.takesNumber && s.getQuantitativeSCValue() <= 0 && !s.getName().equals("RASS")) {
                 UnrealisticQuantitativeResults.add(s);
+                isUnrealistivQuantitativeValue = false;
             }
         }
     }
@@ -315,5 +318,13 @@ public class SafetyCriteriaModel {
 
     public void setColorOB(String colorOB) {
         ColorOB = colorOB;
+    }
+
+    public boolean isUnrealistivQuantitativeValue() {
+        return isUnrealistivQuantitativeValue;
+    }
+
+    public void setUnrealistivQuantitativeValue(boolean isUnrealistivQuantitativeValue) {
+        this.isUnrealistivQuantitativeValue = isUnrealistivQuantitativeValue;
     }
 }

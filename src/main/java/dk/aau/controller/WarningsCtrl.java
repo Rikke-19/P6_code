@@ -18,34 +18,44 @@ public class WarningsCtrl {
         this.wView = wView;
     }   
     //Metoder
-    public void CheckValues()
+    public boolean CheckValues()
     {
+        boolean b = true;
         // IF MAP IN UNREALISTIC
         
         if (sModel.checkMissingMAP()) {
             hModel.enterMAPIfMissing();
+            b = false;
         }
 
         if (!sModel.checkMissingMAPInterval()) {
             hModel.enterMAPInterval();
+            b = false;
         }
 
         sModel.assessUnrealisticMAPInterval();
         if (sModel.isUnrealisticMAPInterval()) {
             hModel.enterMAPIfUnrealistic();
+            b = false;
         }
         
         sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
         if (sModel.isMissingQuantitativeResult()) {
             hModel.enterResultsForSCIfMissing(SafetyCriteriaModel.getMissingQuantitativeResultsSC());
+            b = false;
         }
         
         sModel.checkMissingTickedQualitativeSC(SafetyCriteriaModel.getSC());
         if (sModel.isMissingTickedQualitativeSC()) {
             hModel.tickQualitativeSCresultsIfMissing(SafetyCriteriaModel.getMissingQualitativeResultsSC());
+            b = false;
         }
         sModel.assessUnrealisticResultsForQuantitativeSC();
-        hModel.enterResultsForSCIfUnrealistic(SafetyCriteriaModel.getUnrealisticQuantitativeResults());
+        if (sModel.isUnrealistivQuantitativeValue()) {
+            hModel.enterResultsForSCIfUnrealistic(SafetyCriteriaModel.getUnrealisticQuantitativeResults());
+            b = false;
+        }
+        return b;
     }
     
         
