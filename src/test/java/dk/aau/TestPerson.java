@@ -8,14 +8,28 @@ public class TestPerson {
     {
         if (s.equals("quali")) {
             InitQualitativeSafetyCriteria();
+            GiveValuesQualitative();
         } else if (s.equals("quanti")) {
             InitQuantitativeSafetyCriteria();
             GiveValuesQuantitative();
         } else if (s.equals("all")) {
             InitQualitativeSafetyCriteria();
+            GiveValuesQualitative();
             InitQuantitativeSafetyCriteria();
             GiveValuesQuantitative();
         }        
+    }
+
+    private void GiveValuesQualitative()
+    {
+        int i = 0;
+        for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            s.setRecievedValue(true);
+            if (i % 2 == 0)
+                s.setQualitativeSCValueBool(true);
+            else
+                s.setQualitativeSCValueBool(false);
+        }
     }
 
     private void GiveValuesQuantitative()
@@ -23,16 +37,16 @@ public class TestPerson {
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()){
             if (s.getName().equals("Laktat")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(2);
+                s.setQuantitativeSCValue(1);
             } else if (s.getName().equals("FiO2")) {
                 s.setRecievedValue(true);
                 s.setQuantitativeSCValue(0.8);
             } else if (s.getName().equals("PEEP")) {
-                s.setRecievedValue(false);
-                s.setQuantitativeSCValue(0);
+                s.setRecievedValue(true);
+                s.setQuantitativeSCValue(1);
             } else if (s.getName().equals("RASS")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(2);
+                s.setQuantitativeSCValue(-1);
             } else if (s.getName().equals("Respiratory rate")) {
                 s.setRecievedValue(true);
                 s.setQuantitativeSCValue(30);
@@ -40,9 +54,9 @@ public class TestPerson {
                 s.setRecievedValue(true);
                 s.setQuantitativeSCValue(87);
             } else if (s.getName().equals("Ventricular rate")) {
-                s.setRecievedValue(false);
+                s.setRecievedValue(true);
                 s.setStableTachy(false);
-                s.setQuantitativeSCValue(0);
+                s.setQuantitativeSCValue(-2);
             } else if (s.getName().equals("MAP")) {
                 s.setRecievedValue(true);
                 s.setMAPCausingSymptoms(false);

@@ -72,7 +72,6 @@ public class SafetyCriteriaModel {
         }
     }
 
-    // NOT GOOD
     public Boolean checkMissingMAPInterval() {
         for (SafetyCriteriaModel s : SC) {
             if (s.getName().equals("MAP") && s.isRecievedValue()) {
@@ -101,11 +100,14 @@ public class SafetyCriteriaModel {
 
     //
     public void assessUnrealisticResultsForQuantitativeSC() {
+        isUnrealistivQuantitativeValue = true;
+        System.out.println(isUnrealistivQuantitativeValue());
         for (SafetyCriteriaModel s : SC) {
             if (s.takesNumber && s.getQuantitativeSCValue() <= 0 && !s.getName().equals("RASS")) {
                 UnrealisticQuantitativeResults.add(s);
+                System.out.println("result");
                 isUnrealistivQuantitativeValue = false;
-            }
+            } 
         }
     }
 
