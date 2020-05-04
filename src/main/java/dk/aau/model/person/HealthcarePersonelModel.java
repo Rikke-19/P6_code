@@ -2432,23 +2432,23 @@ public class HealthcarePersonelModel {
     // X
     public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
         if (exit == false) {
-            for (SafetyCriteriaModel s : list) {
+            for (SafetyCriteriaModel SC : list) {
                 if (exit == true) {
                     break;
                 }
-                System.out.println("tickQuantitative: " + s.getName()); // en ny tekst
+                System.out.println("tickQuantitative: " + SC.getName()); // en ny tekst
                 boolean savedValue = false;
                 while (!savedValue) {
                     System.out.println("[Insert yes/no]: ");
                     String input = App.input.nextLine();
                     try {
                         if (input.equals("Yes") || input.equals("yes")) {
-                            s.setQualitativeSCValueBool(true);
-                            s.setRecievedValue(true);
+                            SC.setQualitativeSCValueBool(true);
+                            SC.setRecievedValue(true);
                             savedValue = true;
                         } else if (input.equals("No") || input.equals("no")) {
-                            s.setQualitativeSCValueBool(false);
-                            s.setRecievedValue(true);
+                            SC.setQualitativeSCValueBool(false);
+                            SC.setRecievedValue(true);
                             savedValue = true;
                         } else if (input.equals("exit") || input.equals("Exit")) {
                             savedValue = true;
@@ -2467,11 +2467,11 @@ public class HealthcarePersonelModel {
     public void enterResultsForSCIfMissing(List<SafetyCriteriaModel> list) {
 
         if (exit == false) {
-            for (SafetyCriteriaModel s : list) {
+            for (SafetyCriteriaModel SC : list) {
                 if (exit == true) {
                     break;
                 }
-                System.out.println("Enter results for: " + s.getName()); // en ny tekst
+                System.out.println("Enter results for: " + SC.getName()); // en ny tekst
                 boolean savedValue = false;
                 while (!savedValue) {
                     System.out.println("[Insert a number]: ");
@@ -2481,8 +2481,8 @@ public class HealthcarePersonelModel {
                             savedValue = true;
                             exit = true;
                         } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(input));
-                            s.setRecievedValue(true);
+                            SC.setQuantitativeSCValue(Double.parseDouble(input));
+                            SC.setRecievedValue(true);
                             savedValue = true;
                         }
                     } catch (Exception e) {
@@ -2498,13 +2498,13 @@ public class HealthcarePersonelModel {
     public void enterMAPIfMissing() {
 
         if (exit == false) {
-            for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
 
                 if (exit == true) {
                     break;
                 }
-                if (s.getName().equals("MAP")) {
-                    System.out.println("Enter result for: " + s.getName()); // en ny tekst
+                if (SC.getName().equals("MAP")) {
+                    System.out.println("Enter result for: " + SC.getName()); // en ny tekst
                     boolean savedValue = false;
                     while (!savedValue) {
                         System.out.println("[Insert a number]: ");
@@ -2514,8 +2514,8 @@ public class HealthcarePersonelModel {
                                 exit = true;
                                 savedValue = true;
                             } else {
-                                s.setQuantitativeSCValue(Double.parseDouble(input));
-                                s.setRecievedValue(true);
+                                SC.setQuantitativeSCValue(Double.parseDouble(input));
+                                SC.setRecievedValue(true);
                                 savedValue = true;
                             }
                         } catch (Exception e) {
@@ -2533,12 +2533,12 @@ public class HealthcarePersonelModel {
     public void enterMAPIfUnrealistic() {
 
         if (exit == false) {
-            for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
+            for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
                 if (exit == true) {
                     break;
                 }
-                if (s.getName().equals("MAP")) {
-                    System.out.println("Enter result for: " + s.getName()); // en ny tekst
+                if (SC.getName().equals("MAP")) {
+                    System.out.println("Enter result for: " + SC.getName()); // en ny tekst
                     boolean savedValue = false;
                     while (!savedValue) {
                         System.out.println("[Insert a number]: ");
@@ -2548,8 +2548,8 @@ public class HealthcarePersonelModel {
                                 savedValue = true;
                                 exit = true;
                             } else {
-                                s.setQuantitativeSCValue(Double.parseDouble(input));
-                                s.setRecievedValue(true);
+                                SC.setQuantitativeSCValue(Double.parseDouble(input));
+                                SC.setRecievedValue(true);
                                 savedValue = true;
                             }
                         } catch (Exception e) {
@@ -2566,11 +2566,11 @@ public class HealthcarePersonelModel {
     public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
 
         if (exit == false) {
-            for (SafetyCriteriaModel s : list) {
+            for (SafetyCriteriaModel SC : list) {
                 if (exit == true) {
                     break;
                 }
-                System.out.println("Enter results for: " + s.getName()); // en ny tekst
+                System.out.println("Enter results for: " + SC.getName()); // en ny tekst
                 boolean savedValue = false;
                 while (!savedValue) {
                     System.out.println("[Insert a number]: ");
@@ -2580,8 +2580,8 @@ public class HealthcarePersonelModel {
                             savedValue = true;
                             exit = true;
                         } else {
-                            s.setQuantitativeSCValue(Double.parseDouble(input));
-                            s.setRecievedValue(true);
+                            SC.setQuantitativeSCValue(Double.parseDouble(input));
+                            SC.setRecievedValue(true);
                             savedValue = true;
                         }
                     } catch (Exception e) {
