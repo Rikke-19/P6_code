@@ -3,6 +3,7 @@ package dk.aau.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SafetyCriteriaModel {
     // Variabler
     private String NameSC;
@@ -17,7 +18,7 @@ public class SafetyCriteriaModel {
     private static boolean UnrealisticMAPInterval;
 
     private boolean QualitativeSCValueBool; // MVC??
-    private boolean isUnrealistivQuantitativeValue;
+    private boolean isUnrealisticQuantitativeValue;
 
     private String levelOfMAPSupport; // muligvis MVC attributter
     private boolean isMAPCausingSymptoms; // muligvis MVC attributter
@@ -53,9 +54,9 @@ public class SafetyCriteriaModel {
     // Metoder
     // X
     public void checkMissingTickedQualitativeSC(List<SafetyCriteriaModel> inputList) {
-        for (SafetyCriteriaModel s : inputList) {
-            if (!s.isRecievedValue() && !s.takesNumber) {
-                MissingQualitativeResultsSC.add(s);
+        for (SafetyCriteriaModel SC : inputList) {
+            if (!SC.isRecievedValue() && !SC.takesNumber) {
+                MissingQualitativeResultsSC.add(SC);
                 MissingTickedQualitativeSC = true;
             }
         }
@@ -63,35 +64,30 @@ public class SafetyCriteriaModel {
 
     // X
     public void checkMissingResultsForQuantitativeSC(List<SafetyCriteriaModel> inputList) {
-        for (SafetyCriteriaModel s : inputList) {
-            if (!s.isRecievedValue() && s.takesNumber && !s.getName().equals("MAP")) {
-                MissingQuantitativeResultsSC.add(s);
+        for (SafetyCriteriaModel SC : inputList) {
+            if (!SC.isRecievedValue() && SC.takesNumber && !SC.getName().equals("MAP")) {
+                MissingQuantitativeResultsSC.add(SC);
                 MissingQuantitativeResult = true;
                 System.out.println("x");
             }
         }
     }
 
-    public Boolean checkMissingMAPInterval() {
-        for (SafetyCriteriaModel s : SC) {
-            if (s.getName().equals("MAP") && s.isRecievedValue()) {
-                MissingMAPInterval = false;
-                return true;
-            } else {
-                MissingMAPInterval = true;
-                return false;
-            }
+    public static Boolean checkMissingMAPInterval() {
+        String MAPMinString = Double.toString(MAPIntervalMin);
+        if (MAPMinString.equals("0.0")) {
+            return true;
+        } else {
+            return false;
         }
-        System.out.println("MAP doesn't exist");
-        return false;
     }
 
     public boolean checkMissingMAP() {
         boolean r = false;
-        for (SafetyCriteriaModel s : SC) {
-            if (s.getName().equals("MAP") && s.isRecievedValue()) {
+        for (SafetyCriteriaModel SC : SC) {
+            if (SC.getName().equals("MAP") && SC.isRecievedValue()) {
                 r = false;
-            } else if (s.getName().equals("MAP") && !s.isRecievedValue()) {
+            } else if (SC.getName().equals("MAP") && !SC.isRecievedValue()) {
                 r = true;
             }
         }
@@ -100,29 +96,30 @@ public class SafetyCriteriaModel {
 
     //
     public void assessUnrealisticResultsForQuantitativeSC() {
-        isUnrealistivQuantitativeValue = true;
-        System.out.println(isUnrealistivQuantitativeValue());
-        for (SafetyCriteriaModel s : SC) {
-            if (s.takesNumber && s.getQuantitativeSCValue() <= 0 && !s.getName().equals("RASS")) {
-                UnrealisticQuantitativeResults.add(s);
+        isUnrealisticQuantitativeValue = true;
+        System.out.println(isUnrealisticQuantitativeValue());
+        for (SafetyCriteriaModel SC : SC) {
+            if (!SC.getName().equals("RASS") && SC.takesNumber && SC.getQuantitativeSCValue() <= 0) {
+                UnrealisticQuantitativeResults.add(SC);
                 System.out.println("result");
-                isUnrealistivQuantitativeValue = false;
-            } 
+                isUnrealisticQuantitativeValue = false;
+            } else if (SC.getName().equals("RASS") && SC.takesNumber && SC.getQuantitativeSCValue() > 4
+                    || SC.getQuantitativeSCValue() < -5) {
+                UnrealisticQuantitativeResults.add(SC);
+                isUnrealisticQuantitativeValue = false;
+            }            
         }
     }
 
     //
     public Boolean assessUnrealisticMAPInterval() {
-        boolean r = false;
-        for (SafetyCriteriaModel s : SC) {
-            if (s.getName().equals("MAP") && s.getQuantitativeSCValue() <= 0) {
-                UnrealisticMAPInterval = true;
-                UnrealisticQuantitativeResults.add(s);
-                r = true;
-            } else
-                r = false;
+
+        if (MAPIntervalMin <= 0) {
+            UnrealisticMAPInterval = true;
+            return true;
+        } else {
+            return false;
         }
-        return r;
     }
 
     // Liste håndtering af sikkerhedskriterierne
@@ -322,11 +319,11 @@ public class SafetyCriteriaModel {
         ColorOB = colorOB;
     }
 
-    public boolean isUnrealistivQuantitativeValue() {
-        return isUnrealistivQuantitativeValue;
+    public boolean isUnrealisticQuantitativeValue() {
+        return isUnrealisticQuantitativeValue;
     }
 
-    public void setUnrealistivQuantitativeValue(boolean isUnrealistivQuantitativeValue) {
-        this.isUnrealistivQuantitativeValue = isUnrealistivQuantitativeValue;
+    public void setUnrealistivQuantitativeValue(boolean isUnrealisticQuantitativeValue) {
+        this.isUnrealisticQuantitativeValue = isUnrealisticQuantitativeValue;
     }
 }

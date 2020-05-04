@@ -28,14 +28,14 @@ public class WarningsCtrl {
             b = false;
         }
 
-        if (!sModel.checkMissingMAPInterval()) {
+        if (SafetyCriteriaModel.checkMissingMAPInterval()) {
             hModel.enterMAPInterval();
             b = false;
         }
 
         sModel.assessUnrealisticMAPInterval();
         if (sModel.isUnrealisticMAPInterval()) {
-            hModel.enterMAPIfUnrealistic();
+            hModel.enterMAPInterval();
             b = false;
         }
         
@@ -51,7 +51,7 @@ public class WarningsCtrl {
             b = false;
         }
         sModel.assessUnrealisticResultsForQuantitativeSC();
-        if (sModel.isUnrealistivQuantitativeValue()) {
+        if (sModel.isUnrealisticQuantitativeValue()) {
             hModel.enterResultsForSCIfUnrealistic(SafetyCriteriaModel.getUnrealisticQuantitativeResults());
             b = false;
         }

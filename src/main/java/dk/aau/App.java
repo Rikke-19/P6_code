@@ -162,5 +162,5 @@ public class App {
             s.getColorIB()+ ANSI_RESET + " Color out of bed " + ANSI_BLUE + s.getColorOB() + ANSI_RESET);
         }
     }
-
 }
+
