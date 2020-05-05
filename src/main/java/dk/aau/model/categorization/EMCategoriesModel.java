@@ -11,9 +11,8 @@ public class EMCategoriesModel {
     private static String EMCategorizationIB;
     private static String EMCategorizationOB;
 
-    private static List<SafetyCriteriaModel> yellowCriteriaIB = new ArrayList<SafetyCriteriaModel>(); 
+    private static List<SafetyCriteriaModel> yellowCriteriaIB = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> yellowCriteriaOB = new ArrayList<SafetyCriteriaModel>();
-
 
     // Metoder
     public static void assignEMCategoIB() {
@@ -56,23 +55,20 @@ public class EMCategoriesModel {
         }
     }
 
-    public static void printYellowList()
-    {
+    public static void printYellowList() {
 
         for (SafetyCriteriaModel s : yellowCriteriaIB) {
-            System.out.println(s.getName() + " Value: " 
-            + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
-            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET);
+            System.out.println(
+                    s.getName() + " Value: " + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
+                            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET);
         }
 
         for (SafetyCriteriaModel s : yellowCriteriaOB) {
-            System.out.println(s.getName() + " Value: " 
-            + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
-            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorOB() + App.ANSI_RESET);
+            System.out.println(
+                    s.getName() + " Value: " + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
+                            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorOB() + App.ANSI_RESET);
         }
     }
-
-
 
     // GETTERS AND SETTERS
 
@@ -91,6 +87,5 @@ public class EMCategoriesModel {
     public static void setEMCategorizationOB(String eMCategorizationOB) {
         EMCategorizationOB = eMCategorizationOB;
     }
-
 
 }

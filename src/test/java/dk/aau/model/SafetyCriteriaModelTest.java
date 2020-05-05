@@ -17,7 +17,7 @@ import dk.aau.view.WarningsView;
 
 public class SafetyCriteriaModelTest {
     //TestPerson testPerson = new TestPerson("quanti");
-    TestPerson testPerson = new TestPerson("quali");
+    TestPerson testPerson = new TestPerson("quanti");
     HealthcarePersonelModel hModel = new HealthcarePersonelModel();
     SafetyCriteriaModel sModel = new SafetyCriteriaModel();
     WarningsView wView = new WarningsView();
@@ -39,13 +39,13 @@ public class SafetyCriteriaModelTest {
         assertFalse(sModel.isMissingTickedQualitativeSC());
     }
 
-    /*
+    
     @Test
     public void testAssesUnrealisticQuantitiveResults(){
         sModel.assessUnrealisticResultsForQuantitativeSC();
-        boolean result = sModel.isUnrealistivQuantitativeValue();
+        boolean result = sModel.isUnrealisticQuantitativeValue();
         assertFalse(result);
-    }*/
+    }
 
     /*
     @Test
@@ -54,19 +54,19 @@ public class SafetyCriteriaModelTest {
         sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
         boolean result = sModel.isMissingQuantitativeResult();
         assertTrue(result);
-    }
-    
+    }*/
+    /*
     @Test
     public void testMissingMap(){
         boolean result = sModel.checkMissingMAP();
         assertFalse(result);
     }*/
-    /*
+    
     @Test
     public void testMissingMapInterval(){
-        boolean result = sModel.checkMissingMAPInterval();
+        boolean result = SafetyCriteriaModel.checkMissingMAPInterval();
         assertFalse(result);
-    }*/
+    }
     /*
     @Test
     public void testAssesUnrealisticMapInterval(){

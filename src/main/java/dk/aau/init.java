@@ -88,7 +88,7 @@ public class Init {
     
     // Neurological
 
-    SafetyCriteriaModel deltool = new SafetyCriteriaModel("Delirum tool -ve", "Neuro");
+    SafetyCriteriaModel deltool = new SafetyCriteriaModel("Delirium tool -ve", "Neuro");
     SafetyCriteriaModel.AddToListSC(deltool);
     SafetyCriteriaModel deltoolcommands = new SafetyCriteriaModel(
             "Delirium tool +ve and able to follow simple commmands", "Neuro");
