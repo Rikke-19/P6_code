@@ -22,11 +22,6 @@ public class WarningsCtrl {
     {
         boolean b = true;
         // IF MAP IN UNREALISTIC
-        
-        if (sModel.checkMissingMAP()) {
-            hModel.enterMAPIfMissing();
-            b = false;
-        }
 
         if (SafetyCriteriaModel.checkMissingMAPInterval()) {
             hModel.enterMAPInterval();

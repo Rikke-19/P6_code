@@ -357,94 +357,6 @@ public class HealthcarePersonelModel {
                     }
                     break;
 
-                case "Endotracheal Tube":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
-                case "Tracheostomy Tube":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
                 case "Mode HFOV":
                     System.out.print(SC.getName());
                     savedValue = false;
@@ -885,50 +797,6 @@ public class HealthcarePersonelModel {
                     }
                     break;
 
-                case "Stable Underlying Rhythm":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
                 case "Femoral IABP":
                     System.out.print(SC.getName());
                     savedValue = false;
@@ -1018,50 +886,6 @@ public class HealthcarePersonelModel {
                     break;
 
                 case "Single bicaval dual lumen cannulae insertedinto a central vein":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
-                case "Ventricular Assist Device":
                     System.out.print(SC.getName());
                     savedValue = false;
                     while (savedValue == false) {
@@ -1238,50 +1062,6 @@ public class HealthcarePersonelModel {
                     break;
 
                 case "Cardiac ischemia (defined as ongoing chest pain and/or dynamic EKG changes)":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
-                case "Delirum tool -ve":
                     System.out.print(SC.getName());
                     savedValue = false;
                     while (savedValue == false) {
@@ -1853,183 +1633,7 @@ public class HealthcarePersonelModel {
                     }
                     break;
 
-                case "ICUAW":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
-                case "Renal Replacement Therapy":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
-                case "Venous and arterial femoral catheters":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
                 case "Femoral Sheats":
-                    System.out.print(SC.getName());
-                    savedValue = false;
-                    while (savedValue == false) {
-                        if (SC.getTakesNumber()) {
-                            System.out.println(" [insert number]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("Exit") || inputString.equals("exit")) {
-                                    exit = true;
-                                    savedValue = true;
-                                } else {
-                                    SC.setQuantitativeSCValue(Double.parseDouble(inputString));
-                                    savedValue = true;
-                                    SC.setRecievedValue(true);
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        } else {
-                            System.out.println(" [insert yes/no]: ");
-                            String inputString = App.input.nextLine();
-                            try {
-                                if (inputString.equals("exit") || inputString.equals("Exit")) {
-                                    savedValue = true;
-                                    exit = true;
-                                } else if (inputString.equals("yes") || inputString.equals("Yes")) {
-                                    SC.setQualitativeSCValueBool(true);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                } else if (inputString.equals("no") || inputString.equals("No")) {
-                                    SC.setQualitativeSCValueBool(false);
-                                    SC.setRecievedValue(true);
-                                    savedValue = true;
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Invalid input");
-                                savedValue = false;
-                            }
-                        }
-                    }
-                    break;
-
-                case "Other drains and attachements":
                     System.out.print(SC.getName());
                     savedValue = false;
                     while (savedValue == false) {
@@ -2427,7 +2031,9 @@ public class HealthcarePersonelModel {
         }
     }
 
-    // private void requestQuantitativeSCfromEPJ() {} // not this time
+    private void requestQuantitativeSCfromEPJ() {
+
+    } // not this time
 
     // X
     public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
@@ -2488,74 +2094,6 @@ public class HealthcarePersonelModel {
                     } catch (Exception e) {
                         System.out.println("Invalid input");
                         savedValue = false;
-                    }
-                }
-            }
-        }
-    }
-
-    //
-    public void enterMAPIfMissing() {
-
-        if (exit == false) {
-            for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
-
-                if (exit == true) {
-                    break;
-                }
-                if (SC.getName().equals("MAP")) {
-                    System.out.println("Enter result for: " + SC.getName()); // en ny tekst
-                    boolean savedValue = false;
-                    while (!savedValue) {
-                        System.out.println("[Insert a number]: ");
-                        String input = App.input.nextLine();
-                        try {
-                            if (input.equals("exit") || input.equals("Exit")) {
-                                exit = true;
-                                savedValue = true;
-                            } else {
-                                SC.setQuantitativeSCValue(Double.parseDouble(input));
-                                SC.setRecievedValue(true);
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-
-    //
-    public void enterMAPIfUnrealistic() {
-
-        if (exit == false) {
-            for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
-                if (exit == true) {
-                    break;
-                }
-                if (SC.getName().equals("MAP")) {
-                    System.out.println("Enter result for: " + SC.getName()); // en ny tekst
-                    boolean savedValue = false;
-                    while (!savedValue) {
-                        System.out.println("[Insert a number]: ");
-                        String input = App.input.nextLine();
-                        try {
-                            if (input.equals("exit") || input.equals("Exit")) {
-                                savedValue = true;
-                                exit = true;
-                            } else {
-                                SC.setQuantitativeSCValue(Double.parseDouble(input));
-                                SC.setRecievedValue(true);
-                                savedValue = true;
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Invalid input");
-                            savedValue = false;
-                        }
                     }
                 }
             }

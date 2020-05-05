@@ -3,7 +3,6 @@ package dk.aau.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class SafetyCriteriaModel {
     // Variabler
     private String NameSC;
@@ -12,7 +11,7 @@ public class SafetyCriteriaModel {
     private static double MAPIntervalMax;
     private String ColorIB;
     private String ColorOB;
-    
+
     private static boolean MissingMAPInterval;
     private static boolean MissingTickedQualitativeSC;
     private static boolean UnrealisticMAPInterval;
@@ -20,9 +19,9 @@ public class SafetyCriteriaModel {
     private boolean QualitativeSCValueBool; // MVC??
     private boolean isUnrealisticQuantitativeValue;
 
-    private String levelOfMAPSupport; // muligvis MVC attributter
-    private boolean isMAPCausingSymptoms; // muligvis MVC attributter
-    private boolean stableTachy; // muligvis MVC attributter
+    private String levelOfMAPSupport; 
+    private boolean isMAPCausingSymptoms;
+    private boolean stableTachy; 
 
     private static List<SafetyCriteriaModel> SC = new ArrayList<SafetyCriteriaModel>();
     private static List<SafetyCriteriaModel> MissingQuantitativeResultsSC = new ArrayList<SafetyCriteriaModel>();
@@ -65,7 +64,7 @@ public class SafetyCriteriaModel {
     // X
     public void checkMissingResultsForQuantitativeSC(List<SafetyCriteriaModel> inputList) {
         for (SafetyCriteriaModel SC : inputList) {
-            if (!SC.isRecievedValue() && SC.takesNumber && !SC.getName().equals("MAP")) {
+            if (!SC.isRecievedValue() && SC.takesNumber) {
                 MissingQuantitativeResultsSC.add(SC);
                 MissingQuantitativeResult = true;
                 System.out.println("x");
@@ -82,17 +81,6 @@ public class SafetyCriteriaModel {
         }
     }
 
-    public boolean checkMissingMAP() {
-        boolean r = false;
-        for (SafetyCriteriaModel SC : SC) {
-            if (SC.getName().equals("MAP") && SC.isRecievedValue()) {
-                r = false;
-            } else if (SC.getName().equals("MAP") && !SC.isRecievedValue()) {
-                r = true;
-            }
-        }
-        return r;
-    }
 
     //
     public void assessUnrealisticResultsForQuantitativeSC() {
@@ -107,7 +95,7 @@ public class SafetyCriteriaModel {
                     || SC.getQuantitativeSCValue() < -5) {
                 UnrealisticQuantitativeResults.add(SC);
                 isUnrealisticQuantitativeValue = false;
-            }            
+            }
         }
     }
 
@@ -176,7 +164,7 @@ public class SafetyCriteriaModel {
     public void setTakesNumber(Boolean takesNumber) {
         this.takesNumber = takesNumber;
     }
-    
+
     public static double getMAPIntervalMin() {
         return MAPIntervalMin;
     }
