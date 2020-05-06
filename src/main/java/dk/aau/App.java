@@ -60,8 +60,8 @@ public class App {
 
         // indsæt værdier
         // Indsæt kvalitative OG kvantitative grundet proof of concept
-        hModel.tickQualitativeSCResults();
-
+        hCtrl.setQualitativeSCTicked();
+        
         // - - - - - FOR TESTING - - - - - - - - - - - - - - - - - - - -
         /*
          * int i = 0; for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
@@ -105,10 +105,13 @@ public class App {
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         
         // risikokontrol
-        while (wCtrl.CheckValues()) {
-            
-        }
         
+        while (wCtrl.setMissingQuantitativeResultsSC()) {}
+        while (wCtrl.setUnrealisticQualitativeResults()) {}
+        while (wCtrl.setMissingMAPInterval()) {}
+        while (wCtrl.setUnrealisticMAPInterval()) {}
+        while (wCtrl.setMissingQuantitativeResultsSC()) {}
+   
 
         // kategorisering
         ColorCategorizationsModel.performColorCategoIB();

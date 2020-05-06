@@ -47,33 +47,27 @@ public class SafetyCriteriaModelTest {
         assertFalse(result);
     }
 
-    /*
+    // expected to fail in the current version. It's not a mistake.
+    // The TestPerson.java was different when this was tested
     @Test
     public void testCatchMissingQuantitative() {
-        System.out.println("Test missing quantitative");
         sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
         boolean result = sModel.isMissingQuantitativeResult();
-        assertTrue(result);
-    }*/
-    /*
-    @Test
-    public void testMissingMap(){
-        boolean result = sModel.checkMissingMAP();
         assertFalse(result);
-    }*/
+    }
     
     @Test
     public void testMissingMapInterval(){
         boolean result = SafetyCriteriaModel.checkMissingMAPInterval();
         assertFalse(result);
     }
-    /*
+    
     @Test
     public void testAssesUnrealisticMapInterval(){
         boolean result = sModel.assessUnrealisticMAPInterval();
         assertFalse(result);
-    }*/
-    /*
+    }
+    
     @Test
     public void testFormat_OnlyNumbers() {
         String input = "1234abcd";
@@ -114,7 +108,7 @@ public class SafetyCriteriaModelTest {
         String input = "ab12!?";
         boolean result = input(input, false, false);
         assertTrue(result);
-    }*/
+    }
     
     
     @After
