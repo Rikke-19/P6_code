@@ -24,11 +24,13 @@ public class TestPerson {
     {
         int i = 0;
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
-            s.setRecievedValue(true);
-            if (i % 2 == 0)
-                s.setQualitativeSCValueBool(true);
-            else
-                s.setQualitativeSCValueBool(false);
+            i++;
+            if (i % 2 == 0) {
+                //s.setQualitativeSCValueBool(true);
+               // s.setRecievedValue(true);
+            } else {
+                s.setRecievedValue(true);
+        }
         }
     }
 
@@ -37,34 +39,35 @@ public class TestPerson {
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()){
             if (s.getName().equals("Laktat")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(1);
+                s.setQuantitativeSCValue(0.7);
             } else if (s.getName().equals("FiO2")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(0.8);
+                s.setQuantitativeSCValue(0.12);
             } else if (s.getName().equals("PEEP")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(1);
+                s.setQuantitativeSCValue(10);
             } else if (s.getName().equals("RASS")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(-1);
+                s.setQuantitativeSCValue(2);
             } else if (s.getName().equals("Respiratory rate")) {
                 s.setRecievedValue(true);
-                s.setQuantitativeSCValue(30);
+                s.setQuantitativeSCValue(20);
             } else if (s.getName().equals("SaO2")) {
                 s.setRecievedValue(true);
                 s.setQuantitativeSCValue(87);
             } else if (s.getName().equals("Ventricular rate")) {
                 s.setRecievedValue(true);
-                s.setStableTachy(false);
-                s.setQuantitativeSCValue(-2);
+                s.setStableTachy(true);
+                s.setQuantitativeSCValue(30);
             } else if (s.getName().equals("MAP")) {
                 s.setRecievedValue(true);
                 s.setMAPCausingSymptoms(false);
-                s.setMAPIntervalMin(80);
-                s.setMAPIntervalMax(120);
+                s.setMAPIntervalMin(0); 
+                s.setMAPIntervalMax(0); 
                 s.setLevelOfMAPSupport("none");
-                s.setQuantitativeSCValue(97);
+                s.setQuantitativeSCValue(95);
             } 
+            
         }
     }
 

@@ -53,6 +53,7 @@ public class SafetyCriteriaModel {
     // Metoder
     // X
     public void checkMissingTickedQualitativeSC(List<SafetyCriteriaModel> inputList) {
+        MissingTickedQualitativeSC = false;
         for (SafetyCriteriaModel SC : inputList) {
             if (!SC.isRecievedValue() && !SC.takesNumber) {
                 MissingQualitativeResultsSC.add(SC);
@@ -63,6 +64,7 @@ public class SafetyCriteriaModel {
 
     // X
     public void checkMissingResultsForQuantitativeSC(List<SafetyCriteriaModel> inputList) {
+        MissingQuantitativeResult = false;
         for (SafetyCriteriaModel SC : inputList) {
             if (!SC.isRecievedValue() && SC.takesNumber) {
                 MissingQuantitativeResultsSC.add(SC);
