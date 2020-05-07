@@ -18,63 +18,70 @@ public class WarningsCtrl {
         this.wView = wView;
     }   
     //Metoder
-    public boolean CheckValues()
+
+    public boolean setMissingQuantitativeResultsSC()
     {
         boolean b = true;
-        // IF MAP IN UNREALISTIC
+
+        sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
+        if (sModel.isMissingQuantitativeResult()) {
+            hModel.enterResultsForSCIfMissing(SafetyCriteriaModel.getMissingQuantitativeResultsSC());
+            b = false;
+        }
+
+        return b;
+    }
+
+    public boolean setMissingMAPInterval()
+    {
+        boolean b = true;
 
         if (SafetyCriteriaModel.checkMissingMAPInterval()) {
             hModel.enterMAPInterval();
             b = false;
         }
 
-        sModel.assessUnrealisticMAPInterval();
-        if (sModel.isUnrealisticMAPInterval()) {
-            hModel.enterMAPInterval();
-            b = false;
-        }
-        
-        sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
-        if (sModel.isMissingQuantitativeResult()) {
-            hModel.enterResultsForSCIfMissing(SafetyCriteriaModel.getMissingQuantitativeResultsSC());
-            b = false;
-        }
-        
+        return b;
+    }
+
+    public boolean setMissingTickedQualitativeSC()
+    {
+        boolean b = true;
+
         sModel.checkMissingTickedQualitativeSC(SafetyCriteriaModel.getSC());
         if (sModel.isMissingTickedQualitativeSC()) {
             hModel.tickQualitativeSCresultsIfMissing(SafetyCriteriaModel.getMissingQualitativeResultsSC());
             b = false;
         }
+
+        return b;
+    }
+
+    public boolean setUnrealisticQualitativeResults()
+    {
+        boolean b = true;
+        
         sModel.assessUnrealisticResultsForQuantitativeSC();
         if (sModel.isUnrealisticQuantitativeValue()) {
             hModel.enterResultsForSCIfUnrealistic(SafetyCriteriaModel.getUnrealisticQuantitativeResults());
             b = false;
         }
+
         return b;
     }
-    
-        
-    
-    
-    //getters
-    
-    private List<SafetyCriteriaModel> MissingQuantitativeSC() {
-        return sModel.getMissingQuantitativeResultsSC();
+
+    public boolean setUnrealisticMAPInterval()
+    {
+        boolean b = true;
+
+        sModel.assessUnrealisticMAPInterval();
+        if (sModel.isUnrealisticMAPInterval()) {
+            hModel.enterMAPInterval();
+            b = false;
+        }
+
+        return b;
     }
-    
-    private void getMissingMAPInterval() {
-        
-    }
-    
-    private void getMissingCheckedSC() {
-        
-    }
-    
-    private void getUnrealisticResultsForSCEPJ() {
-        
-    }
-    
-    private void getUnrealisticMAPInterval() {
-        
-    }
+  
+
 }

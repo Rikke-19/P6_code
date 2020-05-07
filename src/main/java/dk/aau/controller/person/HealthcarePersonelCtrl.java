@@ -1,5 +1,6 @@
 package dk.aau.controller.person;
 
+import dk.aau.model.SafetyCriteriaModel;
 import dk.aau.model.person.HealthcarePersonelModel;
 import dk.aau.view.person.HealthcarePersonelView;
 
@@ -14,11 +15,16 @@ public class HealthcarePersonelCtrl {
         this.view = view;
     }
 
-    public void tickQuantitativeResults()
+    public void setQualitativeSCTicked()
     {
         model.tickQualitativeSCResults();
     }
 
+
+    public void setMAPInterval()
+    {
+        
+    }
 
     //Metoder
     private void sendEnteredResultsForQuantitativeSC() {}

@@ -50,13 +50,12 @@ public class SafetyCriteriaModelTest {
     
     @Test
     public void testCatchMissingQuantitative() {
-        System.out.println("Test missing quantitative");
         sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
         boolean result = sModel.isMissingQuantitativeResult();
         assertFalse(result);
     }
-    /*
-    @Test
+    
+   /* @Test
     public void testMissingMap(){
         boolean result = sModel.checkMissingMAP();
         assertFalse(result);
