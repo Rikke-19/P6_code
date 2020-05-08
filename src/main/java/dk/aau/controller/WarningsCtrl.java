@@ -21,24 +21,23 @@ public class WarningsCtrl {
 
     public boolean setMissingQuantitativeResultsSC()
     {
-        boolean b = true;
+        boolean b = false;
 
         sModel.checkMissingResultsForQuantitativeSC(SafetyCriteriaModel.getSC());
         if (sModel.isMissingQuantitativeResult()) {
             hModel.enterResultsForSCIfMissing(SafetyCriteriaModel.getMissingQuantitativeResultsSC());
-            b = false;
+            b = true;
         }
-
         return b;
     }
 
     public boolean setMissingMAPInterval()
     {
-        boolean b = true;
+        boolean b = false;
 
         if (SafetyCriteriaModel.checkMissingMAPInterval()) {
             hModel.enterMAPInterval();
-            b = false;
+            b = true;
         }
 
         return b;
@@ -46,25 +45,25 @@ public class WarningsCtrl {
 
     public boolean setMissingTickedQualitativeSC()
     {
-        boolean b = true;
+        boolean b = false;
 
         sModel.checkMissingTickedQualitativeSC(SafetyCriteriaModel.getSC());
         if (sModel.isMissingTickedQualitativeSC()) {
             hModel.tickQualitativeSCresultsIfMissing(SafetyCriteriaModel.getMissingQualitativeResultsSC());
-            b = false;
+            b = true;
         }
 
         return b;
     }
 
-    public boolean setUnrealisticQualitativeResults()
+    public boolean setUnrealisticQuanlitativeResults()
     {
-        boolean b = true;
+        boolean b = false;
         
         sModel.assessUnrealisticResultsForQuantitativeSC();
         if (sModel.isUnrealisticQuantitativeValue()) {
             hModel.enterResultsForSCIfUnrealistic(SafetyCriteriaModel.getUnrealisticQuantitativeResults());
-            b = false;
+            b = true;
         }
 
         return b;
@@ -72,12 +71,12 @@ public class WarningsCtrl {
 
     public boolean setUnrealisticMAPInterval()
     {
-        boolean b = true;
+        boolean b = false;
 
         sModel.assessUnrealisticMAPInterval();
         if (sModel.isUnrealisticMAPInterval()) {
             hModel.enterMAPInterval();
-            b = false;
+            b = true;
         }
 
         return b;

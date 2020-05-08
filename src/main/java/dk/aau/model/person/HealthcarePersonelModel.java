@@ -22,9 +22,9 @@ public class HealthcarePersonelModel {
 
         for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
             // her
-            if (exit == true) {
-                break;
-            }
+            //if (exit == true) {
+              //  break;
+            //}
             // til her
             System.out.print("Insert the value of ");
             boolean savedValue;
@@ -355,6 +355,42 @@ public class HealthcarePersonelModel {
                             }
                         }
                     }
+                    break;
+
+                case "Endotracheal Tube":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Tracheostomy Tube":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Stable Underlying Rhythm":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Ventricular Assist Device":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Delirium tool -ve":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "ICUAW":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Renal Replacement Therapy":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Venous and arterial femoral catheters":
+                    SC.setRecievedValue(true);
+                    break;
+
+                case "Other drains and attachements":
+                    SC.setRecievedValue(true);
                     break;
 
                 case "Mode HFOV":
@@ -2021,11 +2057,46 @@ public class HealthcarePersonelModel {
                             savedValue = false;
                         }
                     }
-
+                    savedValue = false;
+                    boolean isMapMinSet = false;
+                    while (!savedValue) {
+                            System.out.println(" [Insert lower limit of the target range for MAP]: ");
+                            String inputValueMin = App.input.nextLine();
+                            try {
+                                if (inputValueMin.equals("exit") || inputValueMin.equals("Exit")) {
+                                    isMapMinSet = true;
+                                    savedValue = true;
+                                    exit = true;
+                                } else {
+                                    SC.setMAPIntervalMin(Double.parseDouble(inputValueMin));
+                                    isMapMinSet = true;
+                                    SC.setRecievedValue(true);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        if (SC.getName().equals("MAP") && SC.getTakesNumber() && isMapMinSet) {
+                            System.out.println(" [Insert higher limit of the target range for MAP]: ");
+                            String inputValueMax = App.input.nextLine();
+                            try {
+                                if (inputValueMax.equals("exit") || inputValueMax.equals("Exit")) {
+                                    savedValue = true;
+                                } else {
+                                    SC.setMAPIntervalMax(Double.parseDouble(inputValueMax));
+                                    SC.setRecievedValue(true);
+                                    savedValue = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Invalid input");
+                                savedValue = false;
+                            }
+                        }
+                    }
                     break;
 
                 default:
-                    System.out.println("Vi burde ikke have været her. Et navn er skrevet forkert");
+                    System.out.println("Inputtet fra tabellen findes ikke til indtastning");
                     break;
             }
         }
@@ -2037,11 +2108,8 @@ public class HealthcarePersonelModel {
 
     // X
     public void tickQualitativeSCresultsIfMissing(List<SafetyCriteriaModel> list) {
-        if (exit == false) {
+
             for (SafetyCriteriaModel SC : list) {
-                if (exit == true) {
-                    break;
-                }
                 System.out.println("tickQuantitative: " + SC.getName()); // en ny tekst
                 boolean savedValue = false;
                 while (!savedValue) {
@@ -2058,7 +2126,6 @@ public class HealthcarePersonelModel {
                             savedValue = true;
                         } else if (input.equals("exit") || input.equals("Exit")) {
                             savedValue = true;
-                            exit = true;
                         }
                     } catch (Exception e) {
                         System.out.println("Invalid input");
@@ -2067,16 +2134,11 @@ public class HealthcarePersonelModel {
                 }
             }
         }
-    }
 
     // X
     public void enterResultsForSCIfMissing(List<SafetyCriteriaModel> list) {
 
-        if (exit == false) {
             for (SafetyCriteriaModel SC : list) {
-                if (exit == true) {
-                    break;
-                }
                 System.out.println("Enter results for: " + SC.getName()); // en ny tekst
                 boolean savedValue = false;
                 while (!savedValue) {
@@ -2085,7 +2147,6 @@ public class HealthcarePersonelModel {
                     try {
                         if (input.equals("exit") || input.equals("Exit")) {
                             savedValue = true;
-                            exit = true;
                         } else {
                             SC.setQuantitativeSCValue(Double.parseDouble(input));
                             SC.setRecievedValue(true);
@@ -2098,16 +2159,11 @@ public class HealthcarePersonelModel {
                 }
             }
         }
-    }
 
     //
     public void enterResultsForSCIfUnrealistic(List<SafetyCriteriaModel> list) {
 
-        if (exit == false) {
             for (SafetyCriteriaModel SC : list) {
-                if (exit == true) {
-                    break;
-                }
                 System.out.println("Enter results for: " + SC.getName()); // en ny tekst
                 boolean savedValue = false;
                 while (!savedValue) {
@@ -2116,7 +2172,6 @@ public class HealthcarePersonelModel {
                     try {
                         if (input.equals("exit") || input.equals("Exit")) {
                             savedValue = true;
-                            exit = true;
                         } else {
                             SC.setQuantitativeSCValue(Double.parseDouble(input));
                             SC.setRecievedValue(true);
@@ -2129,13 +2184,11 @@ public class HealthcarePersonelModel {
                 }
             }
         }
-    }
 
     //
     public void enterMAPInterval() {
         boolean savedValue = false;
         boolean isMapMinSet = false;
-        if (exit == false) {
             while (savedValue == false) {
 
                 for (SafetyCriteriaModel SC : SafetyCriteriaModel.getSC()) {
@@ -2146,7 +2199,6 @@ public class HealthcarePersonelModel {
                             if (inputValueMin.equals("exit") || inputValueMin.equals("Exit")) {
                                 isMapMinSet = true;
                                 savedValue = true;
-                                exit = true;
                             } else {
                                 SC.setMAPIntervalMin(Double.parseDouble(inputValueMin));
                                 isMapMinSet = true;
@@ -2158,8 +2210,7 @@ public class HealthcarePersonelModel {
                             savedValue = false;
                         }
                     }
-                    if (SC.getName().equals("MAP") && SC.getTakesNumber() == true && isMapMinSet == true
-                            && exit == false) {
+                    if (SC.getName().equals("MAP") && SC.getTakesNumber() == true && isMapMinSet == true) {
                         System.out.println(" [Insert higher limit of the target range for MAP]: ");
                         String inputValueMax = App.input.nextLine();
                         try {
@@ -2177,6 +2228,5 @@ public class HealthcarePersonelModel {
                     }
                 }
             }
-        }
     }
 }

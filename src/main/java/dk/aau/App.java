@@ -107,11 +107,10 @@ public class App {
         // risikokontrol
         
         while (wCtrl.setMissingQuantitativeResultsSC()) {}
-        while (wCtrl.setUnrealisticQualitativeResults()) {}
+        while (wCtrl.setUnrealisticQuanlitativeResults()) {}
         while (wCtrl.setMissingMAPInterval()) {}
         while (wCtrl.setUnrealisticMAPInterval()) {}
         while (wCtrl.setMissingQuantitativeResultsSC()) {}
-   
 
         // kategorisering
         ColorCategorizationsModel.performColorCategoIB();
@@ -161,9 +160,10 @@ public class App {
         for (SafetyCriteriaModel s : SafetyCriteriaModel.getSC()) {
             System.out.println("Name: " + ANSI_BLUE + s.getName() + ANSI_RESET + " Value: " + 
             ANSI_BLUE + s.getQuantitativeSCValue()+ ANSI_RESET + " Boolean: " + ANSI_BLUE + 
-            s.getQualitativeSCValueBool()+ ANSI_RESET + " Color in bed: " +  ANSI_BLUE +
+            s.getQualitativeSCValueBool() + ANSI_RESET + " Color in bed: " +  ANSI_BLUE +
             s.getColorIB()+ ANSI_RESET + " Color out of bed " + ANSI_BLUE + s.getColorOB() + ANSI_RESET);
         }
+        System.out.println("MAP interval: " + SafetyCriteriaModel.getMAPIntervalMin() + " - " + SafetyCriteriaModel.getMAPIntervalMax());
     }
 }
 

@@ -69,7 +69,6 @@ public class SafetyCriteriaModel {
             if (!SC.isRecievedValue() && SC.takesNumber) {
                 MissingQuantitativeResultsSC.add(SC);
                 MissingQuantitativeResult = true;
-                System.out.println("x");
             }
         }
     }
@@ -86,17 +85,16 @@ public class SafetyCriteriaModel {
 
     //
     public void assessUnrealisticResultsForQuantitativeSC() {
-        isUnrealisticQuantitativeValue = true;
-        System.out.println(isUnrealisticQuantitativeValue());
+        isUnrealisticQuantitativeValue = false;
         for (SafetyCriteriaModel SC : SC) {
             if (!SC.getName().equals("RASS") && SC.takesNumber && SC.getQuantitativeSCValue() <= 0) {
                 UnrealisticQuantitativeResults.add(SC);
                 System.out.println("result");
-                isUnrealisticQuantitativeValue = false;
+                isUnrealisticQuantitativeValue = true;
             } else if (SC.getName().equals("RASS") && SC.takesNumber && SC.getQuantitativeSCValue() > 4
                     || SC.getQuantitativeSCValue() < -5) {
                 UnrealisticQuantitativeResults.add(SC);
-                isUnrealisticQuantitativeValue = false;
+                isUnrealisticQuantitativeValue = true;
             }
         }
     }
