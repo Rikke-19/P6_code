@@ -119,10 +119,14 @@ public class App {
         EMCategoriesModel.assignEMCategoIB();
         EMCategoriesModel.assignEMCategoOB();
 
-        if (eModel.getEMCategorizationIB().equals("Yellow") || eModel.getEMCategorizationOB().equals("Yellow")) {
-            EMCategoriesModel.printYellowList();
+        if (eModel.getEMCategorizationIB().equals("Yellow") && !eModel.getEMCategorizationIB().equals("Red")) {
+            EMCategoriesModel.printYellowListIB();
         }
 
+        if (eModel.getEMCategorizationOB().equals("Yellow") && !eModel.getEMCategorizationOB().equals("Red")) {
+            EMCategoriesModel.printYellowListOB();
+        }
+        
         // vis kategorisering
         eCtrl.getEMCategorizationIB();
         eCtrl.getEMCategorizationOB();

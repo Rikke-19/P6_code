@@ -55,14 +55,16 @@ public class EMCategoriesModel {
         }
     }
 
-    public static void printYellowList() {
+    public static void printYellowListIB() {
 
         for (SafetyCriteriaModel s : yellowCriteriaIB) {
             System.out.println(
                     s.getName() + " Value: " + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
-                            + " Out of bed color: " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET);
+                            + " In bed color: " + App.ANSI_YELLOW + s.getColorIB() + App.ANSI_RESET);
         }
-
+    }
+    
+    public static void printYellowListOB() {
         for (SafetyCriteriaModel s : yellowCriteriaOB) {
             System.out.println(
                     s.getName() + " Value: " + s.getQuantitativeSCValue() + " Boolean: " + s.getQualitativeSCValueBool()
