@@ -110,7 +110,7 @@ public class App {
         while (wCtrl.setUnrealisticQuanlitativeResults()) {}
         while (wCtrl.setMissingMAPInterval()) {}
         while (wCtrl.setUnrealisticMAPInterval()) {}
-        while (wCtrl.setMissingQuantitativeResultsSC()) {}
+        while (wCtrl.setMissingTickedQualitativeSC()) {}
 
         // kategorisering
         ColorCategorizationsModel.performColorCategoIB();
@@ -139,15 +139,10 @@ public class App {
         while (!savedValue) {
             try {
                 String iString = input.nextLine();
-                if (iString.equals("yes") || iString.equals("yes"))
-                {
+                if (iString.equals("yes") || iString.equals("yes")) {
                     ShowAllCriteria();
                     savedValue = true;
                 } else if (iString.equals("no") || iString.equals("No")) {
-
-                    savedValue = true;
-                    
-                } else if (iString.equals("exit") || iString.equals("Exit")) {
                     savedValue = true;
                 }
             } catch (Exception e) {

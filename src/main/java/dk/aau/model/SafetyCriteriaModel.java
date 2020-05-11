@@ -89,7 +89,6 @@ public class SafetyCriteriaModel {
         for (SafetyCriteriaModel SC : SC) {
             if (!SC.getName().equals("RASS") && SC.takesNumber && SC.getQuantitativeSCValue() <= 0) {
                 UnrealisticQuantitativeResults.add(SC);
-                System.out.println("result");
                 isUnrealisticQuantitativeValue = true;
             } else if (SC.getName().equals("RASS") && SC.takesNumber && SC.getQuantitativeSCValue() > 4
                     || SC.getQuantitativeSCValue() < -5) {
